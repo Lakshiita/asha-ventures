@@ -1,0 +1,136 @@
+{
+  "founders": [
+    {
+      "name": "Vikram Gandhi",
+      "role": "Founding Partner",
+      "bio": "Experienced leader in impact investing and social entrepreneurship.",
+      "img": "/assets/founders/Vikram-founder.jpg"
+    },
+    {
+      "name": "Pramod Bhasin",
+      "role": "Founding Partner", 
+      "bio": "Veteran business leader with expertise in scaling organizations.",
+      "img": "/assets/founders/Pramod-founder.jpg"
+    }
+  ],
+  "team": [
+    {
+      "name": "Amit Mehta",
+      "role": "Managing Partner",
+      "bio": "Leads investment strategy and portfolio management.",
+      "img": "/assets/team/Amit.jpg"
+    },
+    {
+      "name": "Aditi Gupta",
+      "role": "Partner",
+      "bio": "Focuses on healthcare and education sector investments.",
+      "img": "/assets/team/Aditi.jpg"
+    },
+    {
+      "name": "Nishtha Gaur",
+      "role": "Associate Vice President",
+      "bio": "Manages investment operations and due diligence processes.",
+      "img": "/assets/team/Nishtha.jpg"
+    },
+    {
+      "name": "Aayush Khutate",
+      "role": "Investment Analyst",
+      "bio": "Supports deal sourcing and market research initiatives.",
+      "img": "/assets/team/Aayush.jpg"
+    },
+    {
+      "name": "Vatsal Chitalia",
+      "role": "Investment Analyst",
+      "bio": "Focuses on financial analysis and investment evaluation.",
+      "img": "/assets/team/Vatsal.jpg"
+    },
+    {
+      "name": "Avisha Bhandari",
+      "role": "Investment Analyst",
+      "bio": "Specializes in impact measurement and portfolio support.",
+      "img": "/assets/team/Avisha.jpg"
+    }
+  ],
+  "alumni": [
+    {
+      "name": "Kartik Desai",
+      "role": "Alumni",
+      "bio": "Former team member who contributed to early growth.",
+      "img": "/assets/alumni/KartikDesai.jpg"
+    },
+    {
+      "name": "T.T. Venkatraghavan",
+      "role": "Alumni",
+      "bio": "Former team member with expertise in operations.",
+      "img": "/assets/alumni/TT-venatraghavan.jpg"
+    },
+    {
+      "name": "Raghav Rungta",
+      "role": "Alumni",
+      "bio": "Former analyst who supported multiple investment deals.",
+      "img": "/assets/alumni/RaghavRungta.jpg"
+    },
+    {
+      "name": "Riya Saxena",
+      "role": "Alumni",
+      "bio": "Former associate with focus on impact measurement.",
+      "img": "/assets/alumni/RiyaSaxena.jpg"
+    },
+    {
+      "name": "Rachana Ramchand",
+      "role": "Alumni",
+      "bio": "Former team member who led portfolio initiatives.",
+      "img": "/assets/alumni/RachanaRamchand.jpg"
+    },
+    {
+      "name": "Alpana Srivastava",
+      "role": "Alumni",
+      "bio": "Former partner with extensive investment experience.",
+      "img": "/assets/alumni/AlpanaSrivastava.png"
+    },
+    {
+      "name": "Aparna Dua",
+      "role": "Alumni",
+      "bio": "Former senior associate with sector expertise.",
+      "img": "/assets/alumni/Aparna-Dua.png"
+    }
+  ],
+  "supporters": [
+    {
+      "name": "Ashish Dhawan",
+      "role": "Founder, Ashoka University & Central Square Foundation",
+      "bio": "Visionary leader in education and social impact initiatives.",
+      "img": "/assets/supporters/ASHISHDHAWAN.jpg"
+    },
+    {
+      "name": "Amit Chandra",
+      "role": "Chairman, Bain Capital Private Equity",
+      "bio": "Leading private equity executive with global investment experience.",
+      "img": "/assets/supporters/AMITCHANDRA.jpg"
+    },
+    {
+      "name": "Ajay Parekh",
+      "role": "Pidilite Group",
+      "bio": "Business leader with expertise in manufacturing and consumer goods.",
+      "img": "/assets/supporters/AJAYPAREKH.jpg"
+    },
+    {
+      "name": "Padmini Somani",
+      "role": "Narottam Sekhsaria Family Office",
+      "bio": "Investment professional managing family office initiatives.",
+      "img": "/assets/supporters/padminisomani.png"
+    },
+    {
+      "name": "Vishwang Desai",
+      "role": "Partner, Desai & Diwanji",
+      "bio": "Legal expert specializing in corporate and investment law.",
+      "img": "/assets/supporters/Vishwangdesai.jpg"
+    },
+    {
+      "name": "Gokul Laroia",
+      "role": "MD & Co-CEO, Morgan Stanley Asia",
+      "bio": "Senior executive with extensive experience in Asian markets.",
+      "img": "/assets/supporters/GokulLaroia.jpg"
+    }
+  ]
+}

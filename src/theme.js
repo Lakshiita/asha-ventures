@@ -14,11 +14,13 @@ const colors = {
     800: "#6f5838",
     900: "#59462d",
   },
+  textColor2: "#4A5568", // Add your specific textColor2 value here
 };
 
 const fonts = {
   heading: `'Playfair Display', serif`,
   body: `'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial`,
+  supreme: `'Supreme-Medium', sans-serif`,
 };
 
 const components = {
@@ -48,6 +50,15 @@ const components = {
   },
 };
 
+const textStyles = {
+  defaultText: {
+    color: "textColor2",
+    fontFamily: "supreme",
+    lineHeight: "normal",
+    textAlign: "center",
+  },
+};
+
 const styles = {
   global: {
     "html, body, #root": { height: "100%" },
@@ -55,4 +66,4 @@ const styles = {
   },
 };
 
-export default extendTheme({ colors, fonts, components, styles });
+export default extendTheme({ colors, fonts, components, styles, textStyles });
