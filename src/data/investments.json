@@ -1,0 +1,42 @@
+[
+  {
+    "id": "agrico",
+    "name": "Agrico",
+    "sector": "Agri-Tech",
+    "stage": "Seed",
+    "logo": "https://dummyimage.com/300x120/ddd/333.png&text=Agrico",
+    "website": "https://example.com/agrico",
+    "description": "Digitizing supply chains for smallholder farmers with market linkages and credit access.",
+    "focus": "Farmer income, efficiency, transparency"
+  },
+  {
+    "id": "swasth",
+    "name": "Swasth Health",
+    "sector": "Health",
+    "stage": "Series A",
+    "logo": "https://dummyimage.com/300x120/ddd/333.png&text=Swasth",
+    "website": "https://example.com/swasth",
+    "description": "Affordable primary healthcare via hybrid clinics in underserved towns.",
+    "focus": "Access, affordability, outcomes"
+  },
+  {
+    "id": "udaanpay",
+    "name": "UdaanPay",
+    "sector": "Financial Inclusion",
+    "stage": "Pre-Seed",
+    "logo": "https://dummyimage.com/300x120/ddd/333.png&text=UdaanPay",
+    "website": "https://example.com/udaanpay",
+    "description": "Micro-merchants payments & credit scoring platform.",
+    "focus": "Merchant growth, digital adoption"
+  },
+  {
+    "id": "jalsetu",
+    "name": "JalSetu",
+    "sector": "Water & Sanitation",
+    "stage": "Seed",
+    "logo": "https://dummyimage.com/300x120/ddd/333.png&text=JalSetu",
+    "website": "https://example.com/jalsetu",
+    "description": "Low-cost IoT water quality monitoring for small cities.",
+    "focus": "Quality, accountability, transparency"
+  }
+]
