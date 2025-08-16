@@ -6,6 +6,8 @@ import People from "./pages/People.jsx";
 import Investments from "./pages/Investments.jsx";
 import Impact from "./pages/Impact.jsx";
 import Knowledge from "./pages/Knowledge.jsx";
+import VikramGandhi from "./pages/VikramGandhi.jsx";
+import PramodBhasin from "./pages/PramodBhasin.jsx";
 import { Box } from "@chakra-ui/react";
 
 export default function App() {
@@ -19,6 +21,8 @@ export default function App() {
           <Route path="/investments" element={<Investments />} />
           <Route path="/impact" element={<Impact />} />
           <Route path="/knowledge" element={<Knowledge />} />
+          <Route path="/founders/vikram-gandhi" element={<VikramGandhi />} />
+          <Route path="/founders/pramod-bhasin" element={<PramodBhasin />} />
         </Routes>
       </Box>
       <Footer />
