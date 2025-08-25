@@ -12,14 +12,14 @@ const colors = {
     600: "#a58957",
     700: "#8b7047",
     800: "#6f5838",
-    900: "#59462d",
+    900: "#391003ff",
   },
   textColor2: "#4A5568", // Add your specific textColor2 value here
 };
 
 const fonts = {
   heading: `'Playfair Display', serif`,
-  body: `'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial`,
+  body: `'Inter', sans-serif`,  
   supreme: `'Supreme-Medium', sans-serif`,
 };
 
