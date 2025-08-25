@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import logo from '../assets/asha-ventures-logo.png';
 const links = [
-  { to: "/people", label: "People" },
+  { to: "/people", label: "Team" },
   { to: "/investments", label: "Investments" },
   { to: "/impact", label: "Our Impact" },
   { to: "/knowledge", label: "Knowledge Resources" },
@@ -61,7 +61,7 @@ export default function Navbar() {
           {links.map((l) => (
             <NavLinkItem key={l.to} to={l.to}>{l.label}</NavLinkItem>
           ))}
-          <Button as={Link} to="/knowledge#contact" size="md" className="text-[28px] text-textColor2 font-[Supreme-Medium] leading-normal text-center">Contact</Button>
+          <Button as={Link} to="/contact" size="md" className="text-[28px] text-textColor2 font-[Supreme-Medium] leading-normal text-center">Contact</Button>
         </HStack>
       </Flex>
 
