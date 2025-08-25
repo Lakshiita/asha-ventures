@@ -1,7 +1,8 @@
 import {
   Avatar, Box, Card, CardBody, Container, Grid, Heading, Text, HStack, VStack,
-  Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, useDisclosure, Image, Badge, Icon
+  Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, useDisclosure, Image, Badge, Icon, Link
 } from "@chakra-ui/react";
+import { FaEnvelope, FaLinkedin } from "react-icons/fa";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Section from "../components/Section.jsx";
@@ -325,18 +326,124 @@ export default function People() {
         </Container>
       </Section>
 
-      <Modal isOpen={isOpen} onClose={onClose} size="lg">
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader textStyle="defaultText">{selectedPerson?.name}</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody pb={6}>
-            <HStack spacing={6} align="start">
-              <Avatar name={selectedPerson?.name} src={selectedPerson?.img} size="2xl" />
-              <Box>
-                <Text textStyle="defaultText" fontSize="lg">{selectedPerson?.role}</Text>
-                <Text mt={4} textStyle="defaultText">{selectedPerson?.bio}</Text>
+      <Modal isOpen={isOpen} onClose={onClose} size="4xl" isCentered>
+        <ModalOverlay bg="blackAlpha.600" backdropFilter="blur(4px)" />
+        <ModalContent 
+          bg="white" 
+          borderRadius="xl" 
+          border="2px solid" 
+          borderColor="gray.200" 
+          shadow="2xl"
+          mx={4}
+          maxH="90vh"
+        >
+          <ModalHeader 
+            textStyle="defaultText" 
+            fontSize="2xl" 
+            fontWeight="bold"
+            borderBottom="1px solid"
+            borderColor="gray.100"
+            pb={4}
+            textAlign="left"
+          >
+            {selectedPerson?.name}
+          </ModalHeader>
+          <ModalCloseButton 
+            size="lg" 
+            _hover={{ bg: "gray.100" }}
+            borderRadius="full"
+          />
+          <ModalBody p={8} overflowY="auto">
+            <HStack spacing={8} align="start">
+              <Box 
+                flexShrink={0}
+                borderRadius="lg"
+                border="3px solid"
+                borderColor="gray.200"
+                shadow="lg"
+                bg="white"
+                p={3}
+              >
+                <Image 
+                  src={selectedPerson?.img} 
+                  alt={selectedPerson?.name}
+                  borderRadius="md"
+                  boxSize="200px"
+                  objectFit="cover"
+                  fallback={<Avatar name={selectedPerson?.name} size="2xl" />}
+                />
               </Box>
+              <VStack spacing={4} align="start" flex={1}>
+                <HStack spacing={1} align="center">
+                  <Badge 
+                    colorScheme="blue" 
+                    variant="subtle" 
+                    px={3} 
+                    py={1} 
+                    borderRadius="full"
+                    fontSize="sm"
+                  >
+                    {selectedPerson?.role}
+                  </Badge>
+                  {selectedPerson?.email && (
+                  <Link 
+                    href={`mailto:${selectedPerson.email}`} 
+                    isExternal 
+                    _hover={{ textDecoration: "none" }} 
+                    _focus={{ boxShadow: "none" }} 
+                    _active={{ boxShadow: "none" }}
+                  >
+                    <Icon 
+                      as={FaEnvelope} 
+                      color="gray.600" 
+                      boxSize={4} 
+                      transition="color 0.2s"
+                      _hover={{ color: "blue.500" }} 
+                    />
+                  </Link>
+                )}
+
+                {selectedPerson?.linkedin && (
+                  <Link 
+                    href={selectedPerson.linkedin} 
+                    isExternal 
+                    _hover={{ textDecoration: "none" }} 
+                    _focus={{ boxShadow: "none" }} 
+                    _active={{ boxShadow: "none" }}
+                  >
+                    <Icon 
+                      as={FaLinkedin} 
+                      color="gray.600" 
+                      boxSize={4} 
+                      transition="color 0.2s"
+                      _hover={{ color: "blue.500" }} 
+                    />
+                  </Link>
+                )}
+
+                </HStack>
+                {selectedPerson?.heading && (
+                  <Text 
+                    textStyle="defaultText" 
+                    fontSize="lg" 
+                    fontWeight="semibold"
+                    color="gray.800"
+                    lineHeight="1.5"
+                    textAlign="left"
+                  >
+                    {selectedPerson.heading}
+                  </Text>
+                )}
+                <Text 
+                  textStyle="defaultText" 
+                  fontSize="md" 
+                  lineHeight="1.6"
+                  color="gray.700"
+                  textAlign="left"
+                >
+                  {selectedPerson?.bio}
+                </Text>
+              </VStack>
             </HStack>
           </ModalBody>
         </ModalContent>

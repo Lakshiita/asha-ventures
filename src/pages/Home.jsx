@@ -1,59 +1,215 @@
 import {
-  Box, Button, Container, Grid, GridItem, Heading, Image, Text, Stack
+  Box,
+  Button,
+  Container,
+  Grid,
+  GridItem,
+  Heading,
+  Image,
+  Text,
+  Stack,
+  AspectRatio,
+  IconButton,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { useState, useEffect, useCallback } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import "../styles/VideoMask.css";
+import slides from "../data/slides.json";
+
+
 
 export default function Home() {
+
+  const [current, setCurrent] = useState(0);
+
+  const prevSlideCallback = useCallback(() =>
+    setCurrent((c) => (c === 0 ? slides.length - 1 : c - 1)), []);
+  const nextSlideCallback = useCallback(() =>
+    setCurrent((c) => (c === slides.length - 1 ? 0 : c + 1)), []);
+
+  // Auto-play carousel
+  useEffect(() => {
+    const interval = setInterval(nextSlideCallback, 4000);
+    return () => clearInterval(interval);
+  }, [nextSlideCallback]);
+
+  useEffect(() => {
+    document.documentElement.style.scrollBehavior = 'smooth';
+    return () => {
+      document.documentElement.style.scrollBehavior = '';
+    };
+  }, []);
+
   return (
-    <Box>
+    <Box 
+      sx={{
+        scrollSnapType: 'y mandatory',
+        '& > *': {
+          scrollSnapAlign: 'start'
+        }
+      }}
+    >
       {/* Hero */}
-      <Box py={{ base: 10, md: 20 }}>
-        <Container>
-          <Grid templateColumns={{ base: "1fr", md: "1.1fr 0.9fr" }} gap={8} alignItems="center">
-            <GridItem>
-              <Stack spacing={6}>
-                <Heading as="h1" size="2xl" lineHeight="1.15">
-                  Backing builders creating lasting social change.
-                </Heading>
-                <Text fontSize="lg" color="gray.700" maxW="2xl">
-                  “The best way to find yourself is to lose yourself in the service of others.”
-                  <br />— Mahatma Gandhi
-                </Text>
-                <Stack direction={{ base: "column", sm: "row" }} spacing={3}>
-                  <Button as={Link} to="/investments" size="lg">View Portfolio</Button>
-                  <Button as={Link} to="/impact" variant="outline" size="lg">Our Impact</Button>
-                </Stack>
+      <Box w="100%" h="100vh">
+        <Box 
+          w="100%" 
+          h="100%" 
+          display="flex" 
+          flexDirection={{ base: "column", md: "row" }}
+        >
+          {/* Quote Section - Left Half */}
+          <Box 
+            w={{ base: "100%", md: "50%" }} 
+            h={{ base: "50%", md: "100%" }}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            px={{ base: 4, md: 16 }}
+            py={{ base: 8, md: 0 }}
+          >
+            <Stack spacing={6} maxW="lg">
+              <Heading
+                fontWeight="600"
+                fontFamily="Avenir, sans-serif"
+                fontSize={{ base: "1.5rem", md: "2.4rem" }}
+                letterSpacing={0.5}
+              >
+                Partnering With Ambitious{" "}
+                <Text as="span" color="orange.500" fontWeight="inherit">
+                  Entrepreneurs
+                </Text>{" "}
+                Who Leverage Technology To{" "}
+                <Text as="span" color="orange.500" fontWeight="inherit">
+                  Build Businesses
+                </Text>{" "}
+                For India's Emerging Middle Class
+              </Heading>
+
+
+              <Text fontSize="lg" color="textColor2">
+                We invest in bold ideas that shape India’s future economy.
+              </Text>
+              <Stack direction={{ base: "column", sm: "row" }} spacing={3}>
+                <Button as={Link} to="/investments" size="lg">
+                  View Portfolio
+                </Button>
+                <Button as={Link} to="/impact" variant="outline" size="lg">
+                  Our Impact
+                </Button>
               </Stack>
-            </GridItem>
-            <GridItem>
-              <Image
-                src="https://images.unsplash.com/photo-1580745430931-07f8fba2c7f7?q=80&w=1200"
-                alt="Social worker in the field"
-                rounded="2xl"
-                shadow="lg"
-                objectFit="cover"
-              />
-            </GridItem>
-          </Grid>
-        </Container>
+            </Stack>
+          </Box>
+
+          {/* Video Section - Right Half */}
+          <Box 
+            w={{ base: "100%", md: "50%" }} 
+            h={{ base: "50%", md: "100%" }}
+            position="relative"
+            overflow="hidden"
+            borderRadius={{ base: "20px", md: "0" }}
+            mx={{ base: 4, md: 0 }}
+          >
+            <Box
+              as="video"
+              autoPlay
+              loop
+              muted
+              playsInline
+              objectFit="cover"
+              w="100%"
+              h="100%"
+              className="mask"
+            >
+              <source src="/assets/Home_Carousel/ashaventures.mp4" type="video/mp4" />
+            </Box>
+          </Box>
+        </Box>
       </Box>
 
-      {/* Highlights */}
-      <Box bg="brand.100">
-        <Container py={12}>
-          <Grid templateColumns={{ base: "1fr", md: "repeat(3,1fr)" }} gap={6}>
-            {[
-              { n: "25+", t: "Portfolio Organizations" },
-              { n: "5M+", t: "Lives Touched" },
-              { n: "12", t: "States Reached" },
-            ].map((stat) => (
-              <Box key={stat.t} p={6} bg="white" rounded="xl" shadow="sm" border="1px solid" borderColor="blackAlpha.100">
-                <Heading size="xl">{stat.n}</Heading>
-                <Text mt={2} color="gray.600">{stat.t}</Text>
-              </Box>
-            ))}
-          </Grid>
-        </Container>
+      {/* Fullscreen Carousel */}
+      <Box 
+        position="relative" 
+        h="calc(100vh - 4rem)" 
+        overflow="hidden"
+        mt={16}
+      >
+        <Image
+          src={slides[current].image}
+          alt={`slide-${current}`}
+          objectFit="cover"
+          w="100%"
+          h="100%"
+          key={current}
+          opacity={0}
+          animation="slideIn 0.6s ease-out forwards"
+          sx={{
+            '@keyframes slideIn': {
+              '0%': {
+                opacity: 0,
+                transform: 'translateX(50px)'
+              },
+              '100%': {
+                opacity: 1,
+                transform: 'translateX(0)'
+              }
+            }
+          }}
+        />
+
+        {/* Dark overlay for text */}
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          w="100%"
+          h="100%"
+          bg="blackAlpha.600"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          textAlign="center"
+          px={6}
+        >
+          <Heading 
+            color="white" 
+            size="2xl" 
+            maxW="3xl"
+            key={`text-${current}`}
+            opacity={0}
+            animation="slideIn 0.5s ease-out 0.4s forwards"
+          >
+            {slides[current].text}
+          </Heading>
+        </Box>
+
+        {/* Controls */}
+        <IconButton
+          aria-label="Previous Slide"
+          icon={<FaChevronLeft />}
+          position="absolute"
+          top="50%"
+          left="20px"
+          transform="translateY(-50%)"
+          onClick={prevSlideCallback}
+          bg="transparent"
+          _hover={{ bg: "whiteAlpha.300" }}
+          rounded="full"
+          fontSize="2xl"
+        />
+        <IconButton
+          aria-label="Next Slide"
+          icon={<FaChevronRight />}
+          position="absolute"
+          top="50%"
+          right="20px"
+          transform="translateY(-50%)"
+          onClick={nextSlideCallback}
+          bg="transparent"
+          _hover={{ bg: "whiteAlpha.300" }}
+          rounded="full"
+          fontSize="2xl"
+        />
       </Box>
     </Box>
   );

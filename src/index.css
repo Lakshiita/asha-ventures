@@ -53,6 +53,18 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+.mask {
+  -webkit-mask-image: url('/shapes.svg'); /* external SVG mask */
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  mask-image: url('/shapes.svg');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
