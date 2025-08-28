@@ -10,10 +10,11 @@ import {
   Stack,
   AspectRatio,
   IconButton,
+  Flex,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { useState, useEffect, useCallback } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { FaChevronLeft, FaChevronRight, FaHeartbeat, FaDollarSign, FaLeaf, FaShoppingCart, FaLaptopCode } from "react-icons/fa";
 import "../styles/VideoMask.css";
 import slides from "../data/slides.json";
 
@@ -22,6 +23,9 @@ import slides from "../data/slides.json";
 export default function Home() {
 
   const [current, setCurrent] = useState(0);
+  const [isHeadingVisible, setIsHeadingVisible] = useState(false);
+  const [visibleCards, setVisibleCards] = useState([]);
+  const sectorsRef = useRef(null);
 
   const prevSlideCallback = useCallback(() =>
     setCurrent((c) => (c === 0 ? slides.length - 1 : c - 1)), []);
@@ -41,6 +45,29 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsHeadingVisible(true);
+          // Animate cards one by one with delay
+          [0, 1, 2, 3, 4].forEach((index) => {
+            setTimeout(() => {
+              setVisibleCards(prev => [...prev, index]);
+            }, index * 200);
+          });
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectorsRef.current) {
+      observer.observe(sectorsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <Box 
       sx={{
@@ -58,7 +85,31 @@ export default function Home() {
           display="flex" 
           flexDirection={{ base: "column", md: "row" }}
         >
-          {/* Quote Section - Left Half */}
+          {/* Video Section - Left Half */}
+          <Box 
+            w={{ base: "100%", md: "50%" }} 
+            h={{ base: "50%", md: "100%" }}
+            position="relative"
+            overflow="hidden"
+            borderRadius={{ base: "20px", md: "0" }}
+            mx={{ base: 4, md: 0 }}
+          >
+            <Box
+              as="video"
+              autoPlay
+              loop
+              muted
+              playsInline
+              objectFit="cover"
+              w="100%"
+              h="100%"
+              className="mask"
+            >
+              <source src="/assets/Home_Carousel/ashaventures.mp4" type="video/mp4" />
+            </Box>
+          </Box>
+
+          {/* Quote Section - Right Half */}
           <Box 
             w={{ base: "100%", md: "50%" }} 
             h={{ base: "50%", md: "100%" }}
@@ -101,30 +152,119 @@ export default function Home() {
             </Stack>
           </Box>
 
-          {/* Video Section - Right Half */}
-          <Box 
-            w={{ base: "100%", md: "50%" }} 
-            h={{ base: "50%", md: "100%" }}
-            position="relative"
-            overflow="hidden"
-            borderRadius={{ base: "20px", md: "0" }}
-            mx={{ base: 4, md: 0 }}
-          >
-            <Box
-              as="video"
-              autoPlay
-              loop
-              muted
-              playsInline
-              objectFit="cover"
-              w="100%"
-              h="100%"
-              className="mask"
-            >
-              <source src="/assets/Home_Carousel/ashaventures.mp4" type="video/mp4" />
-            </Box>
-          </Box>
+
         </Box>
+      </Box>
+
+      {/* Sectors Section */}
+      <Box w="100%" px={8} py={16} ref={sectorsRef}>
+        <Heading 
+          textAlign="left" 
+          mb={12} 
+          fontSize="5xl" 
+          color="orange.800"
+          transform={isHeadingVisible ? "translateX(0)" : "translateX(-100px)"}
+          opacity={isHeadingVisible ? 1 : 0}
+          transition="all 0.8s ease-out"
+        >
+          Sectors we cover
+        </Heading>
+        <Grid templateColumns="repeat(5, 1fr)" gap={4}>
+          <Box 
+            bg="orange.400" 
+            p={4} 
+            rounded="xl"
+            transform={visibleCards.includes(0) ? "translateY(0)" : "translateY(50px)"}
+            opacity={visibleCards.includes(0) ? 1 : 0}
+            transition="all 0.6s ease-out"
+          >
+            <Flex align="center" mb={3}>
+              <Box as={FaHeartbeat} color="white" size="20px" mr={2} />
+              <Heading size="sm" color="white">
+                Healthcare
+              </Heading>
+            </Flex>
+            <Text color="white" fontSize="sm">
+              Ensuring access to quality and low-cost healthcare for underserved populations through technology-led delivery models and innovative financing solutions
+            </Text>
+          </Box>
+          
+          <Box 
+            bg="orange.500" 
+            p={4} 
+            rounded="xl"
+            transform={visibleCards.includes(1) ? "translateY(0)" : "translateY(50px)"}
+            opacity={visibleCards.includes(1) ? 1 : 0}
+            transition="all 0.6s ease-out"
+          >
+            <Flex align="center" mb={3}>
+              <Box as={FaDollarSign} color="white" size="20px" mr={2} />
+              <Heading size="sm" color="white">
+                Financial Services
+              </Heading>
+            </Flex>
+            <Text color="white" fontSize="sm">
+              Driving financial inclusion by expanding access to credit, insurance, and savings for underserved individuals and MSMEs via digital and alternative models
+            </Text>
+          </Box>
+          
+          <Box 
+            bg="orange.600" 
+            p={4} 
+            rounded="xl"
+            transform={visibleCards.includes(2) ? "translateY(0)" : "translateY(50px)"}
+            opacity={visibleCards.includes(2) ? 1 : 0}
+            transition="all 0.6s ease-out"
+          >
+            <Flex align="center" mb={3}>
+              <Box as={FaLeaf} color="white" size="20px" mr={2} />
+              <Heading size="sm" color="white">
+                Sustainability
+              </Heading>
+            </Flex>
+            <Text color="white" fontSize="sm">
+              Building a resource-efficient future by enabling waste reduction, material recovery, and sustainable consumption through scalable circular innovations
+            </Text>
+          </Box>
+          
+          <Box 
+            bg="orange.700" 
+            p={4} 
+            rounded="xl"
+            transform={visibleCards.includes(3) ? "translateY(0)" : "translateY(50px)"}
+            opacity={visibleCards.includes(3) ? 1 : 0}
+            transition="all 0.6s ease-out"
+          >
+            <Flex align="center" mb={3}>
+              <Box as={FaShoppingCart} color="white" size="20px" mr={2} />
+              <Heading size="sm" color="white">
+                Consumer
+              </Heading>
+            </Flex>
+            <Text color="white" fontSize="sm">
+              Enhancing everyday living for underserved populations by supporting access to affordable, high-quality, and trusted products and services across essential consumption categories.
+            </Text>
+          </Box>
+          
+          <Box 
+            bg="orange.800" 
+            p={4} 
+            rounded="xl"
+            transform={visibleCards.includes(4) ? "translateY(0)" : "translateY(50px)"}
+            opacity={visibleCards.includes(4) ? 1 : 0}
+            transition="all 0.6s ease-out"
+          >
+            <Flex align="center" mb={3}>
+              <Box as={FaLaptopCode} color="white" size="20px" mr={2} />
+              <Heading size="sm" color="white">
+                MSME Technology
+              </Heading>
+            </Flex>
+            <Text color="white" fontSize="sm">
+              Digitizing and formalizing India's small businesses by supporting tech platforms that enhance productivity, compliance, and access to markets and finance
+            </Text>
+          </Box>
+        </Grid>
       </Box>
 
       {/* Fullscreen Carousel */}
@@ -211,6 +351,8 @@ export default function Home() {
           fontSize="2xl"
         />
       </Box>
+
+      
     </Box>
   );
 }
