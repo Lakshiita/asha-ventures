@@ -17,6 +17,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { FaChevronLeft, FaChevronRight, FaHeartbeat, FaDollarSign, FaLeaf, FaShoppingCart, FaLaptopCode } from "react-icons/fa";
 import "../styles/VideoMask.css";
 import slides from "../data/slides.json";
+import Testimonials from "../components/Testimonials";
 
 
 
@@ -353,6 +354,50 @@ export default function Home() {
       </Box>
 
       
+      <Testimonials />
+      {/* Signatory of Section */}
+      <Box w="100%" px={8} py={16} bg="gray.50">
+        {/* <Heading 
+          textAlign="left" 
+          mb={12} 
+          fontSize="3xl" 
+          color="orange.800"
+        >
+          Signatory of
+        </Heading> */}
+        <Grid templateColumns="repeat(3, 1fr)" gap={8} maxW="4xl" mx="auto">
+          <Box textAlign="left">
+            <Image
+              src="/assets/signatory/PRI-Sig-Web-V1.png"
+              alt="Signatory 1"
+              h="120px"
+              objectFit="contain"
+              mx="auto"
+            />
+          </Box>
+          <Box textAlign="center">
+            <Image
+              src="/assets/signatory/Blue_Mark_Practive_verification_seal_05_22_756364e25f.png"
+              alt="Signatory 2"
+              h="120px"
+              objectFit="contain"
+              mx="auto"
+            />
+          </Box>
+          <Box textAlign="center">
+            <Image
+              src="/assets/signatory/OPIM_Logo_RGB_Signatory_1_1_a19b434476.png"
+              alt="Signatory 3"
+              h="120px"
+              objectFit="contain"
+              mx="auto"
+            />
+          </Box>
+        </Grid>
+      </Box>
     </Box>
+  
+    
+
   );
 }
