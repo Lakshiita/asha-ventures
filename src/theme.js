@@ -5,7 +5,7 @@ const colors = {
   brand: {
     50:  "#f9f6f1",
     100: "#f1e8d9",
-    200: "#e6d7bb",
+    200: "#fff9eeff",
     300: "#d8c49a",
     400: "#c9af7a",
     500: "#bfa36a", // primary beige
@@ -18,7 +18,7 @@ const colors = {
 };
 
 const fonts = {
-  heading: `'Playfair Display', serif`,
+  heading: `'Supreme-Medium', sans-serif`,
   body: `'Inter', sans-serif`,  
   supreme: `'Supreme-Medium', sans-serif`,
 };
