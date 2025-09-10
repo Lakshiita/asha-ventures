@@ -35,8 +35,8 @@ export default function CompanyDrawer({ isOpen, onClose, company }) {
                   <Image
                     src={company.logo}
                     alt={`${company.name} logo`}
-                    h="60px"
-                    maxW="150px"
+                    h="80px"
+                    maxW="200px"
                     objectFit="contain"
                   />
                   <Flex gap={2}>
@@ -86,12 +86,12 @@ export default function CompanyDrawer({ isOpen, onClose, company }) {
                     </Text>
                   </Box>
                   {company["detailed-image"] && (
-                    <Box w="200px" flexShrink={0}>
+                    <Box w="250px" flexShrink={0}>
                       <Image
                         src={company["detailed-image"]}
                         alt={`${company.name} detailed view`}
                         w="100%"
-                        h="150px"
+                        h="180px"
                         objectFit="cover"
                         rounded="lg"
                         shadow="sm"
