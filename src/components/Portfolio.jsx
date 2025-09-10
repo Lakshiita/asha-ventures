@@ -58,8 +58,9 @@ export default function Portfolio({ investments, onCompanySelect }) {
 
       {/* Companies Grid */}
       <Grid
-        templateColumns="repeat(5, 204px)"
+        templateColumns="repeat(auto-fit, minmax(204px, 1fr))"
         gap={0}
+        w="100%"
       >
         {filtered.map((c) => (
           <GridItem
