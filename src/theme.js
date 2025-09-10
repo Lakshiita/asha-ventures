@@ -8,7 +8,7 @@ const colors = {
     200: "#fff9eeff",
     300: "#d8c49a",
     400: "#c9af7a",
-    500: "#bfa36a", // primary beige
+    500: "#ad4b00de", // primary beige
     600: "#a58957",
     700: "#8b7047",
     800: "#6f5838",
