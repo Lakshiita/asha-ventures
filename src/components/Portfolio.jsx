@@ -6,10 +6,8 @@ import {
   HStack,
   Image,
   Text,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { useMemo, useState } from "react";
-import CompanyDrawer from "./CompanyDrawer";
 
 export default function Portfolio({ investments, onCompanySelect }) {
   const sectors = useMemo(
@@ -18,13 +16,6 @@ export default function Portfolio({ investments, onCompanySelect }) {
   );
 
   const [filter, setFilter] = useState("All");
-  const [selectedCompany, setSelectedCompany] = useState(null);
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const handleCompanyClick = (company) => {
-    setSelectedCompany(company);
-    onOpen();
-  };
 
   const filtered = useMemo(() => {
     if (filter === "All") return investments;
@@ -103,7 +94,7 @@ export default function Portfolio({ investments, onCompanySelect }) {
       {/* Companies Grid */}
       <Grid
         templateColumns={{ base: "repeat(3, 1fr)", md: "repeat(auto-fill, minmax(120px, 1fr))" }}
-        gap={{ base: 3, md: 4 }}
+        gap={{ base: 4, md: 6 }}
         w="100%"
         justifyItems="center"
         maxW="1400px"
@@ -113,13 +104,14 @@ export default function Portfolio({ investments, onCompanySelect }) {
           <GridItem
             key={c.id}
             cursor="pointer"
-            onClick={() => handleCompanyClick(c)}
+            onClick={() => onCompanySelect(c)}
             w={{ base: "100px", md: "120px" }}
             h={{ base: "100px", md: "120px" }}
             transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
             _hover={{
               transform: "scale(1.2) translateY(-8px)",
-              filter: "drop-shadow(0 20px 25px rgba(0, 0, 0, 0.15))"
+              filter: "drop-shadow(0 20px 25px rgba(0, 0, 0, 0.15))",
+              zIndex: 10
             }}
           >
             <Image
@@ -141,12 +133,7 @@ export default function Portfolio({ investments, onCompanySelect }) {
         ))}
       </Grid>
 
-      {/* Company Details Drawer */}
-      <CompanyDrawer
-        isOpen={isOpen}
-        onClose={onClose}
-        company={selectedCompany}
-      />
+
     </Box>
   );
 }
