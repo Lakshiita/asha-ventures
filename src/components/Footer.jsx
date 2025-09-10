@@ -21,19 +21,25 @@ export default function Footer() {
   return (
     <Box bg="brand.100" color="gray.800" mt={10}>
       <Container as={Stack} maxW="7xl" py={10}>
-        <SimpleGrid columns={{ base: 1, md: 5 }} spacing={10}>
+        <SimpleGrid columns={{ base: 1, md: 4 }} spacing={10}>
           
-          {/* About & Newsletter Section */}
+          {/* Logo & Newsletter */}
           <Stack spacing={6} align="flex-start" gridColumn={{ md: "span 2" }}>
             <Image
               src={logo}
               alt="Asha Ventures Logo"
               height="80px"
               rounded="md"
+              transition="all 0.3s ease"
+              _hover={{
+                transform: "scale(1.05)",
+                cursor: "pointer",
+                filter: "brightness(1.1)"
+              }}
             />
-            <Text fontSize="sm">
-              Asha Ventures is an inclusion and sustainability focused fund investing in early to growth stage companies.
-            </Text>
+              <Text fontSize="2xl">
+                Asha Ventures is an inclusion and sustainability focused fund investing in early to growth stage companies.
+              </Text>
             
             <Stack spacing={4} w="full">
               <Text fontWeight="bold" fontSize="lg">Subscribe to our Newsletter</Text>
@@ -43,16 +49,35 @@ export default function Footer() {
                   variant="filled"
                   bg="white"
                   _placeholder={{ color: "gray.500" }}
+                  transition="all 0.2s ease"
+                  _hover={{ bg: "gray.50" }}
+                  _focus={{
+                    bg: "white",
+                    transform: "scale(1.02)",
+                    boxShadow: "0 0 0 2px var(--chakra-colors-brand-200)"
+                  }}
                 />
-                <Button colorScheme="brand">Subscribe</Button>
+                <Button 
+                  colorScheme="brand"
+                  transition="all 0.2s ease"
+                  _hover={{
+                    transform: "translateY(-2px)",
+                    boxShadow: "lg"
+                  }}
+                  _active={{
+                    transform: "translateY(0px)"
+                  }}
+                >
+                  Subscribe
+                </Button>
               </HStack>
             </Stack>
           </Stack>
 
-          {/* Contact */}
-          <Stack spacing={2}>
-            <Text fontWeight="bold" fontSize="lg">Get In Touch</Text>
-            <Text fontSize="sm">
+          {/* Get In Touch */}
+          <Stack spacing={4}>
+            <Text fontWeight="bold" fontSize="xl">Get In Touch</Text>
+            <Text fontSize="md">
               9th Floor, Peninsula Towers, Peninsula Corporate Park, Lower Parel West, 
               Lower Parel, Mumbai, Maharashtra 400013
             </Text>
@@ -67,6 +92,12 @@ export default function Footer() {
                 color="green.500"
                 fontSize="xl"
                 target="_blank"
+                transition="all 0.2s ease"
+                _hover={{
+                  transform: "scale(1.2) rotate(5deg)",
+                  color: "green.600",
+                  bg: "green.50"
+                }}
               />
               {/* Gmail */}
               <IconButton
@@ -77,6 +108,12 @@ export default function Footer() {
                 variant="ghost"
                 color="red.500"
                 fontSize="xl"
+                transition="all 0.2s ease"
+                _hover={{
+                  transform: "scale(1.2) rotate(-5deg)",
+                  color: "red.600",
+                  bg: "red.50"
+                }}
               />
               {/* LinkedIn */}
               <IconButton
@@ -88,29 +125,44 @@ export default function Footer() {
                 color="blue.600"
                 fontSize="xl"
                 target="_blank"
+                transition="all 0.2s ease"
+                _hover={{
+                  transform: "scale(1.2) rotate(5deg)",
+                  color: "blue.700",
+                  bg: "blue.50"
+                }}
               />
             </HStack>
           </Stack>
 
-          {/* Quicklinks */}
-          <Stack spacing={2}>
-            <Text fontWeight="bold" fontSize="lg">Quicklinks</Text>
-            <VStack align="start" spacing={0.5}>
-              <CLink href="/investments">Our Investments</CLink>
-              <CLink href="/impact">Our Impact</CLink>
-              <CLink href="/newsletters">Newsletters</CLink>
-              <CLink href="/blog">Blog</CLink>
-              <CLink href="/media">Media</CLink>
-            </VStack>
-          </Stack>
-
-          {/* Support */}
-          <Stack spacing={2}>
-            <Text fontWeight="bold" fontSize="lg">Support</Text>
-            <VStack align="start" spacing={0.5}>
-              <CLink href="/support">Support</CLink>
-              <CLink href="/faqs">FAQs</CLink>
-              <CLink href="/contact">Contact</CLink>
+          {/* Contact */}
+          <Stack spacing={4}>
+            <Text fontWeight="bold" fontSize="xl">Contact</Text>
+            <VStack align="start" spacing={2}>
+              <CLink 
+                href="/faqs" 
+                fontSize="md"
+                transition="all 0.2s ease"
+                _hover={{
+                  color: "brand.500",
+                  transform: "translateX(5px)",
+                  textDecoration: "underline"
+                }}
+              >
+                FAQs
+              </CLink>
+              <CLink 
+                href="/contact" 
+                fontSize="md"
+                transition="all 0.2s ease"
+                _hover={{
+                  color: "brand.500",
+                  transform: "translateX(5px)",
+                  textDecoration: "underline"
+                }}
+              >
+                Contact
+              </CLink>
             </VStack>
           </Stack>
 
@@ -124,13 +176,33 @@ export default function Footer() {
           justify="space-between"
           align="center"
         >
-          <Text fontSize="sm">© 2022 Asha Ventures. All Rights Reserved.</Text>
+          <Text fontSize="md">© 2022 Asha Ventures. All Rights Reserved.</Text>
           <HStack spacing={4}>
-            <CLink href="/privacy">Privacy Policy</CLink>
-            <CLink href="/terms">Terms & Services</CLink>
+            <CLink 
+              href="/privacy" 
+              fontSize="md"
+              transition="all 0.2s ease"
+              _hover={{
+                color: "brand.500",
+                textDecoration: "underline"
+              }}
+            >
+              Privacy Policy
+            </CLink>
+            <CLink 
+              href="/terms" 
+              fontSize="md"
+              transition="all 0.2s ease"
+              _hover={{
+                color: "brand.500",
+                textDecoration: "underline"
+              }}
+            >
+              Terms & Services
+            </CLink>
           </HStack>
         </Stack>
       </Container>
-    </Box>
+      </Box>
   );
 }

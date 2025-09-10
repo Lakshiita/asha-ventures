@@ -61,7 +61,6 @@ export default function Navbar() {
           {links.map((l) => (
             <NavLinkItem key={l.to} to={l.to}>{l.label}</NavLinkItem>
           ))}
-          <Button as={Link} to="/contact" size="md" className="text-[28px] text-textColor2 font-[Supreme-Medium] leading-normal text-center">Contact</Button>
         </HStack>
       </Flex>
 
