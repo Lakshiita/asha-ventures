@@ -356,7 +356,7 @@ export default function Home() {
       
       <Testimonials />
       {/* Signatory of Section */}
-      <Box w="100%" px={8} py={16} bg="gray.50">
+      <Box w="100%" px={8} py={16}>
         {/* <Heading 
           textAlign="left" 
           mb={12} 

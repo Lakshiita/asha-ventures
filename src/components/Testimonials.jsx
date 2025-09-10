@@ -28,7 +28,7 @@ export default function Testimonials() {
   const testimonial = testimonials[index];
 
   return (
-    <Box w="100%" py={20} bg="gray.50" position="relative">
+    <Box w="100%" py={20} position="relative">
       <Flex
         maxW="6xl"
         mx="auto"
