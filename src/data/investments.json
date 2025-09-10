@@ -10,7 +10,6 @@
     "website": "https://adda247.com",
     "linkedin": "https://www.linkedin.com/company/adda247/",
     "description": "Adda 247 is a category leading edtech company serving 30mn+ Indian students aspiring for government jobs. With a brand built over nearly a decade, Adda enjoys tremendous trust in its student base from Tier II and Tier III towns, offering them the convenience of online test preparation, through content across various formats like Live Classes, Video on Demand and Test Series.",
-    "focus": "Government job preparation, online education",
     "latest-news": [
       {
         "title": "Adda247 raises $100 million in Series D funding round led by WestBridge Capital",
@@ -22,129 +21,169 @@
     "id": "gramophone",
     "name": "Gramophone",
     "sector": "Agri-Tech",
+    "year-of-investment": "2020",
     "stage": "Series B",
     "logo": "/assets/investments/gramophone_final.png",
+    "detailed-image": "",
     "website": "https://gramophone.in",
+    "linkedin": "https://www.linkedin.com/company/gramophone/",
     "description": "Digital platform connecting farmers with agricultural inputs and advisory services.",
-    "focus": "Farmer income, agricultural efficiency"
+    "latest-news": []
   },
   {
     "id": "truemeds",
     "name": "TrueMeds",
     "sector": "Health",
+    "year-of-investment": "2021",
     "stage": "Series A",
     "logo": "/assets/investments/truemeds_final.png",
+    "detailed-image": "",
     "website": "https://truemeds.in",
+    "linkedin": "https://www.linkedin.com/company/truemeds/",
     "description": "Online pharmacy providing affordable medicines with doorstep delivery.",
-    "focus": "Healthcare access, affordability"
+    "latest-news": []
   },
   {
     "id": "varthana",
     "name": "Varthana",
     "sector": "Financial Inclusion",
+    "year-of-investment": "2018",
     "stage": "Series C",
     "logo": "/assets/investments/varthana_final.png",
+    "detailed-image": "",
     "website": "https://varthana.com",
+    "linkedin": "https://www.linkedin.com/company/varthana/",
     "description": "Financial services for affordable private schools and education institutions.",
-    "focus": "Education financing, school development"
+    "latest-news": []
   },
   {
     "id": "greenway",
     "name": "Greenway",
     "sector": "Clean Energy",
+    "year-of-investment": "2019",
     "stage": "Series B",
     "logo": "/assets/investments/greenway_final.png",
+    "detailed-image": "",
     "website": "https://greenwayappliances.com",
+    "linkedin": "https://www.linkedin.com/company/greenway-appliances/",
     "description": "Clean cooking solutions and energy-efficient appliances for rural households.",
-    "focus": "Clean energy, rural development"
+    "latest-news": []
   },
   {
     "id": "saahas",
     "name": "Saahas",
     "sector": "Waste Management",
+    "year-of-investment": "2020",
     "stage": "Series A",
     "logo": "/assets/investments/saahas_final.png",
+    "detailed-image": "",
     "website": "https://saahaszerowaste.com",
+    "linkedin": "https://www.linkedin.com/company/saahas-zero-waste/",
     "description": "Zero waste management solutions for cities and enterprises.",
-    "focus": "Waste reduction, circular economy"
+    "latest-news": []
   },
   {
     "id": "janacare",
     "name": "Jana Care",
     "sector": "Health",
+    "year-of-investment": "2021",
     "stage": "Series A",
     "logo": "/assets/investments/janacare_final.png",
+    "detailed-image": "",
     "website": "https://janacare.com",
+    "linkedin": "https://www.linkedin.com/company/jana-care/",
     "description": "Point-of-care diagnostic solutions for preventive healthcare.",
-    "focus": "Preventive healthcare, diagnostics"
+    "latest-news": []
   },
   {
     "id": "avanti",
     "name": "Avanti",
-    "sector": "EdTech",
+    "sector": "Ed-Tech",
+    "year-of-investment": "2020",
     "stage": "Series B",
     "logo": "/assets/investments/avanti_final.png",
+    "detailed-image": "",
     "website": "https://avantifellows.org",
+    "linkedin": "https://www.linkedin.com/company/avanti-fellows/",
     "description": "Technology-enabled learning solutions for underserved students.",
-    "focus": "Quality education, student outcomes"
+    "latest-news": []
   },
   {
     "id": "ascend",
     "name": "Ascend",
     "sector": "Financial Inclusion",
+    "year-of-investment": "2022",
     "stage": "Seed",
     "logo": "/assets/investments/ascend_final.png",
+    "detailed-image": "",
     "website": "https://ascendcapital.in",
+    "linkedin": "https://www.linkedin.com/company/ascend-capital/",
     "description": "Digital lending platform for micro and small enterprises.",
-    "focus": "MSME financing, digital lending"
+    "latest-news": []
   },
   {
     "id": "automony",
     "name": "Automony",
     "sector": "Mobility",
+    "year-of-investment": "2021",
     "stage": "Pre-Series A",
     "logo": "/assets/investments/automony_final.png",
+    "detailed-image": "",
     "website": "https://automony.com",
+    "linkedin": "https://www.linkedin.com/company/automony/",
     "description": "Autonomous vehicle technology for last-mile delivery.",
-    "focus": "Autonomous mobility, logistics"
+    "latest-news": []
   },
   {
     "id": "janaadhar",
     "name": "Jana Aadhar",
     "sector": "Financial Inclusion",
+    "year-of-investment": "2022",
     "stage": "Seed",
     "logo": "/assets/investments/janaadhar_final.png",
+    "detailed-image": "",
     "website": "https://janaadhar.com",
+    "linkedin": "https://www.linkedin.com/company/jana-aadhar/",
     "description": "Digital identity and financial services for rural populations.",
-    "focus": "Digital identity, rural finance"
+    "latest-news": []
   },
   {
     "id": "nepra",
     "name": "Nepra",
     "sector": "Water & Sanitation",
+    "year-of-investment": "2020",
     "stage": "Series A",
     "logo": "/assets/investments/nepra_final.png",
+    "detailed-image": "",
     "website": "https://nepra.in",
+    "linkedin": "https://www.linkedin.com/company/nepra/",
     "description": "Water purification and management solutions for communities.",
-    "focus": "Clean water access, community health"
+    "latest-news": []
   },
   {
     "id": "swarna",
     "name": "Swarna",
     "sector": "Financial Inclusion",
+    "year-of-investment": "2021",
     "stage": "Series A",
     "logo": "/assets/investments/swarna_final.png",
+    "detailed-image": "",
     "website": "https://swarna.co",
+    "linkedin": "https://www.linkedin.com/company/swarna/",
     "description": "Gold-backed financial products for rural and semi-urban markets.",
-    "focus": "Asset-backed lending, financial inclusion"
+    "latest-news": []
   },
   {
     "id": "vastu",
     "name": "Vastu",
     "sector": "Financial Services",
+    "year-of-investment": "2018",
+    "stage": "Series B",
     "logo": "/assets/investments/vastu_final.png",
+    "detailed-image": "",
     "website": "https://vastu.com",
-    "description": "Today Affordable housing finance companies have grown rapidly to build a loan portfolio of Rs. 745 billion, however, if one is self-employed, and without comprehensive documented income or adequate credit history, getting a home loan can prove to be a huge challenge. This is because of traditional lenders, in the current eco-system, find it difficult to ‘fit’ the average person’s case into their income assessment methods. Vastu Housing Finance is a housing finance company that addresses this gap by using a combination of technology and the traditional distribution model to provide simple, easy and flexible loans. Through its unique ability to acquire and underwrite large volumes of such loans, Vastu serves the under-served community.",
-    "focus": "Affordable housing, property technology"
+    "linkedin": "https://www.linkedin.com/company/vastu-housing-finance/",
+    "description": "Today Affordable housing finance companies have grown rapidly to build a loan portfolio of Rs. 745 billion, however, if one is self-employed, and without comprehensive documented income or adequate credit history, getting a home loan can prove to be a huge challenge. This is because of traditional lenders, in the current eco-system, find it difficult to 'fit' the average person's case into their income assessment methods. Vastu Housing Finance is a housing finance company that addresses this gap by using a combination of technology and the traditional distribution model to provide simple, easy and flexible loans. Through its unique ability to acquire and underwrite large volumes of such loans, Vastu serves the under-served community.",
+    "latest-news": []
   }
 ]
