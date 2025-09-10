@@ -27,6 +27,16 @@ export default function CompanyDrawer({ isOpen, onClose, company }) {
         <DrawerBody>
           {company && (
             <Stack spacing={4}>
+              {company["detailed-image"] && (
+                <Image
+                  src={company["detailed-image"]}
+                  alt={`${company.name} detailed view`}
+                  w="100%"
+                  h="200px"
+                  objectFit="cover"
+                  rounded="md"
+                />
+              )}
               <Image
                 src={company.logo}
                 alt={`${company.name} logo`}

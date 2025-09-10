@@ -30,7 +30,7 @@ export default function Portfolio({ investments, onCompanySelect }) {
       <Heading size="xl" mb={8} textStyle="defaultText">
         Portfolio
       </Heading>
-      
+
       {/* Filter Buttons */}
       <HStack mb={6} spacing={2} wrap="wrap">
         <Button
@@ -58,45 +58,24 @@ export default function Portfolio({ investments, onCompanySelect }) {
 
       {/* Companies Grid */}
       <Grid
-        templateColumns={{
-          base: "repeat(2,1fr)",
-          sm: "repeat(3,1fr)",
-          md: "repeat(4,1fr)",
-        }}
-        gap={6}
+        templateColumns="repeat(5, 204px)"
+        gap={0}
       >
         {filtered.map((c) => (
           <GridItem
             key={c.id}
-            bg="white"
-            border="1px solid"
-            borderColor="gray.200"
-            rounded="lg"
-            p={4}
-            shadow="sm"
-            transition="all .25s ease"
-            _hover={{
-              shadow: "lg",
-              transform: "translateY(-4px) scale(1.02)",
-            }}
             cursor="pointer"
             onClick={() => onCompanySelect(c)}
-            role="button"
-            aria-label={`Open ${c.name}`}
+            w="204px"
+            h="204px"
           >
             <Image
               src={c.logo}
               alt={`${c.name} logo`}
-              h="60px"
-              objectFit="contain"
-              mx="auto"
+              w="204px"
+              h="204px"
+              objectFit="cover"
             />
-            <Stack align="center" mt={3} spacing={1}>
-              <Badge colorScheme="brand">{c.sector}</Badge>
-              <Text fontWeight="600" textAlign="center">
-                {c.name}
-              </Text>
-            </Stack>
           </GridItem>
         ))}
       </Grid>
