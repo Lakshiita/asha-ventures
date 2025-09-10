@@ -1,16 +1,15 @@
 import {
-  Badge,
   Box,
-  Button,
   Grid,
   GridItem,
   Heading,
   HStack,
   Image,
-  Stack,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useMemo, useState } from "react";
+import CompanyDrawer from "./CompanyDrawer";
 
 export default function Portfolio({ investments, onCompanySelect }) {
   const sectors = useMemo(
@@ -19,6 +18,13 @@ export default function Portfolio({ investments, onCompanySelect }) {
   );
 
   const [filter, setFilter] = useState("All");
+  const [selectedCompany, setSelectedCompany] = useState(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleCompanyClick = (company) => {
+    setSelectedCompany(company);
+    onOpen();
+  };
 
   const filtered = useMemo(() => {
     if (filter === "All") return investments;
@@ -31,44 +37,90 @@ export default function Portfolio({ investments, onCompanySelect }) {
         Portfolio
       </Heading>
 
-      {/* Filter Buttons */}
-      <HStack mb={6} spacing={{ base: 1, md: 2 }} wrap="wrap">
-        <Button
-          size="sm"
-          variant={filter === "All" ? "solid" : "outline"}
-          colorScheme="brand"
-          rounded="full"
-          onClick={() => setFilter("All")}
-        >
-          All
-        </Button>
-        {sectors.map((s) => (
-          <Button
-            key={s}
-            size="sm"
-            variant={filter === s ? "solid" : "outline"}
-            colorScheme="brand"
-            rounded="full"
-            onClick={() => setFilter(s)}
+      {/* Minimalist Filter with Animated Underlines */}
+      <Box mb={8} display="flex" justifyContent="center">
+        <HStack spacing={8}>
+          <Box
+            cursor="pointer"
+            onClick={() => setFilter("All")}
+            position="relative"
+            pb={2}
           >
-            {s}
-          </Button>
-        ))}
-      </HStack>
+            <Text
+              fontSize="md"
+              fontWeight={filter === "All" ? "600" : "400"}
+              color={filter === "All" ? "brand.800" : "gray.600"}
+              transition="all 0.2s"
+              _hover={{ color: "brand.700" }}
+            >
+              All
+            </Text>
+            {filter === "All" && (
+              <Box
+                position="absolute"
+                bottom={0}
+                left={0}
+                right={0}
+                h="2px"
+                bg="brand.500"
+                rounded="full"
+              />
+            )}
+          </Box>
+          {sectors.map((s) => (
+            <Box
+              key={s}
+              cursor="pointer"
+              onClick={() => setFilter(s)}
+              position="relative"
+              pb={2}
+            >
+              <Text
+                fontSize="md"
+                fontWeight={filter === s ? "600" : "400"}
+                color={filter === s ? "brand.800" : "gray.600"}
+                transition="all 0.2s"
+                _hover={{ color: "brand.700" }}
+              >
+                {s}
+              </Text>
+              {filter === s && (
+                <Box
+                  position="absolute"
+                  bottom={0}
+                  left={0}
+                  right={0}
+                  h="2px"
+                  bg="brand.500"
+                  rounded="full"
+                />
+              )}
+            </Box>
+          ))}
+        </HStack>
+      </Box>
 
       {/* Companies Grid */}
       <Grid
-        templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(auto-fit, minmax(204px, 1fr))" }}
-        gap={{ base: 2, md: 0 }}
+        templateColumns={{ base: "repeat(3, 1fr)", md: "repeat(auto-fill, minmax(120px, 1fr))" }}
+        gap={{ base: 3, md: 4 }}
         w="100%"
+        justifyItems="center"
+        maxW="1400px"
+        mx="auto"
       >
         {filtered.map((c) => (
           <GridItem
             key={c.id}
             cursor="pointer"
-            onClick={() => onCompanySelect(c)}
-            w={{ base: "100%", md: "204px" }}
-            h={{ base: "150px", md: "204px" }}
+            onClick={() => handleCompanyClick(c)}
+            w={{ base: "100px", md: "120px" }}
+            h={{ base: "100px", md: "120px" }}
+            transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+            _hover={{
+              transform: "scale(1.2) translateY(-8px)",
+              filter: "drop-shadow(0 20px 25px rgba(0, 0, 0, 0.15))"
+            }}
           >
             <Image
               src={c.logo}
@@ -76,11 +128,25 @@ export default function Portfolio({ investments, onCompanySelect }) {
               w="100%"
               h="100%"
               objectFit="cover"
-              rounded={{ base: "md", md: "none" }}
+              rounded="full"
+              border="3px solid"
+              borderColor="gray.200"
+              _hover={{
+                borderColor: "brand.400",
+                boxShadow: "0 0 0 4px rgba(191, 163, 106, 0.2)"
+              }}
+              transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
             />
           </GridItem>
         ))}
       </Grid>
+
+      {/* Company Details Drawer */}
+      <CompanyDrawer
+        isOpen={isOpen}
+        onClose={onClose}
+        company={selectedCompany}
+      />
     </Box>
   );
 }
