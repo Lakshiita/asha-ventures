@@ -1,6 +1,5 @@
 import { Box, useDisclosure } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import Section from "../components/Section.jsx";
 import Portfolio from "../components/Portfolio.jsx";
 import FAQs from "../components/FAQs.jsx";
 import CompanyDrawer from "../components/CompanyDrawer.jsx";
@@ -21,20 +20,14 @@ export default function Investments() {
   }, [isOpen]);
 
   return (
-    <Box>
-      <Section title="Portfolio">
-        <Portfolio
-          investments={investmentsData}
-          onCompanySelect={handleCompanySelect}
-        />
-        <FAQs faqs={faqs} />
-      </Section>
-
-      <CompanyDrawer
-        isOpen={isOpen}
-        onClose={onClose}
-        company={selected}
+    <Box px={4} py={16}>
+      <Portfolio
+        investments={investmentsData}
+        onCompanySelect={handleCompanySelect}
       />
+      <FAQs faqs={faqs} />
+
+      <CompanyDrawer isOpen={isOpen} onClose={onClose} company={selected} />
     </Box>
   );
 }

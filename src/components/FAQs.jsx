@@ -10,7 +10,7 @@ import {
 
 export default function FAQs({ faqs }) {
   return (
-    <Box mt={12}>
+    <Box>
       <Heading size="md" mb={4}>
         FAQs
       </Heading>

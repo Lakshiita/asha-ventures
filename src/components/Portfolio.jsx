@@ -1,9 +1,10 @@
 import {
   Badge,
+  Box,
   Button,
-  Container,
   Grid,
   GridItem,
+  Heading,
   HStack,
   Image,
   Stack,
@@ -25,7 +26,11 @@ export default function Portfolio({ investments, onCompanySelect }) {
   }, [filter, investments]);
 
   return (
-    <Container px={0}>
+    <Box>
+      <Heading size="xl" mb={8} textStyle="defaultText">
+        Portfolio
+      </Heading>
+      
       {/* Filter Buttons */}
       <HStack mb={6} spacing={2} wrap="wrap">
         <Button
@@ -95,6 +100,6 @@ export default function Portfolio({ investments, onCompanySelect }) {
           </GridItem>
         ))}
       </Grid>
-    </Container>
+    </Box>
   );
 }
