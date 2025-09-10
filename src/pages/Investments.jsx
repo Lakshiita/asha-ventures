@@ -1,11 +1,31 @@
 import {
-  Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel,
-  Badge, Box, Button, Container, Grid, GridItem, Heading, Image, Modal, ModalBody,
-  ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text,
-  useDisclosure, Tag, HStack, Stack
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Badge,
+  Box,
+  Button,
+  Container,
+  Grid,
+  GridItem,
+  Heading,
+  Image,
+  Text,
+  useDisclosure,
+  HStack,
+  Stack,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
+  Link,
 } from "@chakra-ui/react";
 import { useEffect, useMemo, useState } from "react";
-import { InfoOutlineIcon, ExternalLinkIcon } from "@chakra-ui/icons";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 import Section from "../components/Section.jsx";
 import investmentsData from "../data/investments.json";
 import faqs from "../data/faqs.json";
@@ -14,67 +34,96 @@ export default function Investments() {
   const [selected, setSelected] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  // Collect unique sectors
   const sectors = useMemo(
     () => Array.from(new Set(investmentsData.map((c) => c.sector))),
     []
   );
 
   const [filter, setFilter] = useState("All");
+
+  // Filtered companies
   const filtered = useMemo(() => {
     if (filter === "All") return investmentsData;
     return investmentsData.filter((c) => c.sector === filter);
   }, [filter]);
 
-  useEffect(() => { if (!isOpen) setSelected(null); }, [isOpen]);
+  useEffect(() => {
+    if (!isOpen) setSelected(null);
+  }, [isOpen]);
 
   return (
     <Box>
-      <Section title="Portfolio" subtitle="A selection of organizations we back. Click a logo to learn more.">
+      <Section title="Portfolio">
         <Container px={0}>
-          <HStack mb={4} spacing={3} wrap="wrap">
-            <Tag
-              size="lg"
-              cursor="pointer"
-              onClick={() => setFilter("All")}
-              variant={filter==="All" ? "solid" : "subtle"}
+          {/* Filter Buttons */}
+          <HStack mb={6} spacing={2} wrap="wrap">
+            <Button
+              size="sm"
+              variant={filter === "All" ? "solid" : "outline"}
               colorScheme="brand"
+              rounded="full"
+              onClick={() => setFilter("All")}
             >
               All
-            </Tag>
+            </Button>
             {sectors.map((s) => (
-              <Tag
+              <Button
                 key={s}
-                size="lg"
-                cursor="pointer"
-                onClick={() => setFilter(s)}
-                variant={filter===s ? "solid" : "subtle"}
+                size="sm"
+                variant={filter === s ? "solid" : "outline"}
                 colorScheme="brand"
+                rounded="full"
+                onClick={() => setFilter(s)}
               >
                 {s}
-              </Tag>
+              </Button>
             ))}
           </HStack>
 
-          <Grid templateColumns={{ base: "repeat(2,1fr)", sm: "repeat(3,1fr)", md: "repeat(4,1fr)" }} gap={6}>
+          {/* Companies Grid */}
+          <Grid
+            templateColumns={{
+              base: "repeat(2,1fr)",
+              sm: "repeat(3,1fr)",
+              md: "repeat(4,1fr)",
+            }}
+            gap={6}
+          >
             {filtered.map((c) => (
               <GridItem
                 key={c.id}
                 bg="white"
                 border="1px solid"
-                borderColor="blackAlpha.100"
+                borderColor="gray.200"
                 rounded="lg"
                 p={4}
-                _hover={{ shadow: "md", transform: "translateY(-2px)" }}
-                transition="all .2s"
+                shadow="sm"
+                transition="all .25s ease"
+                _hover={{
+                  shadow: "lg",
+                  transform: "translateY(-4px) scale(1.02)",
+                }}
                 cursor="pointer"
-                onClick={() => { setSelected(c); onOpen(); }}
+                onClick={() => {
+                  setSelected(c);
+                  onOpen();
+                }}
                 role="button"
                 aria-label={`Open ${c.name}`}
               >
-                <Image src={c.logo} alt={`${c.name} logo`} h="60px" objectFit="contain" mx="auto" />
+                <Image
+                  src={c.logo}
+                  alt={`${c.name} logo`}
+                  h="60px"
+                  objectFit="contain"
+                  mx="auto"
+                />
                 <Stack align="center" mt={3} spacing={1}>
                   <Badge colorScheme="brand">{c.sector}</Badge>
-                  <Text fontWeight="600" textAlign="center">{c.name}</Text>
+                  <Text fontWeight="600" textAlign="center">
+                    {c.name}
+                  </Text>
                 </Stack>
               </GridItem>
             ))}
@@ -85,7 +134,13 @@ export default function Investments() {
             <Heading size="md" mb={4}>
               FAQs
             </Heading>
-            <Accordion allowMultiple bg="white" rounded="md" border="1px solid" borderColor="blackAlpha.100">
+            <Accordion
+              allowMultiple
+              bg="white"
+              rounded="md"
+              border="1px solid"
+              borderColor="blackAlpha.100"
+            >
               {faqs.map((f, idx) => (
                 <AccordionItem key={idx}>
                   <h2>
@@ -104,27 +159,36 @@ export default function Investments() {
         </Container>
       </Section>
 
-      {/* Modal for company info */}
-      <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>
-            <HStack>
-              <InfoOutlineIcon />
-              <Text>{selected?.name}</Text>
-            </HStack>
-          </ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
+      {/* Drawer for company details */}
+      <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="md">
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader borderBottomWidth="1px">{selected?.name}</DrawerHeader>
+          <DrawerBody>
             {selected && (
               <Stack spacing={4}>
-                <Image src={selected.logo} alt={`${selected.name} logo`} h="60px" objectFit="contain" />
+                <Image
+                  src={selected.logo}
+                  alt={`${selected.name} logo`}
+                  h="60px"
+                  objectFit="contain"
+                />
                 <HStack spacing={2}>
                   <Badge colorScheme="brand">{selected.sector}</Badge>
                   {selected.stage && <Badge>{selected.stage}</Badge>}
                 </HStack>
                 <Text>{selected.description}</Text>
-                <Text fontSize="sm" color="gray.600"><b>Focus:</b> {selected.focus}</Text>
+
+                {/* Investments */}
+                {selected["year-of-investment"] && (
+                  <Text fontSize="sm" color="gray.600">
+                    <b>Year of Investment:</b>{" "}
+                    {selected["year-of-investment"].join(", ")}
+                  </Text>
+                )}
+
+                {/* Website */}
                 {selected.website && (
                   <Button
                     as="a"
@@ -132,20 +196,42 @@ export default function Investments() {
                     target="_blank"
                     rel="noreferrer"
                     rightIcon={<ExternalLinkIcon />}
-                    variant="outline"
+                    colorScheme="brand"
+                    variant="solid"
                     alignSelf="start"
                   >
                     Visit Website
                   </Button>
                 )}
+
+                {/* Latest News */}
+                {selected["latest-news"]?.length > 0 && (
+                  <Box>
+                    <Heading size="sm" mb={2}>
+                      Latest News
+                    </Heading>
+                    <Stack spacing={2}>
+                      {selected["latest-news"].map((news, i) => (
+                        <Link
+                          key={i}
+                          href={news.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          color="blue.500"
+                          fontSize="sm"
+                          _hover={{ textDecoration: "underline" }}
+                        >
+                          {news.title}
+                        </Link>
+                      ))}
+                    </Stack>
+                  </Box>
+                )}
               </Stack>
             )}
-          </ModalBody>
-          <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </Box>
   );
 }
