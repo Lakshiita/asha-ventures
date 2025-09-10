@@ -95,19 +95,21 @@ export default function Home() {
             borderRadius={{ base: "20px", md: "0" }}
             mx={{ base: 4, md: 0 }}
           >
-            <Box
-              as="video"
+            <video
               autoPlay
               loop
               muted
               playsInline
-              objectFit="cover"
-              w="100%"
-              h="100%"
+              style={{
+                objectFit: "cover",
+                width: "100%",
+                height: "100%"
+              }}
               className="mask"
             >
               <source src="/assets/Home_Carousel/ashaventures.mp4" type="video/mp4" />
-            </Box>
+              Your browser does not support the video tag.
+            </video>
           </Box>
 
           {/* Quote Section - Right Half */}
