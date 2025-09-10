@@ -26,8 +26,8 @@ export default function Portfolio({ investments, onCompanySelect }) {
   }, [filter, investments]);
 
   return (
-    <Box>
-      <Heading size="xl" mb={8} textStyle="defaultText">
+    <Box maxW="100%" maxH="100%" mb={16}>
+      <Heading size="xl" mb={4} textStyle="defaultText">
         Portfolio
       </Heading>
 

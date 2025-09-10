@@ -20,7 +20,7 @@ export default function Investments() {
   }, [isOpen]);
 
   return (
-    <Box px={4} py={16}>
+    <Box px={4} py={16} mx={16}>
       <Portfolio
         investments={investmentsData}
         onCompanySelect={handleCompanySelect}
