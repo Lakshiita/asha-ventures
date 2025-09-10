@@ -21,7 +21,7 @@ import { FaLinkedin } from "react-icons/fa";
 
 export default function CompanyDrawer({ isOpen, onClose, company }) {
   return (
-    <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="lg">
+    <Drawer isOpen={isOpen} placement="right" onClose={onClose} size={{ base: "full", md: "lg" }}>
       <DrawerOverlay />
       <DrawerContent>
         <DrawerCloseButton />
@@ -30,13 +30,13 @@ export default function CompanyDrawer({ isOpen, onClose, company }) {
           {company && (
             <VStack spacing={0} align="stretch">
               {/* Header Section with Logo and Actions */}
-              <Box p={6} borderBottomWidth="1px">
+              <Box p={{ base: 4, md: 6 }} borderBottomWidth="1px">
                 <Flex align="center" justify="space-between" mb={4}>
                   <Image
                     src={company.logo}
                     alt={`${company.name} logo`}
-                    h="80px"
-                    maxW="200px"
+                    h={{ base: "60px", md: "80px" }}
+                    maxW={{ base: "150px", md: "200px" }}
                     objectFit="contain"
                   />
                   <Flex gap={2}>
@@ -78,20 +78,20 @@ export default function CompanyDrawer({ isOpen, onClose, company }) {
               </Box>
 
               {/* Main Content */}
-              <Box p={6}>
-                <Flex gap={6} mb={6}>
+              <Box p={{ base: 4, md: 6 }}>
+                <Flex gap={{ base: 4, md: 6 }} mb={6} direction={{ base: "column", md: "row" }}>
                   <Box flex={1}>
                     <Text fontSize="sm" lineHeight={1.6}>
                       {company.description}
                     </Text>
                   </Box>
                   {company["detailed-image"] && (
-                    <Box w="250px" flexShrink={0}>
+                    <Box w={{ base: "100%", md: "250px" }} flexShrink={0}>
                       <Image
                         src={company["detailed-image"]}
                         alt={`${company.name} detailed view`}
                         w="100%"
-                        h="180px"
+                        h={{ base: "200px", md: "180px" }}
                         objectFit="cover"
                         rounded="lg"
                         shadow="sm"

@@ -12,7 +12,7 @@ import {
 export default function FAQs({ faqs }) {
   return (
     <Box>
-      <Heading size="xl" mb={4} textStyle="defaultText">
+      <Heading size={{ base: "lg", md: "xl" }} mb={4} textStyle="defaultText">
         FAQs
       </Heading>
       <Accordion
@@ -31,8 +31,8 @@ export default function FAQs({ faqs }) {
             borderColor="gray.100"
           >
             <AccordionButton
-              py={6}
-              px={8}
+              py={{ base: 4, md: 6 }}
+              px={{ base: 4, md: 8 }}
               _hover={{ bg: "gray.50" }}
               _expanded={{ bg: "brand.50", borderColor: "brand.200" }}
               transition="all 0.2s"
@@ -42,15 +42,15 @@ export default function FAQs({ faqs }) {
                 flex="1"
                 textAlign="left"
                 fontWeight="400"
-                fontSize="lg"
+                fontSize={{ base: "md", md: "lg" }}
                 color="gray.700"
               >
                 {f.q}
               </Box>
               <AccordionIcon color="brand.500" fontSize="xl" />
             </AccordionButton>
-            <AccordionPanel px={8} pb={6} pt={2}>
-              <Text color="gray.600" lineHeight={1.7} fontSize="md">
+            <AccordionPanel px={{ base: 4, md: 8 }} pb={{ base: 4, md: 6 }} pt={2}>
+              <Text color="gray.600" lineHeight={1.7} fontSize={{ base: "sm", md: "md" }}>
                 {f.a}
               </Text>
             </AccordionPanel>

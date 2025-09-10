@@ -26,13 +26,13 @@ export default function Portfolio({ investments, onCompanySelect }) {
   }, [filter, investments]);
 
   return (
-    <Box maxW="100%" maxH="100%" mb={16}>
-      <Heading size="xl" mb={4} textStyle="defaultText">
+    <Box maxW="100%" maxH="100%" mb={{ base: 8, md: 16 }}>
+      <Heading size={{ base: "lg", md: "xl" }} mb={4} textStyle="defaultText">
         Portfolio
       </Heading>
 
       {/* Filter Buttons */}
-      <HStack mb={6} spacing={2} wrap="wrap">
+      <HStack mb={6} spacing={{ base: 1, md: 2 }} wrap="wrap">
         <Button
           size="sm"
           variant={filter === "All" ? "solid" : "outline"}
@@ -58,8 +58,8 @@ export default function Portfolio({ investments, onCompanySelect }) {
 
       {/* Companies Grid */}
       <Grid
-        templateColumns="repeat(auto-fit, minmax(204px, 1fr))"
-        gap={0}
+        templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(auto-fit, minmax(204px, 1fr))" }}
+        gap={{ base: 2, md: 0 }}
         w="100%"
       >
         {filtered.map((c) => (
@@ -67,15 +67,16 @@ export default function Portfolio({ investments, onCompanySelect }) {
             key={c.id}
             cursor="pointer"
             onClick={() => onCompanySelect(c)}
-            w="204px"
-            h="204px"
+            w={{ base: "100%", md: "204px" }}
+            h={{ base: "150px", md: "204px" }}
           >
             <Image
               src={c.logo}
               alt={`${c.name} logo`}
-              w="204px"
-              h="204px"
+              w="100%"
+              h="100%"
               objectFit="cover"
+              rounded={{ base: "md", md: "none" }}
             />
           </GridItem>
         ))}
