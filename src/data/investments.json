@@ -1,42 +1,150 @@
 [
   {
-    "id": "agrico",
-    "name": "Agrico",
-    "sector": "Agri-Tech",
-    "stage": "Seed",
-    "logo": "https://dummyimage.com/300x120/ddd/333.png&text=Agrico",
-    "website": "https://example.com/agrico",
-    "description": "Digitizing supply chains for smallholder farmers with market linkages and credit access.",
-    "focus": "Farmer income, efficiency, transparency"
+    "id": "adda247",
+    "name": "Adda247",
+    "sector": "Ed-Tech",
+    "year-of-investment": "2019",
+    "stage": "Series A",
+    "logo": "/assets/investments/adda247_final.png",
+    "detailed-image": "",
+    "website": "https://adda247.com",
+    "linkedin": "https://www.linkedin.com/company/adda247/",
+    "description": "Adda 247 is a category leading edtech company serving 30mn+ Indian students aspiring for government jobs. With a brand built over nearly a decade, Adda enjoys tremendous trust in its student base from Tier II and Tier III towns, offering them the convenience of online test preparation, through content across various formats like Live Classes, Video on Demand and Test Series.",
+    "focus": "Government job preparation, online education",
+    "latest-news": [
+      {
+        "title": "Adda247 raises $100 million in Series D funding round led by WestBridge Capital",
+        "url": "https://techcrunch.com/2021/11/18/adda247-raises-100-million-in-series-d-funding-round-led-by-westbridge-capital/"
+      }
+    ]
   },
   {
-    "id": "swasth",
-    "name": "Swasth Health",
+    "id": "gramophone",
+    "name": "Gramophone",
+    "sector": "Agri-Tech",
+    "stage": "Series B",
+    "logo": "/assets/investments/gramophone_final.png",
+    "website": "https://gramophone.in",
+    "description": "Digital platform connecting farmers with agricultural inputs and advisory services.",
+    "focus": "Farmer income, agricultural efficiency"
+  },
+  {
+    "id": "truemeds",
+    "name": "TrueMeds",
     "sector": "Health",
     "stage": "Series A",
-    "logo": "https://dummyimage.com/300x120/ddd/333.png&text=Swasth",
-    "website": "https://example.com/swasth",
-    "description": "Affordable primary healthcare via hybrid clinics in underserved towns.",
-    "focus": "Access, affordability, outcomes"
+    "logo": "/assets/investments/truemeds_final.png",
+    "website": "https://truemeds.in",
+    "description": "Online pharmacy providing affordable medicines with doorstep delivery.",
+    "focus": "Healthcare access, affordability"
   },
   {
-    "id": "udaanpay",
-    "name": "UdaanPay",
+    "id": "varthana",
+    "name": "Varthana",
     "sector": "Financial Inclusion",
-    "stage": "Pre-Seed",
-    "logo": "https://dummyimage.com/300x120/ddd/333.png&text=UdaanPay",
-    "website": "https://example.com/udaanpay",
-    "description": "Micro-merchants payments & credit scoring platform.",
-    "focus": "Merchant growth, digital adoption"
+    "stage": "Series C",
+    "logo": "/assets/investments/varthana_final.png",
+    "website": "https://varthana.com",
+    "description": "Financial services for affordable private schools and education institutions.",
+    "focus": "Education financing, school development"
   },
   {
-    "id": "jalsetu",
-    "name": "JalSetu",
-    "sector": "Water & Sanitation",
+    "id": "greenway",
+    "name": "Greenway",
+    "sector": "Clean Energy",
+    "stage": "Series B",
+    "logo": "/assets/investments/greenway_final.png",
+    "website": "https://greenwayappliances.com",
+    "description": "Clean cooking solutions and energy-efficient appliances for rural households.",
+    "focus": "Clean energy, rural development"
+  },
+  {
+    "id": "saahas",
+    "name": "Saahas",
+    "sector": "Waste Management",
+    "stage": "Series A",
+    "logo": "/assets/investments/saahas_final.png",
+    "website": "https://saahaszerowaste.com",
+    "description": "Zero waste management solutions for cities and enterprises.",
+    "focus": "Waste reduction, circular economy"
+  },
+  {
+    "id": "janacare",
+    "name": "Jana Care",
+    "sector": "Health",
+    "stage": "Series A",
+    "logo": "/assets/investments/janacare_final.png",
+    "website": "https://janacare.com",
+    "description": "Point-of-care diagnostic solutions for preventive healthcare.",
+    "focus": "Preventive healthcare, diagnostics"
+  },
+  {
+    "id": "avanti",
+    "name": "Avanti",
+    "sector": "EdTech",
+    "stage": "Series B",
+    "logo": "/assets/investments/avanti_final.png",
+    "website": "https://avantifellows.org",
+    "description": "Technology-enabled learning solutions for underserved students.",
+    "focus": "Quality education, student outcomes"
+  },
+  {
+    "id": "ascend",
+    "name": "Ascend",
+    "sector": "Financial Inclusion",
     "stage": "Seed",
-    "logo": "https://dummyimage.com/300x120/ddd/333.png&text=JalSetu",
-    "website": "https://example.com/jalsetu",
-    "description": "Low-cost IoT water quality monitoring for small cities.",
-    "focus": "Quality, accountability, transparency"
+    "logo": "/assets/investments/ascend_final.png",
+    "website": "https://ascendcapital.in",
+    "description": "Digital lending platform for micro and small enterprises.",
+    "focus": "MSME financing, digital lending"
+  },
+  {
+    "id": "automony",
+    "name": "Automony",
+    "sector": "Mobility",
+    "stage": "Pre-Series A",
+    "logo": "/assets/investments/automony_final.png",
+    "website": "https://automony.com",
+    "description": "Autonomous vehicle technology for last-mile delivery.",
+    "focus": "Autonomous mobility, logistics"
+  },
+  {
+    "id": "janaadhar",
+    "name": "Jana Aadhar",
+    "sector": "Financial Inclusion",
+    "stage": "Seed",
+    "logo": "/assets/investments/janaadhar_final.png",
+    "website": "https://janaadhar.com",
+    "description": "Digital identity and financial services for rural populations.",
+    "focus": "Digital identity, rural finance"
+  },
+  {
+    "id": "nepra",
+    "name": "Nepra",
+    "sector": "Water & Sanitation",
+    "stage": "Series A",
+    "logo": "/assets/investments/nepra_final.png",
+    "website": "https://nepra.in",
+    "description": "Water purification and management solutions for communities.",
+    "focus": "Clean water access, community health"
+  },
+  {
+    "id": "swarna",
+    "name": "Swarna",
+    "sector": "Financial Inclusion",
+    "stage": "Series A",
+    "logo": "/assets/investments/swarna_final.png",
+    "website": "https://swarna.co",
+    "description": "Gold-backed financial products for rural and semi-urban markets.",
+    "focus": "Asset-backed lending, financial inclusion"
+  },
+  {
+    "id": "vastu",
+    "name": "Vastu",
+    "sector": "Financial Services",
+    "logo": "/assets/investments/vastu_final.png",
+    "website": "https://vastu.com",
+    "description": "Today Affordable housing finance companies have grown rapidly to build a loan portfolio of Rs. 745 billion, however, if one is self-employed, and without comprehensive documented income or adequate credit history, getting a home loan can prove to be a huge challenge. This is because of traditional lenders, in the current eco-system, find it difficult to ‘fit’ the average person’s case into their income assessment methods. Vastu Housing Finance is a housing finance company that addresses this gap by using a combination of technology and the traditional distribution model to provide simple, easy and flexible loans. Through its unique ability to acquire and underwrite large volumes of such loans, Vastu serves the under-served community.",
+    "focus": "Affordable housing, property technology"
   }
 ]

@@ -29,7 +29,7 @@ export default function Investments() {
 
   return (
     <Box>
-      <Section title="Investments" subtitle="A selection of organizations we back. Click a logo to learn more.">
+      <Section title="Portfolio" subtitle="A selection of organizations we back. Click a logo to learn more.">
         <Container px={0}>
           <HStack mb={4} spacing={3} wrap="wrap">
             <Tag
