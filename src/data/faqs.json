@@ -1,18 +1,46 @@
 [
   {
-    "q": "What stages do you invest in?",
-    "a": "Primarily pre-seed to Series A, with flexibility for exceptional later-stage opportunities."
+    "q": "At what stage does Asha Ventures invest?",
+    "a": "We primarily partner with companies at the Series A and Series B stage. However, if you would like to speak with us at an earlier stage in your journey, we are open to that so feel free to reach out."
   },
   {
-    "q": "Which sectors are in scope?",
-    "a": "Livelihoods, agri-tech, healthcare, financial inclusion, education, water & sanitation, and climate resilience."
+    "q": "What sectors does Asha Ventures invest in?",
+    "a": "At Asha Ventures we are driven by our vision to help create a more inclusive and sustainable world. So if you believe you are solving a problem that helps power such a future, please reach out."
   },
   {
-    "q": "Do you provide non-financial support?",
-    "a": "Yes, we offer hands-on support with hiring, governance, partnerships, and impact measurement."
+    "q": "What is Asha Ventures’ investment size?",
+    "a": "We invest in the USD 2-10 mn range."
   },
   {
-    "q": "How can we pitch to Asha Ventures?",
-    "a": "Reach out via the Contact section under Knowledge Resource with a short deck and metrics."
+    "q": "Why should I partner with Asha Ventures?",
+    "a": "We are passionate about working with founders who use technology to challenge the status quo when it comes to sticky problems for India’s emerging middle class. If this resonates with your own vision, we promise to ride the thick and thin with you as partners, offering our time, institutional intellect and networks every step of the way."
+  },
+  {
+    "q": "How do you define and measure impact?",
+    "a": "The ability to generate measurable impact is a key part of our investment evaluation. We use global industry best practices for this, including the IMP Project framework and GIIN Iris metrics. We help you understand these and work with you to create internal KPIs for measuring parameters that capture both depth and width of impact created. We also couple this with primary interactions with key stakeholders of the business to understand additionality from their perspective."
+  },
+  {
+    "q": "Does Asha Ventures lead rounds?",
+    "a": "Yes,absolutely. We are led by our own conviction, and work with you to help lead round constructions."
+  },
+  {
+    "q": "What does Asha Ventures look for in a founding team?",
+    "a": "The biggest market opportunities in India come from hard problem statements. We’d love to understand your unique insights into the problem you’re looking to solve and how you’re using technology to build a long term moat. Being able to see the disproportionate advantage that the team and product has, is critical to our decision making."
+  },
+  {
+    "q": "Does Asha Ventures take board seats?",
+    "a": "We believe in playing a meaningful role in the long journey of company building. Thus, Board positions are part of our standard investment terms."
+  },
+  {
+    "q": "Does Asha Ventures invest in follow-ons?",
+    "a": "Yes we do, the best partnerships run deep!"
+  },
+  {
+    "q": "What is Asha Ventures’ decision making process?",
+    "a": "We follow a two stage approval process with our Investment Committee. We run the process transparently and keep you informed at critical steps along the way, and try to align with the overall fundraise plans you may have."
+  },
+  {
+    "q": "How do I get in touch?",
+    "a": "You can reach us on deals@ashaventures.in. In addition, all our investment team members are active on platforms like LinkedIn and also have their emails listed on this website. If you find common overlaps with our founder network, please do connect with us through them."
   }
 ]
