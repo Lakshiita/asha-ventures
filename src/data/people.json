@@ -28,116 +28,83 @@
       "role": "Partner",
       "heading":"Aditi leads investments for Asha Ventures and represents the firm on the Boards of Truemeds, Let’s Recycle, Adda247, Gramophone and AutoMony.",
       "bio": "Aditi leads investments for Asha Ventures and represents the firm on the Boards of Truemeds, Let’s Recycle, Adda247, Gramophone and AutoMony. Her prior experience includes Co-Founding Contrarian Capital, an early stage investment fund focused on technology led businesses built for the mass markets. At Contrarian, she led investments in consumer and enterprise technology businesses across finance, healthcare, education, and enterprise SaaS. These included category defining companies like Pratilipi, Progcap, Minjar (acq. by $NTNX), Squad, Signzy and Crediwatch. Prior to this, Aditi worked with Motilal Oswal Private Equity. Aditi holds an MBA in Finance from FMS, Delhi and a Bachelors in Technology (Mechanical & Automation) from Indraprastha University. Aditi is a Member of “CII Western Region Sub-committee on Startups”, with the aim to facilitate closer interaction between startups and corporates. She’s passionate about supporting women founders and has been a mentor in Facebook SheLeadsTech program over multiple years. She was named to Equalifi’s list of Top 40 Alternative Investment Professionals in India and AIWMI’s list of Top 100 Women in Finance. In her free time Aditi loves reading, hiking and practicing Martial Arts (Krav Maga- Practitioner Level 4).",
-      "img": "/assets/team/Aditi.jpg"
+      "img": "/assets/team/Aditi.jpg",
+      "linkedin":"https://www.linkedin.com/in/aditig10",
+      "email":"aditi@ashaventures.in"
     },
     {
       "name": "Nishtha Gaur",
       "role": "Associate Vice President",
       "heading":"Nishtha leads coverage on Agriculture, Education and Climate sectors at Asha Ventures.",
       "bio": "Before moving to the VC world, she was working with Synergy Consulting as a financial advisor in the infrastructure space primarily covering renewable energy projects and was actively involved on mega-financing transactions including entities like Saudi Arabia’s PIF, World Bank, and others. She has also worked as an Analyst for Goldman Sachs in their Corporate Treasury division. Nishtha has completed her MBA from Indian Institute of Management Indore and has a Bachelor of Commerce degree from Shri Ram College of Commerce, Delhi University. Outside of work, she enjoys cooking, dancing and spending time with her family and close friends.",
-      "img": "/assets/team/Nishtha.jpg"
+      "img": "/assets/team/Nishtha.jpg",
+      "linkedin":"https://www.linkedin.com/in/nishtha-gaur-a78684127",
+      "email":"nishtha@ashaventures.in"
     },
     {
       "name": "Aayush Khutate",
       "role": "Investment Analyst",
       "heading":"Aayush leads Financial services and also covers Agri and Climate.",
       "bio": "Before joining Asha, Aayush had gained valuable experience working as an associate in the Strategy and Transaction department of Ernst and Young for a period of 11 months. This experience has equipped him with valuable insights into the corporate world and various financial transactions. Aayush is a qualified Chartered Accountant and has achieved All India Rank 22 in CA Final and 20 in CA Intermediate exams. In addition to his CA qualification, Aayush also holds a bachelor’s degree in Commerce. Apart from work, Aayush is an avid cricket enthusiast and a keen observer of the stock market, reflecting his deep interest in both sports and financial markets.",
-      "img": "/assets/team/Aayush.jpg"
+      "img": "/assets/team/Aayush.jpg",
+      "linkedin":"https://www.linkedin.com/in/aayush-khutate-096a47192/",
+      "email":"aayush@ashaventures.in"
     },
     {
       "name": "Vatsal Chitalia",
       "role": "Investment Analyst",
       "heading":"Vatsal covers Health, Education and Consumer at Asha Ventures.",
       "bio": "Prior to joining Asha, Vatsal built significant expertise as a Senior Analyst in Investment Banking at Ernst & Young. He worked on live transactions (M&A/fundraising) and deal sourcing projects in the Indian industrial segment. This experience has equipped him with deep insights in front-end deal sourcing and execution. Vatsal has completed graduation in BSc Finance from NMIMS’ School of Commerce and is a CFA L3 candidate. In his free time, he enjoys playing cricket and badminton in addition to exploring new cafes in the city.",
-      "img": "/assets/team/Vatsal.jpg"
+      "img": "/assets/team/Vatsal.jpg",
+      "linkedin":"https://www.linkedin.com/in/vatsal-chitalia-900879157/",
+      "email":"vatsal@ashaventures.in"
     },
     {
       "name": "Avisha Bhandari",
       "role": "Investment Analyst",
       "heading":"Avisha covers sectors like Agri and Climate at Asha Ventures.",
       "bio": "Before becoming a part of Asha Ventures, Avisha developed strong professional experience at BDO within their Internal Audit division, where she contributed to projects spanning industries like FMCG and Pharmaceuticals. This exposure helped her build a strong foundation in evaluating business processes and strengthening internal control systems. She is a qualified Chartered Accountant and holds a Bachelor’s degree in Commerce from R.A. Podar College of Commerce and Economics. Avisha is also deeply passionate about impact investing and is a keen learner of various impact measurement frameworks. Outside of work, Avisha is passionate about exploring new places, enjoys playing a variety of board games, and is currently training in Hindustani Classical Music.",
-      "img": "/assets/team/Avisha.jpg"
-    }
-  ],
-  "alumni": [
-    {
-      "name": "Kartik Desai",
-      "role": "Alumni",
-      "bio": "Former team member who contributed to early growth.",
-      "img": "/assets/alumni/KartikDesai.jpg"
-    },
-    {
-      "name": "T.T. Venkatraghavan",
-      "role": "Alumni",
-      "bio": "Former team member with expertise in operations.",
-      "img": "/assets/alumni/TT-venatraghavan.jpg"
-    },
-    {
-      "name": "Raghav Rungta",
-      "role": "Alumni",
-      "bio": "Former analyst who supported multiple investment deals.",
-      "img": "/assets/alumni/RaghavRungta.jpg"
-    },
-    {
-      "name": "Riya Saxena",
-      "role": "Alumni",
-      "bio": "Former associate with focus on impact measurement.",
-      "img": "/assets/alumni/RiyaSaxena.jpg"
-    },
-    {
-      "name": "Rachana Ramchand",
-      "role": "Alumni",
-      "bio": "Former team member who led portfolio initiatives.",
-      "img": "/assets/alumni/RachanaRamchand.jpg"
-    },
-    {
-      "name": "Alpana Srivastava",
-      "role": "Alumni",
-      "bio": "Former partner with extensive investment experience.",
-      "img": "/assets/alumni/AlpanaSrivastava.png"
-    },
-    {
-      "name": "Aparna Dua",
-      "role": "Alumni",
-      "bio": "Former senior associate with sector expertise.",
-      "img": "/assets/alumni/Aparna-Dua.png"
+      "img": "/assets/team/Avisha.jpg",
+      "linkedin":"https://www.linkedin.com/in/avisha-bhandari-452a16211/",
+      "email":"avisha@ashaventures.in"
+
     }
   ],
   "supporters": [
     {
       "name": "Ashish Dhawan",
       "role": "Founder, Ashoka University & Central Square Foundation",
-      "bio": "Visionary leader in education and social impact initiatives.",
+      "bio": "Ashish Dhawan co-founded ChrysCapital, one of India’s leading private equity firms in 1999. He has served on the company’s board since its founding. He left his full-time position at ChrysCapital in 2012 after twenty years in the investment management business to found Central Square Foundation (CSF), a leading grant-making organization and policy think-tank focused on transforming the quality of school education in India. Ashish’s passion for education has led him to spearhead the founding of Ashoka University. Ashish also serves on the board of several education non-profits including Akanksha Foundation, 3.2.1 Education Foundation, Teach For India, Centre for Civil Society, Janaagraha, India School Leadership Institute and Bharti Foundation.Ashish is an MBA with distinction from Harvard University and a dual bachelor’s (BS/BA) holder with Magna Cum Laude honours from Yale University. He is on the India Advisory Board of Harvard and a member of Yale’s Development Council.",
       "img": "/assets/supporters/ASHISHDHAWAN.jpg"
     },
     {
       "name": "Amit Chandra",
       "role": "Chairman, Bain Capital Private Equity",
-      "bio": "Leading private equity executive with global investment experience.",
+      "bio": "Mr. Chandra joined Bain Capital as a Managing Director in early 2008 and is a part of the firm’s leadership team in Asia. Before joining Bain Capital, Amit led Global Markets & Investment Banking business at DSP Merill Lynch. Mr. Chandra was named a Young Global Leader by the World Economic Forum in 2007 and was named in Asia’s Heroes of Philanthropy list by Forbes in 2016. He is currently a Member of the Board of Directors of Tata Sons Limited, Genpact, L&T Finance, and Emcure Pharmaceuticals. He retired, in recent years, from the Boards of Piramal Enterprises, Tata Investment Corporation, and The Akanksha Foundation. He is also active in India’s not for profit space, and serves as a Trustee of the Tata Trusts, Founder/Board Member of Ashoka University, and Board Member of Give India (India’s leading philanthropic exchange).",
       "img": "/assets/supporters/AMITCHANDRA.jpg"
     },
     {
       "name": "Ajay Parekh",
       "role": "Pidilite Group",
-      "bio": "Business leader with expertise in manufacturing and consumer goods.",
+      "bio": "Ajay Parekh is an Executive Director at Pidilite Industries Ltd, founded by his late father Shri B.K. Parekh in 1959. Pidilite Industries has been a pioneer in consumer and specialties chemicals in India. With a turnover of close a billion dollars, it is the market leader in adhesives and sealants, construction chemicals, colors and polymer emulsions. Fevicol, one of Pidilite’s flagship products, is the largest selling adhesives brand in Asia. Ajay holds a Bachelor in Chemical Engineering and has completed his Masters of Business Administration (U.S.A.) from University of California, Berkeley.",
       "img": "/assets/supporters/AJAYPAREKH.jpg"
     },
     {
       "name": "Padmini Somani",
       "role": "Narottam Sekhsaria Family Office",
-      "bio": "Investment professional managing family office initiatives.",
+      "bio": "Mrs. Padmini Somani is the force and vision behind the Salaam Bombay Foundation. She has over 15 years of experience in the development sector actively working on a range of issues in health, education and skill building. She is on boards of several health and educational institutions and Government committees. She is an advocate on public policy and is recognized for her contribution to tobacco control in India and internationally by several institutions including the World Health Organization. She also heads the Narotam Sekhsaria Foundation which supports causes in the area of health, education and employment generation.",
       "img": "/assets/supporters/padminisomani.png"
     },
     {
       "name": "Vishwang Desai",
       "role": "Partner, Desai & Diwanji",
-      "bio": "Legal expert specializing in corporate and investment law.",
+      "bio": "Vishwang Desai is the managing partner of the law firm, Desai and Diwanji and heads its corporate commercial practice. He has consistently advised large multinational corporations and Indian business groups, governments, multilateral agencies, lenders, PE funds, as well as financial investors in some of the largest M&A, PE and financing transactions in India / involving Indian companies. He has been named “lawyer of the year” by various global publications, and is regularly included in several top business lawyer lists compiled by global publications.",
       "img": "/assets/supporters/Vishwangdesai.jpg"
     },
     {
       "name": "Gokul Laroia",
       "role": "MD & Co-CEO, Morgan Stanley Asia",
-      "bio": "Senior executive with extensive experience in Asian markets.",
+      "bio": "Gokul Laroia is Co-CEO of Asia Pacific for Morgan Stanley, Head of Asia Equities and a member of the firm’s Management Committee. Over a 20-year career at Morgan Stanley, Gokul has held a number of leadership positions across the region, heading up the firm’s Mergers & Acquisitions, Capital Markets and Investment Banking divisions before assuming his current role in 2014. Prior to joining Morgan Stanley, he spent four years at Citigroup. Gokul holds a bachelor’s degree in economics and an MBA from the University of Delhi.",
       "img": "/assets/supporters/GokulLaroia.jpg"
     }
   ]
