@@ -3,7 +3,12 @@ import { extendTheme } from "@chakra-ui/react";
 
 const colors = {
   brand: {
-    50:  "#f9f6f1",
+    10:  "#fef4e7ff",
+    50:  "#fff2e1ff",
+    51:  "#ffe8c0ff",
+    52:  "#ffdbacff",
+    53:  "#ffdaa3ff",
+    54:  "#ffd080ff",
     100: "#f1e8d9",
     200: "#fff9eeff",
     300: "#d8c49a",
@@ -62,7 +67,7 @@ const textStyles = {
 const styles = {
   global: {
     "html, body, #root": { height: "100%" },
-    body: { bg: "brand.50", color: "gray.800" },
+    body: { bg: "brand.10", color: "gray.800" },
   },
 };
 
