@@ -7,8 +7,12 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Section from "../components/Section.jsx";
 import peopleData from "../data/people.json";
-
-
+import { chakra, shouldForwardProp } from "@chakra-ui/react";
+import { isValidMotionProp, motion } from "framer-motion";
+const MotionModalContent = chakra(motion.div, {
+  shouldForwardProp: (prop) =>
+    isValidMotionProp(prop) || shouldForwardProp(prop),
+});
 
 function FoundersGrid({ data }) {
   const navigate = useNavigate();
@@ -48,12 +52,12 @@ function FoundersGrid({ data }) {
   return (
     <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={8} justifyItems="center">
       {data.map((p, index) => (
-        <Card 
+        <Card
           key={p.name}
           ref={(el) => (cardRefs.current[index] = el)}
           data-index={index}
-          bg="white" 
-          cursor="pointer" 
+          bg="white"
+          cursor="pointer"
           onClick={() => handleFounderClick(p)}
           transition="all 1.2s cubic-bezier(0.4, 0, 0.2, 1)"
           transform={visibleCards.has(index) ? "translateY(0)" : "translateY(-100px)"}
@@ -73,11 +77,11 @@ function FoundersGrid({ data }) {
         >
           <CardBody p={0} display="flex" flexDirection="column" h="full">
             <Box position="relative" overflow="hidden" borderRadius="md" h="350px" bg="gray.50">
-              <Image 
-                src={p.img} 
-                alt={p.name} 
-                h="full" 
-                w="full" 
+              <Image
+                src={p.img}
+                alt={p.name}
+                h="full"
+                w="full"
                 objectFit="contain"
                 className="image"
                 transition="transform 0.3s ease"
@@ -139,12 +143,12 @@ function PeopleGrid({ data, onPersonClick }) {
   return (
     <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }} gap={6}>
       {data.map((p, index) => (
-        <Card 
+        <Card
           key={p.name}
           ref={(el) => (cardRefs.current[index] = el)}
           data-index={index}
-          bg="white" 
-          cursor="pointer" 
+          bg="white"
+          cursor="pointer"
           onClick={() => onPersonClick(p)}
           transition="all 1.2s cubic-bezier(0.4, 0, 0.2, 1)"
           transform={visibleCards.has(index) ? "translateY(0)" : "translateY(-100px)"}
@@ -164,11 +168,11 @@ function PeopleGrid({ data, onPersonClick }) {
         >
           <CardBody p={0} display="flex" flexDirection="column" h="full">
             <Box position="relative" overflow="hidden" borderRadius="md" h="300px" bg="gray.50">
-              <Image 
-                src={p.img} 
-                alt={p.name} 
-                h="full" 
-                w="full" 
+              <Image
+                src={p.img}
+                alt={p.name}
+                h="full"
+                w="full"
                 objectFit="contain"
                 className="image"
                 transition="transform 0.3s ease"
@@ -225,139 +229,176 @@ export default function People() {
               <PeopleGrid data={peopleData.team} onPersonClick={handlePersonClick} />
             </Box>
             <Box>
-              <Heading size="lg" mb={6} textStyle="defaultText">Alumni</Heading>
-              <AlumniGrid data={peopleData.alumni} onPersonClick={handlePersonClick} />
-            </Box>
-            <Box>
               <Heading size="lg" mb={6} textStyle="defaultText">Early Supporters</Heading>
               <PeopleGrid data={peopleData.supporters} onPersonClick={handlePersonClick} />
             </Box>
           </VStack>
         </Container>
       </Section>
-
-      <Modal isOpen={isOpen} onClose={onClose} size="4xl" isCentered>
-        <ModalOverlay bg="blackAlpha.600" backdropFilter="blur(4px)" />
-        <ModalContent 
-          bg="white" 
-          borderRadius="xl" 
-          border="2px solid" 
-          borderColor="gray.200" 
-          shadow="2xl"
-          mx={4}
-          maxH="90vh"
+      <Modal isOpen={isOpen} onClose={onClose} size="full">
+        <ModalOverlay bg="blackAlpha.700" backdropFilter="blur(4px)" />
+        <ModalContent
+          as={MotionModalContent}
+          p={0}
+          m={0}
+          borderRadius={0}
+          maxW="100vw"
+          maxH="100vh"
+          overflow="hidden"
+          initial={{ opacity: 0, scale: 0.5, y: 80 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.5, y: 80 }}
+          transition={{
+            type: "spring",
+            stiffness: 40,   // lower stiffness = slower spring
+            damping: 10,     // slightly softer stop
+            mass: 1.2        // heavier feel (slower start)
+          }}
         >
-          <ModalHeader 
-            textStyle="defaultText" 
-            fontSize="2xl" 
-            fontWeight="bold"
-            borderBottom="1px solid"
-            borderColor="gray.100"
-            pb={4}
-            textAlign="left"
-          >
-            {selectedPerson?.name}
-          </ModalHeader>
-          <ModalCloseButton 
-            size="lg" 
-            _hover={{ bg: "gray.100" }}
-            borderRadius="full"
+          {/* Close button (top-right) */}
+          <ModalCloseButton
+            size="xl"
+            top="5"
+            right="8"
+            color="white"
+            zIndex="20"
+            _hover={{ color: "brand.800" }}
           />
-          <ModalBody p={8} overflowY="auto">
-            <HStack spacing={8} align="start">
-              <Box 
-                flexShrink={0}
-                borderRadius="lg"
-                border="3px solid"
-                borderColor="gray.200"
-                shadow="lg"
-                bg="white"
-                p={3}
+
+          {/* Two-row layout: top header (maroon) + bottom content (white) */}
+          <Grid templateRows={{ base: "auto 1fr", md: "40vh 1fr" }} h="100vh">
+            {/* TOP: maroon header */}
+            <Box
+              bg="brand.500" /* adjust to your brand maroon */
+              px={{ base: 6, md: 20 }}
+              position="relative"
+              overflow="visible" /* allow the image to overflow into the white section */
+            >
+              <Grid
+                templateColumns={{ base: "1fr", md: "40% 60%" }}
+                alignItems="center"
+                h="100%"
               >
-                <Image 
-                  src={selectedPerson?.img} 
-                  alt={selectedPerson?.name}
-                  borderRadius="md"
-                  boxSize="200px"
-                  objectFit="cover"
-                  fallback={<Avatar name={selectedPerson?.name} size="2xl" />}
-                />
-              </Box>
-              <VStack spacing={4} align="start" flex={1}>
-                <HStack spacing={1} align="center">
-                  <Badge 
-                    colorScheme="blue" 
-                    variant="subtle" 
-                    px={3} 
-                    py={1} 
-                    borderRadius="full"
-                    fontSize="sm"
-                  >
-                    {selectedPerson?.role}
-                  </Badge>
-                  {selectedPerson?.email && (
-                  <Link 
-                    href={`mailto:${selectedPerson.email}`} 
-                    isExternal 
-                    _hover={{ textDecoration: "none" }} 
-                    _focus={{ boxShadow: "none" }} 
-                    _active={{ boxShadow: "none" }}
-                  >
-                    <Icon 
-                      as={FaEnvelope} 
-                      color="gray.600" 
-                      boxSize={4} 
-                      transition="color 0.2s"
-                      _hover={{ color: "blue.500" }} 
-                    />
-                  </Link>
-                )}
-
-                {selectedPerson?.linkedin && (
-                  <Link 
-                    href={selectedPerson.linkedin} 
-                    isExternal 
-                    _hover={{ textDecoration: "none" }} 
-                    _focus={{ boxShadow: "none" }} 
-                    _active={{ boxShadow: "none" }}
-                  >
-                    <Icon 
-                      as={FaLinkedin} 
-                      color="gray.600" 
-                      boxSize={4} 
-                      transition="color 0.2s"
-                      _hover={{ color: "blue.500" }} 
-                    />
-                  </Link>
-                )}
-
-                </HStack>
-                {selectedPerson?.heading && (
-                  <Text 
-                    textStyle="defaultText" 
-                    fontSize="lg" 
-                    fontWeight="semibold"
-                    color="gray.800"
-                    lineHeight="1.5"
-                    textAlign="left"
-                  >
-                    {selectedPerson.heading}
-                  </Text>
-                )}
-                <Text 
-                  textStyle="defaultText" 
-                  fontSize="md" 
-                  lineHeight="1.6"
-                  color="gray.700"
-                  textAlign="left"
+                {/* Left column - image centered and overlapping down */}
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  position="relative"
+                  overflow="visible"
+                  py={{ base: 8, md: 0 }}
                 >
-                  {selectedPerson?.bio}
-                </Text>
-              </VStack>
-            </HStack>
-          </ModalBody>
+                  <Box position="relative" display="inline-block">
+                    <Image
+                      src={selectedPerson?.img}
+                      alt={selectedPerson?.name}
+                      boxSize={{ base: "220px", md: "420px" }}
+                      objectFit="cover"
+                      borderRadius="md"
+                      boxShadow="lg"
+                      zIndex={2}
+                      transform={{ base: "translateY(0)", md: "translateY(37%)" }}
+                    />
+
+                    {/* Transparent overlay bar with icons */}
+                    {(selectedPerson?.email || selectedPerson?.linkedin) && (
+                      <Box
+                        position="absolute"
+                        bottom="0"
+                        left="0"
+                        right="0"
+                        bg="blackAlpha.500"
+                        py={2}
+                        display="flex"
+                        justifyContent="center"
+                        gap={6}
+                        borderBottomRadius="md"
+                      >
+                        {selectedPerson?.email && (
+                          <Link href={`mailto:${selectedPerson.email}`} isExternal>
+                            <Icon
+                              as={FaEnvelope}
+                              color="white"
+                              boxSize={7}
+                              _hover={{ color: "brand.500" }}
+                            />
+                          </Link>
+                        )}
+                        {selectedPerson?.linkedin && (
+                          <Link href={selectedPerson.linkedin} isExternal>
+                            <Icon
+                              as={FaLinkedin}
+                              color="white"
+                              boxSize={7}
+                              _hover={{ color: "blue.300" }}
+                            />
+                          </Link>
+                        )}
+                      </Box>
+                    )}
+                  </Box>
+                </Box>
+
+                {/* Right column inside header: name + designation */}
+                <Box color="white" pl={{ base: 0, md: 8 }}>
+                  <Heading
+                    as="h2"
+                    fontSize={{ base: "2xl", md: "5xl" }}
+                    mb={2}
+                    lineHeight={1}
+                  >
+                    {selectedPerson?.name}
+                  </Heading>
+                  <Text fontSize={{ base: "md", md: "xl" }} opacity={0.9}>
+                    {selectedPerson?.role}
+                  </Text>
+                </Box>
+              </Grid>
+            </Box>
+
+            {/* BOTTOM: white scrollable content */}
+            <Box bg="white" overflowY="auto" p={{ base: 6, md: 12 }}>
+              {/* Keep columns aligned with header: left for icons/spacing, right for text */}
+              <Grid
+                templateColumns={{ base: "1fr", md: "40% 60%" }}
+                gap={8}
+                alignItems="start"
+              >
+                {/* Left column: social icons (appear below the image because image overlaps down) */}
+                <Box display="flex" flexDirection="column" alignItems="center">
+                  <HStack spacing={6} mt={{ base: 4, md: 8 }}>
+                    {selectedPerson?.email && (
+                      <Link href={`mailto:${selectedPerson.email}`} isExternal>
+                        <Icon as={FaEnvelope} boxSize={6} _hover={{ color: "blue.500" }} />
+                      </Link>
+                    )}
+                    {selectedPerson?.linkedin && (
+                      <Link href={selectedPerson.linkedin} isExternal>
+                        <Icon as={FaLinkedin} boxSize={6} _hover={{ color: "blue.500" }} />
+                      </Link>
+                    )}
+                  </HStack>
+                </Box>
+
+                {/* Right column: heading + scrollable bio */}
+                <Box>
+                  {selectedPerson?.heading && (
+                    <Text fontSize="lg" fontWeight="semibold" mb={4}>
+                      {selectedPerson.heading}
+                    </Text>
+                  )}
+                  <Text fontSize="md" lineHeight="1.7" color="gray.700">
+                    {selectedPerson?.bio}
+                  </Text>
+                </Box>
+              </Grid>
+            </Box>
+          </Grid>
         </ModalContent>
       </Modal>
+
+
     </Box>
   );
 }
