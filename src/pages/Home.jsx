@@ -70,7 +70,7 @@ export default function Home() {
   }, []);
 
   return (
-    <Box 
+    <Box
       sx={{
         scrollSnapType: 'y mandatory',
         '& > *': {
@@ -80,15 +80,15 @@ export default function Home() {
     >
       {/* Hero */}
       <Box w="100%" h="100vh">
-        <Box 
-          w="100%" 
-          h="100%" 
-          display="flex" 
+        <Box
+          w="100%"
+          h="100%"
+          display="flex"
           flexDirection={{ base: "column", md: "row" }}
         >
           {/* Video Section - Left Half */}
-          <Box 
-            w={{ base: "100%", md: "50%" }} 
+          <Box
+            w={{ base: "100%", md: "50%" }}
             h={{ base: "50%", md: "100%" }}
             position="relative"
             overflow="hidden"
@@ -113,8 +113,8 @@ export default function Home() {
           </Box>
 
           {/* Quote Section - Right Half */}
-          <Box 
-            w={{ base: "100%", md: "50%" }} 
+          <Box
+            w={{ base: "100%", md: "50%" }}
             h={{ base: "50%", md: "100%" }}
             display="flex"
             alignItems="center"
@@ -161,119 +161,114 @@ export default function Home() {
 
       {/* Sectors Section */}
       <Box w="100%" px={8} py={16} ref={sectorsRef}>
-        <Heading 
-          textAlign="left" 
-          mb={12} 
-          fontSize="5xl" 
-          color="orange.800"
-          transform={isHeadingVisible ? "translateX(0)" : "translateX(-100px)"}
-          opacity={isHeadingVisible ? 1 : 0}
-          transition="all 0.8s ease-out"
+
+        <Flex
+          direction="column"
+          bg="white"
+          shadow="xl"
+          rounded="xl"
+          overflow="hidden"
+          p={10}
         >
-          Sectors we cover
-        </Heading>
-        <Grid templateColumns="repeat(5, 1fr)" gap={4}>
-          <Box 
-            bg="orange.400" 
-            p={4} 
-            rounded="xl"
-            transform={visibleCards.includes(0) ? "translateY(0)" : "translateY(50px)"}
-            opacity={visibleCards.includes(0) ? 1 : 0}
-            transition="all 0.6s ease-out"
+          {/* Centered Heading inside the card */}
+          <Heading
+            textAlign="center"
+            mb={10}
+            fontSize="3xl"
+            color="orange.800"
+            transform={isHeadingVisible ? "translateY(0)" : "translateY(-20px)"}
+            opacity={isHeadingVisible ? 1 : 0}
+            transition="all 0.8s ease-out"
           >
-            <Flex align="center" mb={3}>
-              <Box as={FaHeartbeat} color="white" size="20px" mr={2} />
-              <Heading size="sm" color="white">
-                Healthcare
-              </Heading>
-            </Flex>
-            <Text color="white" fontSize="sm">
-              Ensuring access to quality and low-cost healthcare for underserved populations through technology-led delivery models and innovative financing solutions
-            </Text>
-          </Box>
-          
-          <Box 
-            bg="orange.500" 
-            p={4} 
-            rounded="xl"
-            transform={visibleCards.includes(1) ? "translateY(0)" : "translateY(50px)"}
-            opacity={visibleCards.includes(1) ? 1 : 0}
-            transition="all 0.6s ease-out"
-          >
-            <Flex align="center" mb={3}>
-              <Box as={FaDollarSign} color="white" size="20px" mr={2} />
-              <Heading size="sm" color="white">
-                Financial Services
-              </Heading>
-            </Flex>
-            <Text color="white" fontSize="sm">
-              Driving financial inclusion by expanding access to credit, insurance, and savings for underserved individuals and MSMEs via digital and alternative models
-            </Text>
-          </Box>
-          
-          <Box 
-            bg="orange.600" 
-            p={4} 
-            rounded="xl"
-            transform={visibleCards.includes(2) ? "translateY(0)" : "translateY(50px)"}
-            opacity={visibleCards.includes(2) ? 1 : 0}
-            transition="all 0.6s ease-out"
-          >
-            <Flex align="center" mb={3}>
-              <Box as={FaLeaf} color="white" size="20px" mr={2} />
-              <Heading size="sm" color="white">
-                Sustainability
-              </Heading>
-            </Flex>
-            <Text color="white" fontSize="sm">
-              Building a resource-efficient future by enabling waste reduction, material recovery, and sustainable consumption through scalable circular innovations
-            </Text>
-          </Box>
-          
-          <Box 
-            bg="orange.700" 
-            p={4} 
-            rounded="xl"
-            transform={visibleCards.includes(3) ? "translateY(0)" : "translateY(50px)"}
-            opacity={visibleCards.includes(3) ? 1 : 0}
-            transition="all 0.6s ease-out"
-          >
-            <Flex align="center" mb={3}>
-              <Box as={FaShoppingCart} color="white" size="20px" mr={2} />
-              <Heading size="sm" color="white">
-                Consumer
-              </Heading>
-            </Flex>
-            <Text color="white" fontSize="sm">
-              Enhancing everyday living for underserved populations by supporting access to affordable, high-quality, and trusted products and services across essential consumption categories.
-            </Text>
-          </Box>
-          
-          <Box 
-            bg="orange.800" 
-            p={4} 
-            rounded="xl"
-            transform={visibleCards.includes(4) ? "translateY(0)" : "translateY(50px)"}
-            opacity={visibleCards.includes(4) ? 1 : 0}
-            transition="all 0.6s ease-out"
-          >
-            <Flex align="center" mb={3}>
-              <Box as={FaLaptopCode} color="white" size="20px" mr={2} />
-              <Heading size="sm" color="white">
-                MSME Technology
-              </Heading>
-            </Flex>
-            <Text color="white" fontSize="sm">
-              Digitizing and formalizing India's small businesses by supporting tech platforms that enhance productivity, compliance, and access to markets and finance
-            </Text>
-          </Box>
-        </Grid>
+            Sectors we cover
+          </Heading>
+          {/* Horizontal sectors */}
+          <Flex>
+            {[
+              { icon: FaHeartbeat, title: "Healthcare", text: "Ensuring access to quality and low-cost healthcare for underserved populations through technology-led delivery models and innovative financing solutions", hoverBg: "brand.50" },
+              { icon: FaDollarSign, title: "Financial Services", text: "Driving financial inclusion by expanding access to credit, insurance, and savings for underserved individuals and MSMEs via digital and alternative models", hoverBg: "brand.51" },
+              { icon: FaLeaf, title: "Sustainability", text: "Building a resource-efficient future by enabling waste reduction, material recovery, and sustainable consumption through scalable circular innovations", hoverBg: "brand.52" },
+              { icon: FaShoppingCart, title: "Consumer", text: "Enhancing everyday living for underserved populations by supporting access to affordable, high-quality, and trusted products and services across essential consumption categories.", hoverBg: "brand.53" },
+              { icon: FaLaptopCode, title: "MSME Technology", text: "Digitizing and formalizing India's small businesses by supporting tech platforms that enhance productivity, compliance, and access to markets and finance", hoverBg: "brand.54" }
+            ].map((item, index, arr) => (
+              <Box
+                key={index}
+                flex="1"
+                textAlign="center"
+                px={6}
+                py={8}
+                borderRight={index !== arr.length - 1 ? "1px solid" : "none"}
+                borderColor="gray.200"
+                transition="all 0.3s ease"
+                _hover={{
+                  bg: item.hoverBg,
+                  transform: "translateY(-5px)",
+                }}
+                role="group"
+                position="relative"
+                minH="270px" // 👈 keeps card height fixed
+              >
+                <Box
+                  as={item.icon}
+                  w={12}
+                  h={12}
+                  mx="auto"
+                  color="orange.500"
+                  transition="all 0.3s ease"
+                  _groupHover={{ transform: "scale(1.2) translateY(-10px)", color: "orange.600" }}
+                />
+                <Heading
+                  mt={4}
+                  size="md"
+                  transition="all 0.3s ease"
+                  _groupHover={{ transform: "translateY(-10px)" }}
+                >
+                  {item.title}
+                </Heading>
+
+                {/* Preview text (shown by default, hidden on hover) */}
+                <Text
+                  mt={6}
+                  fontSize="sm"
+                  color="gray.600"
+                  noOfLines={2}
+                  opacity={1}
+                  transition="opacity 0.3s ease"
+                  _groupHover={{ opacity: 0 }}
+                >
+                  {item.text}
+                </Text>
+
+                {/* Full text (hidden by default, shown on hover) */}
+                <Text
+                  mt={2}
+                  fontSize="sm"
+                  color="orange.700"
+                  opacity={0}
+                  transform="translateY(-20px)"
+                  transition="all 0.3s ease"
+                  _groupHover={{ opacity: 1, transform: "translateY(0)" }}
+                  position="absolute"
+                  left={6}
+                  right={6}
+                  bottom={8}
+                >
+                  {item.text}
+                </Text>
+              </Box>
+            ))}
+          </Flex>
+        </Flex>
       </Box>
 
+
+
+
+
       {/* Fullscreen Carousel */}
-      <Box 
-        position="relative" 
-        h="calc(100vh - 4rem)" 
+      <Box
+        position="relative"
+        h="calc(100vh - 4rem)"
         overflow="hidden"
         mt={16}
       >
@@ -314,9 +309,9 @@ export default function Home() {
           textAlign="center"
           px={6}
         >
-          <Heading 
-            color="white" 
-            size="2xl" 
+          <Heading
+            color="white"
+            size="2xl"
             maxW="3xl"
             key={`text-${current}`}
             opacity={0}
@@ -355,7 +350,7 @@ export default function Home() {
         />
       </Box>
 
-      
+
       <Testimonials />
       {/* Signatory of Section */}
       <Box w="100%" px={8} py={16}>
@@ -398,8 +393,8 @@ export default function Home() {
         </Grid>
       </Box>
     </Box>
-  
-    
+
+
 
   );
 }
