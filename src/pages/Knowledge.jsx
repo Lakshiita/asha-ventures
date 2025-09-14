@@ -19,7 +19,7 @@ export default function Knowledge() {
               <Tab>Media</Tab>
               <Tab id="contact">Contact</Tab>
             </TabList>
-            <TabPanels bg="brand.50" border="1px solid" borderColor="blackAlpha.200" rounded="md">
+            <TabPanels bg="brand.10" border="1px solid" borderColor="blackAlpha.200" rounded="md">
               <TabPanel>
                 <Grid templateColumns={{ base: "1fr", md: "repeat(3,1fr)" }} gap={6}>
                   {[1,2,3].map((i)=>(
