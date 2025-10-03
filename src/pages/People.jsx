@@ -56,7 +56,7 @@ function FoundersGrid({ data }) {
           key={p.name}
           ref={(el) => (cardRefs.current[index] = el)}
           data-index={index}
-          bg="white"
+          bg="white"   
           cursor="pointer"
           onClick={() => handleFounderClick(p)}
           transition="all 1.2s cubic-bezier(0.4, 0, 0.2, 1)"
@@ -269,7 +269,10 @@ export default function People() {
           <Grid templateRows={{ base: "auto 1fr", md: "40vh 1fr" }} h="100vh">
             {/* TOP: maroon header */}
             <Box
-              bg="brand.500" /* adjust to your brand maroon */
+              bgImage="url('/assets/people/Aaron Loeb (1).png')"
+              bgSize="cover"
+              bgPosition="center"
+              bgRepeat="no-repeat"
               px={{ base: 6, md: 20 }}
               position="relative"
               overflow="visible" /* allow the image to overflow into the white section */
@@ -289,16 +292,18 @@ export default function People() {
                   overflow="visible"
                   py={{ base: 8, md: 0 }}
                 >
-                  <Box position="relative" display="inline-block">
+                  <Box position="relative"
+                    display="inline-block"
+                    boxSize={{ base: "220px", md: "450px" }}
+                    borderRadius="md"
+                    overflow="hidden"
+                    boxShadow="lg"
+                    transform={{ base: "translateY(0)", md: "translateY(37%)" }}>
                     <Image
                       src={selectedPerson?.img}
                       alt={selectedPerson?.name}
-                      boxSize={{ base: "220px", md: "420px" }}
+                      boxSize="full"
                       objectFit="cover"
-                      borderRadius="md"
-                      boxShadow="lg"
-                      zIndex={2}
-                      transform={{ base: "translateY(0)", md: "translateY(37%)" }}
                     />
 
                     {/* Transparent overlay bar with icons */}
@@ -384,21 +389,28 @@ export default function People() {
                 {/* Right column: heading + scrollable bio */}
                 <Box>
                   {selectedPerson?.heading && (
-                    <Text fontSize="lg" fontWeight="semibold" mb={4}>
+                    <Text fontSize="xl" fontWeight="semibold" mb={8}>
                       {selectedPerson.heading}
                     </Text>
                   )}
-                  <Text fontSize="md" lineHeight="1.7" color="gray.700">
-                    {selectedPerson?.bio}
-                  </Text>
+                  {selectedPerson?.bio &&
+                    selectedPerson.bio.split(/\n{2,}|\n/).map((para, idx) => (
+                      <Text
+                        key={idx}
+                        fontSize="lg"
+                        lineHeight="1.8"
+                        color="gray.700"
+                        mb={4}
+                      >
+                        {para}
+                      </Text>
+                    ))}
                 </Box>
               </Grid>
             </Box>
           </Grid>
         </ModalContent>
       </Modal>
-
-
     </Box>
   );
 }
