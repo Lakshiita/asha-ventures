@@ -1,25 +1,37 @@
-import { 
-  Box, 
-  Container, 
-  Heading, 
-  Text, 
-  VStack, 
-  HStack, 
-  Image, 
-  Icon, 
-  Link, 
+import {
+  Box,
+  Container,
+  Heading,
+  Text,
+  VStack,
+  HStack,
+  Image,
+  Icon,
+  Link,
   Divider,
   Grid,
-  Badge
+  Badge,
+  Button
 } from "@chakra-ui/react";
-import { FaLinkedinIn, FaEnvelope } from "react-icons/fa";
+import { FaLinkedinIn, FaEnvelope, FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export default function VikramGandhi() {
   return (
     <Container maxW="7xl" py={10}>
-      <Grid 
-        templateColumns={{ base: "1fr", md: "1fr 1fr" }} 
-        gap={8} 
+      {/* Back Button */}
+      <Button
+        leftIcon={<FaArrowLeft />}
+        variant="ghost"
+        colorScheme="orange"
+        mb={6}
+        onClick={() => navigate("/people")}
+      >
+        Back to People
+      </Button>
+      <Grid
+        templateColumns={{ base: "1fr", md: "1fr 1fr" }}
+        gap={8}
         alignItems="start"
       >
         {/* Left Section - Text */}
@@ -27,7 +39,7 @@ export default function VikramGandhi() {
           <Badge colorScheme="orange" fontWeight="bold" fontSize="md">
             Founder
           </Badge>
-          
+
           <HStack spacing={4} align="center">
             <Heading fontSize="4xl" fontWeight="bold">
               Vikram Gandhi
@@ -65,20 +77,20 @@ export default function VikramGandhi() {
             <Text>
               At Credit Suisse, he was a member of the Global Investment Banking Management Committee and the Fixed Income Operating Committee. Prior to that, Vikram worked at Morgan Stanley where he was Co-Head of Global FIG in New York, and earlier, Country Head and President of Morgan Stanley India.
             </Text>
-            
+
           </VStack>
         </VStack>
 
         {/* Right Section - Image with remaining text below */}
         <VStack spacing={6}>
-          <Image 
+          <Image
             src="/assets/founders/Vikram-founder.jpg"
-            borderRadius="2xl" 
-            boxShadow="lg" 
-            maxH="400px" 
-            objectFit="cover" 
+            borderRadius="2xl"
+            boxShadow="lg"
+            maxH="400px"
+            objectFit="cover"
           />
-          
+
           {/* Second Half of Detailed Information */}
           <VStack align="start" spacing={4} fontSize="lg" color="gray.700">
             <Text>

@@ -10,13 +10,25 @@ import {
   Link, 
   Divider,
   Grid,
-  Badge
+  Badge,
+  Button
 } from "@chakra-ui/react";
-import { FaLinkedinIn, FaEnvelope } from "react-icons/fa";
-
+import { FaLinkedinIn, FaEnvelope, FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 export default function PramodBhasin() {
+  const navigate = useNavigate();
   return (
     <Container maxW="7xl" py={10}>
+      {/* Back Button */}
+      <Button
+        leftIcon={<FaArrowLeft />}
+        variant="ghost"
+        colorScheme="orange"
+        mb={6}
+        onClick={() => navigate("/people")}
+      >
+        Back to People
+      </Button>
       <Grid 
         templateColumns={{ base: "1fr", md: "1fr 1fr" }} 
         gap={8} 
