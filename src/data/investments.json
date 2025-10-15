@@ -1,9 +1,15 @@
 [
   {
     "id": "adda247",
+    "fund": [
+      "Fund I"
+    ],
+    "status": "active",
     "name": "Adda247",
     "sector": "Ed-Tech",
-    "year-of-investment": [2019],
+    "year-of-investment": [
+      2019
+    ],
     "logo": "/assets/investments/adda247_final.png",
     "detailed-image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     "website": "https://adda247.com",
@@ -18,9 +24,16 @@
   },
   {
     "id": "gramophone",
+    "fund": [
+      "Fund I"
+    ],
+    "status": "active",
     "name": "Gramophone",
     "sector": "Agri-Tech",
-    "year-of-investment": [2019, 2020],
+    "year-of-investment": [
+      2019,
+      2020
+    ],
     "logo": "/assets/investments/gramophone_final.png",
     "detailed-image": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     "website": "https://gramophone.in/",
@@ -30,9 +43,16 @@
   },
   {
     "id": "truemeds",
+    "fund": [
+      "Fund I",
+      "Fund II"
+    ],
+    "status": "partially exited",
     "name": "Truemeds",
     "sector": "Health-Tech",
-    "year-of-investment": [2021],
+    "year-of-investment": [
+      2021
+    ],
     "logo": "/assets/investments/truemeds_final.png",
     "detailed-image": "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     "website": "https://www.truemeds.in/",
@@ -42,9 +62,15 @@
   },
   {
     "id": "varthana",
+    "fund": [
+      "Fund I"
+    ],
+    "status": "exited",
     "name": "Varthana",
     "sector": "Ed-Tech",
-    "year-of-investment": [2015],
+    "year-of-investment": [
+      2015
+    ],
     "logo": "/assets/investments/varthana_final.png",
     "detailed-image": "https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     "website": "https://varthana.com/",
@@ -54,9 +80,15 @@
   },
   {
     "id": "greenway",
+    "fund": [
+      "Fund I"
+    ],
+    "status": "partially exited",
     "name": "Greenway Appliances",
     "sector": "Climate-Tech",
-    "year-of-investment": [2015],
+    "year-of-investment": [
+      2015
+    ],
     "logo": "/assets/investments/greenway_final.png",
     "detailed-image": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     "website": "https://www.greenwayappliances.com/",
@@ -66,9 +98,15 @@
   },
   {
     "id": "saahas",
+    "fund": [
+      "Fund I"
+    ],
+    "status": "active",
     "name": "Saahas",
     "sector": "Climate-Tech",
-    "year-of-investment": [2017],
+    "year-of-investment": [
+      2017
+    ],
     "logo": "/assets/investments/saahas_final.png",
     "detailed-image": "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     "website": "https://saahaszerowaste.com/",
@@ -78,9 +116,15 @@
   },
   {
     "id": "janacare",
+    "fund": [
+      "Fund I"
+    ],
+    "status": "active",
     "name": "Jana Care",
     "sector": "Health-Tech",
-    "year-of-investment": [2019],
+    "year-of-investment": [
+      2019
+    ],
     "logo": "/assets/investments/janacare_final.png",
     "detailed-image": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     "website": "https://www.janacare.com/",
@@ -90,9 +134,15 @@
   },
   {
     "id": "avanti",
+    "fund": [
+      "Fund I"
+    ],
+    "status": "active",
     "name": "Avanti",
     "sector": "Ed-Tech",
-    "year-of-investment": [2016],
+    "year-of-investment": [
+      2016
+    ],
     "logo": "/assets/investments/avanti_final.png",
     "detailed-image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     "website": "www.avanti.in",
@@ -102,9 +152,16 @@
   },
   {
     "id": "ascend",
+    "fund": [
+      "Fund I",
+      "Fund II"
+    ],
+    "status": "active",
     "name": "Ascend capital",
     "sector": "Financial Services",
-    "year-of-investment": [2024],
+    "year-of-investment": [
+      2024
+    ],
     "logo": "/assets/investments/ascend_final.png",
     "detailed-image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     "website": "https://www.ascendcap.in/",
@@ -114,9 +171,16 @@
   },
   {
     "id": "automony",
+    "fund": [
+      "Fund I",
+      "Fund II"
+    ],
+    "status": "active",
     "name": "Automony",
     "sector": "Financial Services",
-    "year-of-investment": [2020],
+    "year-of-investment": [
+      2020
+    ],
     "logo": "/assets/investments/automony_final.png",
     "detailed-image": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     "website": "www.automony.in",
@@ -126,9 +190,16 @@
   },
   {
     "id": "janaadhar",
+    "fund": [
+      "Fund I"
+    ],
+    "status": "active",
     "name": "Janaadhar",
     "sector": "Climate-Tech",
-    "year-of-investment": [2014, 2020],
+    "year-of-investment": [
+      2014,
+      2020
+    ],
     "logo": "/assets/investments/janaadhar_final.png",
     "detailed-image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     "website": "https://www.janaadhar.com/",
@@ -138,9 +209,16 @@
   },
   {
     "id": "nepra",
+    "fund": [
+      "Fund I"
+    ],
+    "status": "active",
     "name": "Nepra",
     "sector": "Climate-Tech",
-    "year-of-investment": [2018, 2019],
+    "year-of-investment": [
+      2018,
+      2019
+    ],
     "logo": "/assets/investments/nepra_final.png",
     "detailed-image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     "website": "https://www.nepra.co.in/",
@@ -150,9 +228,15 @@
   },
   {
     "id": "swarna",
+    "fund": [
+      "Fund I"
+    ],
+    "status": "active",
     "name": "Swarna Pragati",
     "sector": "Financial Services",
-    "year-of-investment": [2016],
+    "year-of-investment": [
+      2016
+    ],
     "logo": "/assets/investments/swarna_final.png",
     "detailed-image": "https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     "website": "https://sphm.co.in/",
@@ -162,9 +246,15 @@
   },
   {
     "id": "vastu",
+    "fund": [
+      "Fund I"
+    ],
+    "status": "partially exited",
     "name": "Vastu",
     "sector": "Financial Services",
-    "year-of-investment": [2015],
+    "year-of-investment": [
+      2015
+    ],
     "logo": "/assets/investments/vastu_final.png",
     "detailed-image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     "website": "https://www.vastuhfc.com/",
