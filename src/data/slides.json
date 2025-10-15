@@ -1,26 +1,32 @@
 [
   {
     "image": "/assets/Home_Carousel/1.3-Mn-students-supported-to-crack-government-job-exams-scaled.jpg",
-    "text": "1.3 Million students supported to crack government job exams"
+    "heading": "Empowering Students",
+    "text": "1.3 Million students supported to crack government job exams."
   },
   {
     "image": "/assets/Home_Carousel/1.4-Mn-farmers-reached-driving-additional-income-of-over-USD-12-Mn-scaled.jpg",
-    "text": "1.4 Million farmers reached driving additional income of over USD 12 Million"
+    "heading": "Strengthening Farmers’ Livelihoods",
+    "text": "1.4 Million farmers reached, driving additional income of over USD 12 Million."
   },
   {
     "image": "/assets/Home_Carousel/2.7-Mn-Lives-positively-impacted-scaled.jpg",
-    "text": "2.7 Million lives positively impacted."
+    "heading": "Transforming Lives",
+    "text": "2.7 Million lives positively impacted through inclusive initiatives."
   },
   {
     "image": "/assets/Home_Carousel/174-Million-MT-of-waste-diverted-from-landfills-2-scaled.jpg",
-    "text": "174 Million MT of waste diverted from landfills."
+    "heading": "Advancing Sustainability",
+    "text": "174 Million MT of waste diverted from landfills, protecting our environment."
   },
   {
     "image": "/assets/Home_Carousel/25000-1st-time-women.jpg",
-    "text": "25,000 1st time women Home Buyers given access to affordable Mortgages"
+    "heading": "Empowering Women Homeowners",
+    "text": "25,000+ first-time women home buyers given access to affordable mortgages."
   },
   {
     "image": "/assets/Home_Carousel/500000-orders-delivered-creating-savings-of-over-INR-25-Cr-for-patients-scaled.jpg",
-    "text": "500,000 orders delivered, creating savings of over INR 25 Cr for patients."
+    "heading": "Improving Healthcare Access",
+    "text": "500,000+ orders delivered, creating savings of over INR 25 Cr for patients."
   }
 ]
