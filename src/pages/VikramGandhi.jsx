@@ -17,6 +17,7 @@ import { FaLinkedinIn, FaEnvelope, FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 export default function VikramGandhi() {
+  const navigate = useNavigate(); 
   return (
     <Container maxW="7xl" py={10}>
       {/* Back Button */}
