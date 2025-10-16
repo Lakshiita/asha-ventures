@@ -13,12 +13,40 @@ import {
   Divider,
   Image,
   IconButton,
+  useToast,
 } from "@chakra-ui/react";
 import { FaLinkedin, FaMapMarkerAlt } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
+import { useState } from "react";
 import logo from '../assets/asha-ventures-logo.png';
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const toast = useToast();
+
+  const handleSubscribe = () => {
+    if (!email || !email.trim()) {
+      toast({
+        title: "Please enter your email",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
+
+    // Here you could call your subscription API.
+    toast({
+      title: "Newsletter Subscribed",
+      description: "Thank you for subscribing!",
+      status: "success",
+      duration: 4000,
+      isClosable: true,
+    });
+
+    setEmail("");
+  };
+
   return (
     <Box bg="brand.100" color="gray.800" mt={10}>
       <Container as={Stack} maxW="7xl" py={10}>
@@ -78,6 +106,9 @@ export default function Footer() {
                     transform: "scale(1.02)",
                     boxShadow: "0 0 0 2px var(--chakra-colors-brand-200)"
                   }}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  aria-label="newsletter-email"
                 />
                 <Button
                   colorScheme="brand"
@@ -89,6 +120,7 @@ export default function Footer() {
                   _active={{
                     transform: "translateY(0px)"
                   }}
+                  onClick={handleSubscribe}
                 >
                   Subscribe
                 </Button>
