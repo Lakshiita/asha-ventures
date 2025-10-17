@@ -5,6 +5,7 @@ import {
   Image, 
   Stack, 
   IconButton, 
+  Divider,
   Flex 
 } from "@chakra-ui/react";
 import { FaChevronLeft, FaChevronRight, FaQuoteLeft } from "react-icons/fa";
@@ -29,6 +30,19 @@ export default function Testimonials() {
 
   return (
     <Box w="100%" py={20} position="relative">
+      <Heading
+        textAlign="center"
+        color="blue.700"
+        fontFamily="'Playfair Display', serif" // Explicitly set font family
+        textStyle="brandPrimary" // Applied the global text style
+        mb={2}
+      >
+        What Our Partners Say
+      </Heading>
+      <Text textAlign="center" color="gray.500" mb={8}>
+        Stories of collaboration and growth from our portfolio companies.
+      </Text>
+      <Divider my={6} />
       <Flex
         maxW="6xl"
         mx="auto"

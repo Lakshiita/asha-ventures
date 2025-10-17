@@ -2,7 +2,7 @@
   {
     "id": "adda247",
     "fund": ["Fund I"],
-    "status": "active",
+    "status": "Active",
     "name": "Adda247",
     "sector": "Ed-Tech",
     "year-of-investment": [2019],
@@ -21,11 +21,11 @@
   {
     "id": "gramophone",
     "fund": ["Fund I"],
-    "status": "active",
+    "status": "Active",
     "name": "Gramophone",
     "sector": "Agri-Tech",
     "year-of-investment": [2019, 2020],
-    "logo": "/assets/investments/gramophone_final.png",
+    "logo": "/assets/investments/gramophone_final.webp",
     "detailed-image": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     "website": "https://gramophone.in/",
     "linkedin": "https://www.linkedin.com/company/gramophone.co.in/",
@@ -35,7 +35,7 @@
   {
     "id": "truemeds",
     "fund": ["Fund I", "Fund II"],
-    "status": "partially exited",
+    "status": "Partially Exited",
     "name": "Truemeds",
     "sector": "Health-Tech",
     "year-of-investment": [2021],
@@ -49,7 +49,7 @@
   {
     "id": "varthana",
     "fund": ["Fund I"],
-    "status": "exited",
+    "status": "Exited",
     "name": "Varthana",
     "sector": "Ed-Tech",
     "year-of-investment": [2015],
@@ -63,7 +63,7 @@
   {
     "id": "greenway",
     "fund": ["Fund I"],
-    "status": "partially exited",
+    "status": "Partially Exited",
     "name": "Greenway Appliances",
     "sector": "Climate-Tech",
     "year-of-investment": [2015],
@@ -77,11 +77,11 @@
   {
     "id": "saahas",
     "fund": ["Fund I"],
-    "status": "active",
+    "status": "Active",
     "name": "Saahas",
     "sector": "Climate-Tech",
     "year-of-investment": [2017],
-    "logo": "/assets/investments/saahas_final.png",
+    "logo": "/assets/investments/saahas_final.jpeg",
     "detailed-image": "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     "website": "https://saahaszerowaste.com/",
     "linkedin": "https://www.linkedin.com/company/saahas-zero-waste/",
@@ -91,7 +91,7 @@
   {
     "id": "janacare",
     "fund": ["Fund I"],
-    "status": "active",
+    "status": "Active",
     "name": "Jana Care",
     "sector": "Health-Tech",
     "year-of-investment": [2019],
@@ -105,7 +105,7 @@
   {
     "id": "avanti",
     "fund": ["Fund I"],
-    "status": "active",
+    "status": "Active",
     "name": "Avanti",
     "sector": "Ed-Tech",
     "year-of-investment": [2016],
@@ -119,7 +119,7 @@
   {
     "id": "ascend",
     "fund": ["Fund I", "Fund II"],
-    "status": "active",
+    "status": "Active",
     "name": "Ascend capital",
     "sector": "Financial Services",
     "year-of-investment": [2024],
@@ -133,7 +133,7 @@
   {
     "id": "automony",
     "fund": ["Fund I", "Fund II"],
-    "status": "active",
+    "status": "Active",
     "name": "Automony",
     "sector": "Financial Services",
     "year-of-investment": [2020],
@@ -147,7 +147,7 @@
   {
     "id": "janaadhar",
     "fund": ["Fund I"],
-    "status": "active",
+    "status": "Active",
     "name": "Janaadhar",
     "sector": "Climate-Tech",
     "year-of-investment": [2014, 2020],
@@ -161,7 +161,7 @@
   {
     "id": "nepra",
     "fund": ["Fund I"],
-    "status": "active",
+    "status": "Active",
     "name": "Nepra",
     "sector": "Climate-Tech",
     "year-of-investment": [2018, 2019],
@@ -175,7 +175,7 @@
   {
     "id": "swarna",
     "fund": ["Fund I"],
-    "status": "active",
+    "status": "Active",
     "name": "Swarna Pragati",
     "sector": "Financial Services",
     "year-of-investment": [2016],
@@ -189,7 +189,7 @@
   {
     "id": "vastu",
     "fund": ["Fund I"],
-    "status": "partially exited",
+    "status": "Partially Exited",
     "name": "Vastu",
     "sector": "Financial Services",
     "year-of-investment": [2015],

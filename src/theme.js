@@ -4,12 +4,13 @@ import { mode } from "@chakra-ui/theme-tools";
 
 const colors = {
   brand: {
-    10:  "#fef4e7ff",
-    50:  "#fdd49eff",
-    51:  "#face83ff",
-    52:  "rgba(255, 184, 92, 1)",
-    53:  "#ffb951ff",
-    54:  "#f8a048ff",
+    10: "#ffffffff",
+    50: "#fdd49eff",
+    51: "#face83ff",
+    52: "rgba(255, 184, 92, 1)",
+    53: "#ffb951ff",
+    54: "#f8a048ff",
+    55: "#fa8d1fff",
     100: "#f1e8d9",
     200: "#fff9eeff",
     300: "#d8c49a",
@@ -20,11 +21,11 @@ const colors = {
     800: "#6f5838",
     900: "#391003ff",
     section: {
-      hero: "#ffe8c8ff",
-      sectors: "#e2e2fcff",
-      carousel: "#f3fbff",
-      testimonials: "#fde7e7ff",
-      signatory: "#d6ffcbff",
+      hero: "#ffffffff",
+      sectors: "#d3e8ffff",
+      carousel: "#ffd1fdff",
+      testimonials: "#d6ffd6ff",
+      signatory: "#fffccdff",
     },
   },
 
@@ -51,12 +52,12 @@ const components = {
       py: 2,
       rounded: "md",
       fontWeight: 500,
-      _hover: { textDecoration: "none", bg: "brand.100" },
+      _hover: { textDecoration: "none", bg: "brand.55" },
     },
     variants: {
       nav: {
         fontWeight: 500,
-        _hover: { bg: "brand.200", color: "brand.800" },
+        _hover: { bg: "brand.200", color: "brand.55" },
         "&.active": {
           fontWeight: 700,
           bg: "brand.300",

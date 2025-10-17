@@ -1,8 +1,5 @@
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useRef } from "react";
-import ForceGraph2D from 'react-force-graph-2d';
-
+import { Box, Flex, Heading, Text, SimpleGrid } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import {
   FaHeartbeat,
   FaDollarSign,
@@ -17,152 +14,94 @@ const sectors = [
   {
     icon: FaHeartbeat,
     title: "Healthcare",
-    text: "Ensuring access to quality and low-cost healthcare for underserved populations through technology-led delivery models and innovative financing solutions"
+    text: "Ensuring access to quality and low-cost healthcare for underserved populations through technology-led delivery models and innovative financing solutions.",
+    color: "red.400",
   },
   {
     icon: FaDollarSign,
     title: "Financial Services",
-    text: "Driving financial inclusion by expanding access to credit, insurance, and savings for underserved individuals and MSMEs via digital and alternative models"
+    text: "Driving financial inclusion by expanding access to credit, insurance, and savings for underserved individuals and MSMEs via digital and alternative models.",
+    color: "blue.500",
   },
   {
     icon: FaLeaf,
     title: "Sustainability",
-    text: "Building a resource-efficient future by enabling waste reduction, material recovery, and sustainable consumption through scalable circular innovations"
+    text: "Building a resource-efficient future by enabling waste reduction, material recovery, and sustainable consumption through scalable circular innovations.",
+    color: "green.500",
   },
   {
     icon: FaShoppingCart,
     title: "Consumer",
-    text: "Enhancing everyday living for underserved populations by supporting access to affordable, high-quality, and trusted products and services across essential consumption categories."
+    text: "Enhancing everyday living for underserved populations by supporting access to affordable, high-quality, and trusted products and services.",
+    color: "orange.400",
   },
   {
     icon: FaLaptopCode,
     title: "MSME Technology",
-    text: "Digitizing and formalizing India's small businesses by supporting tech platforms that enhance productivity, compliance, and access to markets and finance"
-  }
+    text: "Digitizing and formalizing India's small businesses by supporting tech platforms that enhance productivity, compliance, and access to markets and finance.",
+    color: "purple.500",
+  },
 ];
 
-function Sectors() {
-  const containerRef = useRef(null);
-  // Use viewport scroll (no target) so cards animate as user scrolls the page
-  const { scrollYProgress } = useScroll();
-
-  // Create a transform for each card with staggered offsets so later cards
-  // move less and appear on top. We map scroll progress [0,1] to a Y offset
-  // that starts larger for earlier cards and ends smaller.
-  const overlapY = sectors.map((_, i) =>
-    useTransform(scrollYProgress, [0, 1], [i * 120, i * 20])
-  );
-
-  // Graph Data
-  const graphData = {
-    nodes: [
-      { id: "Asha Ventures", group: "root", color: "#ED8936" },
-      ...sectors.map((s, i) => ({
-        id: s.title,
-        group: "sector",
-        color: "#FBD38D"
-      })),
-    ],
-    links: sectors.map((s) => ({
-      source: "Asha Ventures",
-      target: s.title
-    })),
-  };
-
-  const graphRef = useRef();
-
-  useEffect(() => {
-    // Center the graph nicely
-    if (graphRef.current) {
-      graphRef.current.zoomToFit(400);
-    }
-  }, []);
-
+export default function Sectors() {
   return (
-    <Flex
-      ref={containerRef}
-      w="100%"
-      h="100vh"
-      px={{ base: 6, md: 12 }}
-      py={16}
-      align="center"
-      justify="space-between"
-      overflow="hidden"
-    >
-      {/* Left side – Overlapping Cards */}
-      <Box w={{ base: "100%", md: "50%" }} position="relative">
-        <Heading mb={10} fontSize="3xl" color="orange.800">
-          Sectors We Cover
-        </Heading>
-
-        <Box position="relative" h="70vh">
-          {sectors.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <MotionBox
-                key={index}
-                position="absolute"
-                top={0}
-                left={0}
-                right={0}
-                // Later cards should appear on top of earlier ones: give higher zIndex
-                style={{ y: overlapY[index], zIndex: index + 1 }}
-                bg="orange.50"
-                borderLeft="6px solid"
-                borderColor="orange.500"
-                rounded="xl"
-                shadow="lg"
-                p={6}
-                mb={6}
-                whileHover={{ scale: 1.03, y: -5 }}
-              >
-                <Flex align="center" gap={4}>
-                  <Box as={Icon} w={10} h={10} color="orange.600" />
-                  <Box>
-                    <Heading size="md" mb={2} color="orange.800">
-                      {item.title}
-                    </Heading>
-                    <Text fontSize="sm" color="gray.600">
-                      {item.text}
-                    </Text>
-                  </Box>
-                </Flex>
-              </MotionBox>
-            );
-          })}
-        </Box>
-      </Box>
-
-      {/* Right side – Interactive Tree Graph */}
-      <Box
-        w={{ base: "0%", md: "45%" }}
-        display={{ base: "none", md: "flex" }}
-        alignItems="center"
-        justifyContent="center"
-        position="relative"
-        h="80vh"
+    <Box py={10} px={{ base: 6, md: 20 }}>
+      <Heading
+        textAlign="center"
+        color="blue.700"
+        fontFamily="'Playfair Display', serif" // Explicitly set font family
+        textStyle="brandPrimary" // Applied the global text style
+        mb={2}
       >
-        <ForceGraph2D
-          ref={graphRef}
-          graphData={graphData}
-          nodeAutoColorBy="group"
-          linkColor={() => "#ED8936"}
-          backgroundColor="white"
-          nodeCanvasObject={(node, ctx, globalScale) => {
-            const label = node.id;
-            const fontSize = 5 / globalScale;
-            ctx.fillStyle = node.color;
-            ctx.beginPath();
-            ctx.arc(node.x, node.y, 6, 0, 2 * Math.PI, false);
-            ctx.fill();
-            ctx.font = `${fontSize}px Sans-Serif`;
-            ctx.fillStyle = "#333";
-            ctx.fillText(label, node.x + 8, node.y + 3);
-          }}
-        />
-      </Box>
-    </Flex>
+        Sectors We Cover
+      </Heading>
+      <Text textAlign="center" color="gray.500" mb={8}>
+        Areas where Asha Ventures drives inclusive growth and sustainable impact.
+      </Text>
+
+      <SimpleGrid
+        columns={{ base: 1, md: 2, lg: 3 }}
+        spacing={8}
+        justifyItems="center"
+      >
+        {sectors.map((sector, index) => {
+          const Icon = sector.icon;
+          return (
+            <MotionBox
+              key={index}
+              whileHover={{ y: -6, scale: 1.03 }}
+              transition={{ duration: 0.3 }}
+              bg="brand.section.signatory"
+              // bg="white"
+              p={6}
+              rounded="2xl"
+              shadow="md"
+              maxW="xs"
+              textAlign="center"
+            >
+              <Box
+                as={Icon}
+                color={sector.color}
+                boxSize={10}
+                mx="auto"
+                mb={4}
+              />
+              <Heading
+                as="h3"
+                size="md"
+                mb={3}
+                color="gray.800"
+                fontWeight="bold"
+              >
+                {sector.title}
+              </Heading>
+              <Text color="gray.600" fontSize="sm">
+                {sector.text}
+              </Text>
+            </MotionBox>
+          );
+        })}
+      </SimpleGrid>
+    </Box>
   );
 }
-
-export default Sectors;

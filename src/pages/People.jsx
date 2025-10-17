@@ -221,15 +221,15 @@ export default function People() {
         <Container maxW="container.xl" centerContent>
           <VStack spacing={12} align="stretch">
             <Box>
-              <Heading size="lg" mb={6} textStyle="defaultText">Founding Partners</Heading>
+              <Heading size="xl" mb={6} textStyle="defaultText" fontFamily="'Playfair Display', serif">Founding Partners</Heading>
               <FoundersGrid data={peopleData.founders} />
             </Box>
             <Box>
-              <Heading size="lg" mb={6} textStyle="defaultText">Team</Heading>
+              <Heading size="xl" mb={6} textStyle="defaultText" fontFamily="'Playfair Display', serif">Team</Heading>
               <PeopleGrid data={peopleData.team} onPersonClick={handlePersonClick} />
             </Box>
             <Box>
-              <Heading size="lg" mb={6} textStyle="defaultText">Early Supporters</Heading>
+              <Heading size="xl" mb={6} textStyle="defaultText" fontFamily="'Playfair Display', serif">Early Supporters</Heading>
               <PeopleGrid data={peopleData.supporters} onPersonClick={handlePersonClick} />
             </Box>
           </VStack>
@@ -269,7 +269,8 @@ export default function People() {
           <Grid templateRows={{ base: "auto 1fr", md: "40vh 1fr" }} h="100vh">
             {/* TOP: maroon header */}
             <Box
-              bgImage="url('/assets/people/Aaron Loeb (1).png')"
+              // bgImage="url('/assets/people/Aaron Loeb (1).png')"
+              bgGradient="linear(135deg, #bcc3ffff  20%, #f9a74eff 60%)"
               bgSize="cover"
               bgPosition="center"
               bgRepeat="no-repeat"
@@ -351,6 +352,8 @@ export default function People() {
                     as="h2"
                     fontSize={{ base: "2xl", md: "5xl" }}
                     mb={2}
+                    fontWeight="bold"
+                    color={"white"}
                     lineHeight={1}
                   >
                     {selectedPerson?.name}

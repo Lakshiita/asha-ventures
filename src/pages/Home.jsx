@@ -7,7 +7,7 @@ import "../styles/VideoMask.css";
 import Home_Carousel from "../components/HomeCarousel";
 import Testimonials from "../components/Testimonials";
 import Sectors from "../components/Sectors";
-import {  motion, useScroll, useTransform, useSpring} from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Hero from "../components/Hero";
 
 const MotionBox = motion(Box);
@@ -84,6 +84,27 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  // Debugging logs for scroll progress and sectors animations
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.onChange((value) => {
+      console.log("scrollYProgress:", value);
+    });
+    return () => unsubscribe();
+  }, [scrollYProgress]);
+
+  useEffect(() => {
+    const unsubscribeOpacity = sectorsOpacityRaw.onChange((value) => {
+      console.log("sectorsOpacityRaw:", value);
+    });
+    const unsubscribeY = sectorsYRaw.onChange((value) => {
+      console.log("sectorsYRaw:", value);
+    });
+    return () => {
+      unsubscribeOpacity();
+      unsubscribeY();
+    };
+  }, [sectorsOpacityRaw, sectorsYRaw]);
+
   return (
     // Outer scroll container: full viewport, internal scroll. We drive all scroll progress from here.
     <Box
@@ -100,8 +121,22 @@ export default function Home() {
       <Hero scrollYProgress={scrollYProgress} />
 
       {/* SECTORS / CAROUSEL STACK: We put sectors on top so they can slide up and overlap hero */}
-      <Sectors containerRef={containerRef} scrollYProgress={scrollYProgress} />
+      <MotionBox
+        as="section"
+        position="sticky"
+        bg="brand.section.sectors"
+        top="0"
+        zIndex={30}
+        height="100vh"
+        style={{
+          opacity: 1,
+          y: useSpring(useTransform(scrollYProgress, [0.1, 0.25, 0.4], ["100%", "0%", "-15%"]
+          )),
+        }}
 
+      >
+        <Sectors/>
+      </MotionBox>
       {/* CAROUSEL (placed below sectors in DOM so it appears after) */}
       <MotionBox
         as="section"
@@ -126,17 +161,18 @@ export default function Home() {
         position="sticky"
         bg="brand.section.testimonials"
         top="0"
-        zIndex={40}
+        zIndex={30}
         height="100vh"
         style={{
           opacity: 1,
           y: useSpring(useTransform(scrollYProgress, [0.6, 0.78, 1], ["100%", "0%", "0%"])),
         }}
-
       >
         <Testimonials />
       </MotionBox>
-      <Box height="500vh" />
+      {/* <Box height="50vh" /> */}
+      {/* Spacer at bottom to push footer into view */}
+      <Box height="50vh" bg="transparent" />
     </Box>
   );
 }

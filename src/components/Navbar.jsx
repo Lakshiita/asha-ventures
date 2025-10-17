@@ -1,5 +1,5 @@
 import {
-  Box, Flex, HStack, IconButton, Text, Switch,useDisclosure, Stack, Link as CLink, Image, Button, useColorMode, useColorModeValue
+  Box, Flex, HStack, IconButton, Text, Switch, useDisclosure, Stack, Link as CLink, Image, Button, useColorMode, useColorModeValue
 } from "@chakra-ui/react";
 import { Link, NavLink } from "react-router-dom";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
@@ -18,7 +18,10 @@ const NavLinkItem = ({ to, children }) => (
     as={NavLink}
     to={to}
     variant="nav"
-    className={({ isActive }) => `text-[30px] text-textColor2 font-[Supreme-Medium] leading-normal text-center ${isActive ? "active" : ""}`}
+    className={({ isActive }) =>
+      `text-[30px] font-[Supreme-Medium] leading-normal text-center ${isActive ? "text-orange-500" : "text-textColor2"
+      }`
+    }
   >
     {children}
   </CLink>
