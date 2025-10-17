@@ -1,142 +1,383 @@
-// src/pages/Home.jsx
-import {
-  Box,
-} from "@chakra-ui/react";
-import { useState, useEffect, useRef } from "react";
+import { Box, Button, Grid, Heading, Image, Text, Stack, IconButton, Flex} from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { FaChevronLeft, FaChevronRight, FaHeartbeat, FaDollarSign, FaLeaf, FaShoppingCart, FaLaptopCode } from "react-icons/fa";
 import "../styles/VideoMask.css";
-import Home_Carousel from "../components/HomeCarousel";
+import slides from "../data/slides.json";
 import Testimonials from "../components/Testimonials";
-import Sectors from "../components/Sectors";
-import {  motion, useScroll, useTransform, useSpring} from "framer-motion";
-import Hero from "../components/Hero";
-
-const MotionBox = motion(Box);
 
 export default function Home() {
-  // Outer scroll container reference (the thing we read progress from)
-  const containerRef = useRef(null);
+  const [current, setCurrent] = useState(0);
+  const [isHeadingVisible, setIsHeadingVisible] = useState(false);
+  const sectorsRef = useRef(null);
 
-  // global progress 0..1 for the entire scrollable container
-  const { scrollYProgress } = useScroll();
+  const prevSlideCallback = useCallback(() =>
+    setCurrent((c) => (c === 0 ? slides.length - 1 : c - 1)), []);
+  const nextSlideCallback = useCallback(() =>
+    setCurrent((c) => (c === slides.length - 1 ? 0 : c + 1)), []);
 
-  // ----------------
-  // HERO (sticky)
-  // ----------------
-  // Keep hero visually fixed at top and then fade it out a little after sectors come up.
-  const heroOpacityRaw = useTransform(scrollYProgress, [0, 0.18, 0.35], [1, 1, 0.2]);
-  const heroYRaw = useTransform(scrollYProgress, [0, 0.4], ["0%", "-6%"]); // tiny lift for a parallax feel
-
-  // ----------------
-  // SECTORS (slides up over hero)
-  // ----------------
-  // We map container progress to a translate value that takes sectors from fully below
-  // (100%) to 0 (aligned) and then slightly negative to tuck over the hero while hero fades.
-  // tweak the input range to move overlap timing.
-  const sectorsYRaw = useTransform(scrollYProgress, [0.12, 0.28, 0.42], ["100%", "0%", "-12%"]);
-  const sectorsOpacityRaw = useTransform(scrollYProgress, [0.12, 0.28], [0, 1]);
-  const sectorsY = useSpring(sectorsYRaw, { stiffness: 150, damping: 30 });
-  const sectorsOpacity = useSpring(sectorsOpacityRaw, { stiffness: 120, damping: 22 });
-  const sectorsScale = useSpring(useTransform(scrollYProgress, [0.12, 0.42], [0.995, 1]), {
-    stiffness: 120,
-    damping: 20,
-  });
-
-  // ----------------
-  // CAROUSEL / subsequent sections
-  // ----------------
-  const carouselYRaw = useTransform(scrollYProgress, [0.4, 0.62], ["40%", "0%"]);
-  const carouselOpacityRaw = useTransform(scrollYProgress, [0.45, 0.62], [0, 1]);
-
-  // Generic fade/slide for the rest sections (testimonials, signatory)
-  const sectionOpacityRaw = useTransform(scrollYProgress, [0.55, 0.8], [0, 1]);
-  const sectionYRaw = useTransform(scrollYProgress, [0.55, 0.8], ["20px", "0px"]);
-  const sectionOpacity = useSpring(sectionOpacityRaw, { stiffness: 120, damping: 20 });
-  const sectionY = useSpring(sectionYRaw, { stiffness: 120, damping: 20 });
-
-  // refs used for other UI (optional)
-  const refSectors = useRef(null);
-
-  // subtle smooth scrolling for direct jumps (optional)
+  // Auto-play carousel
   useEffect(() => {
-    document.documentElement.style.scrollBehavior = "smooth";
+    const interval = setInterval(nextSlideCallback, 4000);
+    return () => clearInterval(interval);
+  }, [nextSlideCallback]);
+
+  useEffect(() => {
+    document.documentElement.style.scrollBehavior = 'smooth';
     return () => {
-      document.documentElement.style.scrollBehavior = "";
+      document.documentElement.style.scrollBehavior = '';
     };
   }, []);
 
-  // small intersection-driven card reveal for sectors (kept from your original)
-  const [isHeadingVisible, setIsHeadingVisible] = useState(false);
-  const [visibleCards, setVisibleCards] = useState([]);
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsHeadingVisible(true);
-          // animate cards in sequence
-          [0, 1, 2, 3, 4].forEach((i) => {
-            setTimeout(() => setVisibleCards((p) => (p.includes(i) ? p : [...p, i])), i * 150);
+          // Animate cards one by one with delay
+          [0, 1, 2, 3, 4].forEach((index) => {
+            setTimeout(() => {
+              setVisibleCards(prev => [...prev, index]);
+            }, index * 200);
           });
         }
       },
-      { threshold: 0.25, root: containerRef.current }
+      { threshold: 0.3 }
     );
-    if (refSectors.current) observer.observe(refSectors.current);
+
+    if (sectorsRef.current) {
+      observer.observe(sectorsRef.current);
+    }
+
     return () => observer.disconnect();
   }, []);
 
   return (
-    // Outer scroll container: full viewport, internal scroll. We drive all scroll progress from here.
     <Box
-      ref={containerRef}
-      position="relative"
-      width="100%"
       sx={{
-        "&::-webkit-scrollbar": { display: "none" },
+        scrollSnapType: 'y mandatory',
+        '& > *': {
+          scrollSnapAlign: 'start'
+        }
       }}
     >
-      {/* Spacer to create scroll height */}
-      <Box position="absolute" top="0" left="0" right="0" height="600vh" />
-      {/* HERO - sticky at top. pointerEvents none so underlying sections can be interactive when overlapped */}
-      <Hero scrollYProgress={scrollYProgress} />
+      {/* Hero */}
+      <Box w="100%" h="100vh">
+        <Box
+          w="100%"
+          h="100%"
+          display="flex"
+          flexDirection={{ base: "column", md: "row" }}
+        >
+          {/* Video Section - Left Half */}
+          <Box
+            w={{ base: "100%", md: "50%" }}
+            h={{ base: "50%", md: "100%" }}
+            position="relative"
+            overflow="hidden"
+            borderRadius={{ base: "20px", md: "0" }}
+            mx={{ base: 4, md: 0 }}
+          >
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{
+                objectFit: "cover",
+                width: "100%",
+                height: "100%"
+              }}
+              className="mask"
+            >
+              <source src="/assets/Home_Carousel/ashaventures.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </Box>
 
-      {/* SECTORS / CAROUSEL STACK: We put sectors on top so they can slide up and overlap hero */}
-      <Sectors containerRef={containerRef} scrollYProgress={scrollYProgress} />
+          {/* Quote Section - Right Half */}
+          <Box
+            w={{ base: "100%", md: "50%" }}
+            h={{ base: "50%", md: "100%" }}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            px={{ base: 4, md: 16 }}
+            py={{ base: 8, md: 0 }}
+          >
+            <Stack spacing={6} maxW="lg">
+              <Heading
+                fontWeight="600"
+                fontFamily="Avenir, sans-serif"
+                fontSize={{ base: "1.5rem", md: "2.4rem" }}
+                letterSpacing={0.5}
+              >
+                Partnering With Ambitious{" "}
+                <Text as="span" color="orange.500" fontWeight="inherit">
+                  Entrepreneurs
+                </Text>{" "}
+                Who Leverage Technology To{" "}
+                <Text as="span" color="orange.500" fontWeight="inherit">
+                  Build Businesses
+                </Text>{" "}
+                For India's Emerging Middle Class
+              </Heading>
 
-      {/* CAROUSEL (placed below sectors in DOM so it appears after) */}
-      <MotionBox
-        as="section"
-        position="sticky"
-        bg="brand.section.carousel"
-        top="0"
-        zIndex={30}
-        height="100vh"
-        style={{
-          opacity: 1,
-          y: useSpring(useTransform(scrollYProgress, [0.1, 0.25, 0.4], ["100%", "0%", "-15%"]
-          )),
-        }}
 
+              <Text fontSize="lg" color="textColor2">
+                We invest in bold ideas that shape India’s future economy.
+              </Text>
+              <Stack direction={{ base: "column", sm: "row" }} spacing={3}>
+                <Button as={Link} to="/investments" size="lg">
+                  View Portfolio
+                </Button>
+                <Button as={Link} to="/impact" variant="outline" size="lg">
+                  Our Impact
+                </Button>
+              </Stack>
+            </Stack>
+          </Box>
+
+
+        </Box>
+      </Box>
+
+      {/* Sectors Section */}
+      <Box w="100%" px={8} py={16} ref={sectorsRef}>
+
+        <Flex
+          direction="column"
+          bg="white"
+          shadow="xl"
+          rounded="xl"
+          overflow="hidden"
+          p={10}
+        >
+          {/* Centered Heading inside the card */}
+          <Heading
+            textAlign="center"
+            mb={10}
+            fontSize="3xl"
+            color="orange.800"
+            transform={isHeadingVisible ? "translateY(0)" : "translateY(-20px)"}
+            opacity={isHeadingVisible ? 1 : 0}
+            transition="all 0.8s ease-out"
+          >
+            Sectors we cover
+          </Heading>
+          {/* Horizontal sectors */}
+          <Flex>
+            {[
+              { icon: FaHeartbeat, title: "Healthcare", text: "Ensuring access to quality and low-cost healthcare for underserved populations through technology-led delivery models and innovative financing solutions", hoverBg: "brand.50" },
+              { icon: FaDollarSign, title: "Financial Services", text: "Driving financial inclusion by expanding access to credit, insurance, and savings for underserved individuals and MSMEs via digital and alternative models", hoverBg: "brand.51" },
+              { icon: FaLeaf, title: "Sustainability", text: "Building a resource-efficient future by enabling waste reduction, material recovery, and sustainable consumption through scalable circular innovations", hoverBg: "brand.52" },
+              { icon: FaShoppingCart, title: "Consumer", text: "Enhancing everyday living for underserved populations by supporting access to affordable, high-quality, and trusted products and services across essential consumption categories.", hoverBg: "brand.53" },
+              { icon: FaLaptopCode, title: "MSME Technology", text: "Digitizing and formalizing India's small businesses by supporting tech platforms that enhance productivity, compliance, and access to markets and finance", hoverBg: "brand.54" }
+            ].map((item, index, arr) => (
+              <Box
+                key={index}
+                flex="1"
+                textAlign="center"
+                px={6}
+                py={8}
+                borderRight={index !== arr.length - 1 ? "1px solid" : "none"}
+                borderColor="gray.200"
+                transition="all 0.3s ease"
+                _hover={{
+                  bg: item.hoverBg,
+                  transform: "translateY(-5px)",
+                }}
+                role="group"
+                position="relative"
+                minH="270px" // 👈 keeps card height fixed
+              >
+                <Box
+                  as={item.icon}
+                  w={12}
+                  h={12}
+                  mx="auto"
+                  color="orange.500"
+                  transition="all 0.3s ease"
+                  _groupHover={{ transform: "scale(1.2) translateY(-10px)", color: "orange.600" }}
+                />
+                <Heading
+                  mt={4}
+                  size="md"
+                  transition="all 0.3s ease"
+                  _groupHover={{ transform: "translateY(-10px)" }}
+                >
+                  {item.title}
+                </Heading>
+
+                {/* Preview text (shown by default, hidden on hover) */}
+                <Text
+                  mt={6}
+                  fontSize="sm"
+                  color="gray.600"
+                  noOfLines={2}
+                  opacity={1}
+                  transition="opacity 0.3s ease"
+                  _groupHover={{ opacity: 0 }}
+                >
+                  {item.text}
+                </Text>
+
+                {/* Full text (hidden by default, shown on hover) */}
+                <Text
+                  mt={2}
+                  fontSize="sm"
+                  color="orange.700"
+                  opacity={0}
+                  transform="translateY(-20px)"
+                  transition="all 0.3s ease"
+                  _groupHover={{ opacity: 1, transform: "translateY(0)" }}
+                  position="absolute"
+                  left={6}
+                  right={6}
+                  bottom={8}
+                >
+                  {item.text}
+                </Text>
+              </Box>
+            ))}
+          </Flex>
+        </Flex>
+      </Box>
+
+
+
+
+
+      {/* Fullscreen Carousel */}
+      <Box
+        position="relative"
+        h="calc(100vh - 4rem)"
+        overflow="hidden"
+        mt={16}
       >
-        <Home_Carousel />
-      </MotionBox>
+        <Image
+          src={slides[current].image}
+          alt={`slide-${current}`}
+          objectFit="cover"
+          w="100%"
+          h="100%"
+          key={current}
+          opacity={0}
+          animation="slideIn 0.6s ease-out forwards"
+          sx={{
+            '@keyframes slideIn': {
+              '0%': {
+                opacity: 0,
+                transform: 'translateX(50px)'
+              },
+              '100%': {
+                opacity: 1,
+                transform: 'translateX(0)'
+              }
+            }
+          }}
+        />
 
-      {/* TESTIMONIALS */}
-      <MotionBox
-        as="section"
-        position="sticky"
-        bg="brand.section.testimonials"
-        top="0"
-        zIndex={40}
-        height="100vh"
-        style={{
-          opacity: 1,
-          y: useSpring(useTransform(scrollYProgress, [0.6, 0.78, 1], ["100%", "0%", "0%"])),
-        }}
+        {/* Dark overlay for text */}
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          w="100%"
+          h="100%"
+          bg="blackAlpha.600"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          textAlign="center"
+          px={6}
+        >
+          <Heading
+            color="white"
+            size="2xl"
+            maxW="3xl"
+            key={`text-${current}`}
+            opacity={0}
+            animation="slideIn 0.5s ease-out 0.4s forwards"
+          >
+            {slides[current].text}
+          </Heading>
+        </Box>
 
-      >
-        <Testimonials />
-      </MotionBox>
-      <Box height="500vh" />
+        {/* Controls */}
+        <IconButton
+          aria-label="Previous Slide"
+          icon={<FaChevronLeft />}
+          position="absolute"
+          top="50%"
+          left="20px"
+          transform="translateY(-50%)"
+          onClick={prevSlideCallback}
+          bg="transparent"
+          _hover={{ bg: "whiteAlpha.300" }}
+          rounded="full"
+          fontSize="2xl"
+        />
+        <IconButton
+          aria-label="Next Slide"
+          icon={<FaChevronRight />}
+          position="absolute"
+          top="50%"
+          right="20px"
+          transform="translateY(-50%)"
+          onClick={nextSlideCallback}
+          bg="transparent"
+          _hover={{ bg: "whiteAlpha.300" }}
+          rounded="full"
+          fontSize="2xl"
+        />
+      </Box>
+
+
+      <Testimonials />
+      {/* Signatory of Section */}
+      <Box w="100%" px={8} py={16}>
+        {/* <Heading 
+          textAlign="left" 
+          mb={12} 
+          fontSize="3xl" 
+          color="orange.800"
+        >
+          Signatory of
+        </Heading> */}
+        <Grid templateColumns="repeat(3, 1fr)" gap={8} maxW="4xl" mx="auto">
+          {/* <Box textAlign="left">
+            <Image
+              src="/assets/signatory/PRI-Sig-Web-V1.png"
+              alt="Signatory 1"
+              h="120px"
+              objectFit="contain"
+              mx="auto"
+            />
+          </Box> */}
+          <Box textAlign="center">
+            <Image
+              src="/assets/signatory/Blue_Mark_Practive_verification_seal_05_22_756364e25f.png"
+              alt="Signatory 2"
+              h="120px"
+              objectFit="contain"
+              mx="auto"
+            />
+          </Box>
+          <Box textAlign="center">
+            <Image
+              src="/assets/signatory/OPIM_Logo_RGB_Signatory_1_1_a19b434476.png"
+              alt="Signatory 3"
+              h="120px"
+              objectFit="contain"
+              mx="auto"
+            />
+          </Box>
+        </Grid>
+      </Box>
     </Box>
+
+
+
   );
 }
