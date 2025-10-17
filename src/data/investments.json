@@ -1,6 +1,8 @@
 [
   {
     "id": "adda247",
+    "fund": ["Fund I"],
+    "status": "active",
     "name": "Adda247",
     "sector": "Ed-Tech",
     "year-of-investment": [2019],
@@ -18,6 +20,8 @@
   },
   {
     "id": "gramophone",
+    "fund": ["Fund I"],
+    "status": "active",
     "name": "Gramophone",
     "sector": "Agri-Tech",
     "year-of-investment": [2019, 2020],
@@ -30,6 +34,8 @@
   },
   {
     "id": "truemeds",
+    "fund": ["Fund I", "Fund II"],
+    "status": "partially exited",
     "name": "Truemeds",
     "sector": "Health-Tech",
     "year-of-investment": [2021],
@@ -42,6 +48,8 @@
   },
   {
     "id": "varthana",
+    "fund": ["Fund I"],
+    "status": "exited",
     "name": "Varthana",
     "sector": "Ed-Tech",
     "year-of-investment": [2015],
@@ -54,6 +62,8 @@
   },
   {
     "id": "greenway",
+    "fund": ["Fund I"],
+    "status": "partially exited",
     "name": "Greenway Appliances",
     "sector": "Climate-Tech",
     "year-of-investment": [2015],
@@ -66,6 +76,8 @@
   },
   {
     "id": "saahas",
+    "fund": ["Fund I"],
+    "status": "active",
     "name": "Saahas",
     "sector": "Climate-Tech",
     "year-of-investment": [2017],
@@ -78,6 +90,8 @@
   },
   {
     "id": "janacare",
+    "fund": ["Fund I"],
+    "status": "active",
     "name": "Jana Care",
     "sector": "Health-Tech",
     "year-of-investment": [2019],
@@ -90,18 +104,22 @@
   },
   {
     "id": "avanti",
+    "fund": ["Fund I"],
+    "status": "active",
     "name": "Avanti",
     "sector": "Ed-Tech",
     "year-of-investment": [2016],
     "logo": "/assets/investments/avanti_final.png",
     "detailed-image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    "website": "www.avanti.in",
+    "website": "https://www.avanti.in",
     "linkedin": "https://www.linkedin.com/company/avanti-learning-centres/",
     "description": "Avanti has pioneered a blended learning model to provide science and mathematics teaching and JEE coaching at affordable prices across India. Unlike a traditional learning model, in which teachers lecture students for close to 80 percent of their classroom time Avanti, uses a combination of video content and collaborative activities that allows teachers to focus less on lecturing and a lot more on working individually with students in the classroom to teach them problem-solving skills.",
     "latest-news": []
   },
   {
     "id": "ascend",
+    "fund": ["Fund I", "Fund II"],
+    "status": "active",
     "name": "Ascend capital",
     "sector": "Financial Services",
     "year-of-investment": [2024],
@@ -114,18 +132,22 @@
   },
   {
     "id": "automony",
+    "fund": ["Fund I", "Fund II"],
+    "status": "active",
     "name": "Automony",
     "sector": "Financial Services",
     "year-of-investment": [2020],
     "logo": "/assets/investments/automony_final.png",
     "detailed-image": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    "website": "www.automony.in",
+    "website": "https://www.automony.in",
     "linkedin": "https://www.linkedin.com/company/automony/",
     "description": "Automony, a commercial vehicle (CV) NBFC. They provide loans to drivers & small/medium transporters to finance pre-owned and new CVs like passenger vehicles, light/small CVs and MUV's and vehicle parts. The CV financing sector is a huge market dominated by the unorganized segment Automony is building a business focused on Tier-II and Tier-III locations, thereby impacting over 50,000 small transporters / truck owners who traditionally take loans at exorbitant rates from informal money lenders.",
     "latest-news": []
   },
   {
     "id": "janaadhar",
+    "fund": ["Fund I"],
+    "status": "active",
     "name": "Janaadhar",
     "sector": "Climate-Tech",
     "year-of-investment": [2014, 2020],
@@ -138,18 +160,22 @@
   },
   {
     "id": "nepra",
+    "fund": ["Fund I"],
+    "status": "active",
     "name": "Nepra",
     "sector": "Climate-Tech",
     "year-of-investment": [2018, 2019],
     "logo": "/assets/investments/nepra_final.png",
     "detailed-image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     "website": "https://www.nepra.co.in/",
-    "linkedin": "https://www.linkedin.com/company/let's-recycle---nepra-resource-management-pvt-ltd-/",
+    "linkedin": "https://www.linkedin.com/company/nepra-resource-management-pvt-ltd/",
     "description": "Nepra Resource Management is one of India's largest waste management solution providers. Nepra has formalized the Indian unregulated and unorganized waste management sector by sourcing waste from the marginalized waste pickers, ensuring long standing relationships by providing fair and transparent prices. Nepra has impacted the lives of 5000+ people from bottom of pyramid and the company processes over 500 tonnes of solid waste per day across Ahmedabad, Indore and Pune.",
     "latest-news": []
   },
   {
     "id": "swarna",
+    "fund": ["Fund I"],
+    "status": "active",
     "name": "Swarna Pragati",
     "sector": "Financial Services",
     "year-of-investment": [2016],
@@ -162,13 +188,15 @@
   },
   {
     "id": "vastu",
+    "fund": ["Fund I"],
+    "status": "partially exited",
     "name": "Vastu",
     "sector": "Financial Services",
     "year-of-investment": [2015],
     "logo": "/assets/investments/vastu_final.png",
     "detailed-image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     "website": "https://www.vastuhfc.com/",
-    "linkedin": "https://www.linkedin.com/company/vastu-housing-finance-corporation-ltd./",
+    "linkedin": "https://www.linkedin.com/company/vastu-housing-finance-corporation-ltd/",
     "description": "Today Affordable housing finance companies have grown rapidly to build a loan portfolio of Rs. 745 billion, however, if one is self-employed, and without comprehensive documented income or adequate credit history, getting a home loan can prove to be a huge challenge. This is because of traditional lenders, in the current eco-system, find it difficult to 'fit' the average person's case into their income assessment methods. Vastu Housing Finance is a housing finance company that addresses this gap by using a combination of technology and the traditional distribution model to provide simple, easy and flexible loans. Through its unique ability to acquire and underwrite large volumes of such loans, Vastu serves the under-served community.",
     "latest-news": []
   }

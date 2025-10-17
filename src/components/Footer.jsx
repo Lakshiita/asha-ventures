@@ -49,11 +49,12 @@ export default function Footer() {
 
   return (
     <Box bg="brand.100" color="gray.800" mt={10}>
-      <Container as={Stack} maxW="7xl" py={10}>
-        <SimpleGrid columns={{ base: 1, md: 4 }} spacing={10}>
+      <Container as={Stack} maxW="7xl" py={10} spacing={8}>
 
+        {/* Main Footer Grid */}
+        <SimpleGrid columns={{ base: 1, md: 4 }} spacing={10}>
           {/* Logo & Newsletter */}
-          <Stack spacing={6} align="flex-start" gridColumn={{ md: "span 2" }}>
+          <Stack spacing={10} align="flex-start" gridColumn={{ md: "span 2" }}>
             <Image
               src={logo}
               alt="Asha Ventures Logo"
@@ -63,36 +64,18 @@ export default function Footer() {
               _hover={{
                 transform: "scale(1.05)",
                 cursor: "pointer",
-                filter: "brightness(1.1)"
+                filter: "brightness(1.1)",
               }}
             />
-            <Text fontSize="2xl">
-              Asha Ventures is an inclusion and sustainability focused fund investing in early to growth stage companies.
+            <Text fontSize="2xl" fontFamily={"sans-serif"}>
+              Asha Ventures is an inclusion and sustainability focused fund
+              investing in early to growth stage companies.
             </Text>
-                  <Grid templateColumns="repeat(3, 1fr)" gap={8} maxW="4xl" mx="auto">
-                    <Box textAlign="center">
-                      <Image
-                        src="/assets/signatory/OPIM_Logo_RGB_Signatory_1_1_a19b434476.png"
-                        alt="Signatory 1"
-                        h="120px"
-                        objectFit="contain"
-                        mx="auto"
-                      />
-                      
-                    </Box>
-                    <Box textAlign="center">
-                      <Image
-                        src="/assets/signatory/Blue_Mark_Practive_verification_seal_05_22_756364e25f.png"
-                        alt="Signatory 2"
-                        h="120px"
-                        objectFit="contain"
-                        mx="auto"
-                      />
-                    </Box>
-                  </Grid>
 
             <Stack spacing={4} w="full">
-              <Text fontWeight="bold" fontSize="lg">Subscribe to our Newsletter</Text>
+              <Text fontWeight="bold" fontSize="lg">
+                Subscribe to our Newsletter
+              </Text>
               <HStack>
                 <Input
                   placeholder="Enter your email"
@@ -104,7 +87,7 @@ export default function Footer() {
                   _focus={{
                     bg: "white",
                     transform: "scale(1.02)",
-                    boxShadow: "0 0 0 2px var(--chakra-colors-brand-200)"
+                    boxShadow: "0 0 0 2px var(--chakra-colors-brand-200)",
                   }}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -115,10 +98,10 @@ export default function Footer() {
                   transition="all 0.2s ease"
                   _hover={{
                     transform: "translateY(-2px)",
-                    boxShadow: "lg"
+                    boxShadow: "lg",
                   }}
                   _active={{
-                    transform: "translateY(0px)"
+                    transform: "translateY(0px)",
                   }}
                   onClick={handleSubscribe}
                 >
@@ -128,15 +111,43 @@ export default function Footer() {
             </Stack>
           </Stack>
 
-          {/* Get In Touch */}
+          {/* Signatory Section (Moved Above) */}
           <Stack spacing={4}>
-            <Text fontWeight="bold" fontSize="xl">Get In Touch</Text>
+            <Grid
+              templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
+              gap={8}
+              maxW="4xl"
+              mx="auto"
+              mb={10}
+            >
+              <Box textAlign="center">
+                <Image
+                  src="/assets/signatory/OPIM_Logo_RGB_Signatory_1_1_a19b434476.png"
+                  alt="Signatory 1"
+                  h="120px"
+                  objectFit="contain"
+                  mx="auto"
+                />
+              </Box>
+              <Box textAlign="center">
+                <Image
+                  src="/assets/signatory/Blue_Mark_Practive_verification_seal_05_22_756364e25f.png"
+                  alt="Signatory 2"
+                  h="120px"
+                  objectFit="contain"
+                  mx="auto"
+                />
+              </Box>
+            </Grid>
+            {/* Get In Touch */}
+            <Text fontWeight="bold" fontSize="xl">
+              Get In Touch
+            </Text>
             <Text fontSize="md">
-              9th Floor, Peninsula Towers, Peninsula Corporate Park, Lower Parel West,
-              Lower Parel, Mumbai, Maharashtra 400013
+              9th Floor, Peninsula Towers, Peninsula Corporate Park, Lower Parel
+              West, Lower Parel, Mumbai, Maharashtra 400013
             </Text>
             <HStack spacing={1}>
-              {/* Location */}
               <IconButton
                 as="a"
                 href="https://g.co/kgs/pajL1fi"
@@ -150,10 +161,9 @@ export default function Footer() {
                 _hover={{
                   transform: "scale(1.2) rotate(5deg)",
                   color: "green.600",
-                  bg: "green.50"
+                  bg: "green.50",
                 }}
               />
-              {/* Gmail */}
               <IconButton
                 as="a"
                 href="mailto:info@ashaventures.in"
@@ -166,10 +176,9 @@ export default function Footer() {
                 _hover={{
                   transform: "scale(1.2) rotate(-5deg)",
                   color: "red.600",
-                  bg: "red.50"
+                  bg: "red.50",
                 }}
               />
-              {/* LinkedIn */}
               <IconButton
                 as="a"
                 href="https://linkedin.com/company/asha-ventures"
@@ -183,16 +192,17 @@ export default function Footer() {
                 _hover={{
                   transform: "scale(1.2) rotate(5deg)",
                   color: "blue.700",
-                  bg: "blue.50"
+                  bg: "blue.50",
                 }}
               />
             </HStack>
-                
           </Stack>
 
           {/* Contact */}
           <Stack spacing={4}>
-            <Text fontWeight="bold" fontSize="xl">Contact</Text>
+            <Text fontWeight="bold" fontSize="xl">
+              Contact
+            </Text>
             <VStack align="start" spacing={2}>
               <CLink
                 href="/faqs"
@@ -201,7 +211,7 @@ export default function Footer() {
                 _hover={{
                   color: "brand.500",
                   transform: "translateX(5px)",
-                  textDecoration: "underline"
+                  textDecoration: "underline",
                 }}
               >
                 FAQs
@@ -213,7 +223,7 @@ export default function Footer() {
                 _hover={{
                   color: "brand.500",
                   transform: "translateX(5px)",
-                  textDecoration: "underline"
+                  textDecoration: "underline",
                 }}
               >
                 Contact
@@ -238,7 +248,7 @@ export default function Footer() {
               transition="all 0.2s ease"
               _hover={{
                 color: "brand.500",
-                textDecoration: "underline"
+                textDecoration: "underline",
               }}
             >
               Privacy Policy
@@ -249,7 +259,7 @@ export default function Footer() {
               transition="all 0.2s ease"
               _hover={{
                 color: "brand.500",
-                textDecoration: "underline"
+                textDecoration: "underline",
               }}
             >
               Terms & Services
