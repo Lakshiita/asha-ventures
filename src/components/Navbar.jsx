@@ -1,5 +1,5 @@
 import {
-  Box, Flex, HStack, IconButton, Text, Switch, useDisclosure, Stack, Link as CLink, Image, Button, useColorMode, useColorModeValue
+  Box, Flex, HStack, IconButton, Text, Switch, useDisclosure, Stack, Link as CLink, Image, 
 } from "@chakra-ui/react";
 import { Link, NavLink } from "react-router-dom";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
@@ -8,9 +8,10 @@ const links = [
   { to: "/people", label: "Team" },
   { to: "/investments", label: "Investments" },
   { to: "/impact", label: "Our Impact" },
+  { to: "/faqs", label: "FAQs" },
   { to: "/knowledge", label: "Knowledge Resources" },
 ];
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+// import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 
 const NavLinkItem = ({ to, children }) => (
@@ -19,7 +20,7 @@ const NavLinkItem = ({ to, children }) => (
     to={to}
     variant="nav"
     className={({ isActive }) =>
-      `text-[30px] font-[Supreme-Medium] leading-normal text-center ${isActive ? "text-orange-500" : "text-textColor2"
+      `text-[35px] font-[Supreme-Medium] leading-normal text-center ${isActive ? "text-orange-500" : "text-textColor2"
       }`
     }
   >
@@ -29,15 +30,11 @@ const NavLinkItem = ({ to, children }) => (
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { colorMode, toggleColorMode } = useColorMode();
-  const navbarBg = useColorModeValue("brand.200", "gray.900");
-  const borderColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
-  const textColor = useColorModeValue("textColor2.light", "textColor2.dark");
 
   return (
     <Box
-      bg={navbarBg}
-      borderColor={borderColor}
+      bg="brand.200"
+      borderColor="blackAlpha.200"
       position="sticky"
       top="0"
       zIndex="100"
@@ -63,33 +60,6 @@ export default function Navbar() {
             <NavLinkItem key={l.to} to={l.to}>{l.label}</NavLinkItem>
           ))}
 
-          {/* Theme Switch with Icons */}
-          <Flex align="center" ml={4}>
-            <Box position="relative" display="inline-flex" alignItems="center">
-              <Switch
-                isChecked={colorMode === "dark"}
-                onChange={toggleColorMode}
-                colorScheme="orange"
-                size="lg"
-              />
-              {/* Sun icon (left) */}
-              <SunIcon
-                boxSize={3.5}
-                color="yellow.400"
-                position="absolute"
-                left="6px"
-                pointerEvents="none"
-              />
-              {/* Moon icon (right) */}
-              <MoonIcon
-                boxSize={3.5}
-                color="gray.600"
-                position="absolute"
-                right="6px"
-                pointerEvents="none"
-              />
-            </Box>
-          </Flex>
         </HStack>
 
         {/* Mobile Menu Button */}
@@ -109,19 +79,6 @@ export default function Navbar() {
             {links.map((l) => (
               <NavLinkItem key={l.to} to={l.to}>{l.label}</NavLinkItem>
             ))}
-
-            {/* Theme Switch for mobile */}
-            <Flex align="center" justify="space-between" mt={3} p={2} borderRadius="md" borderWidth="1px">
-              <Text fontSize="sm" fontWeight="medium">
-                {colorMode === "light" ? "Light Mode" : "Dark Mode"}
-              </Text>
-              <Switch
-                isChecked={colorMode === "dark"}
-                onChange={toggleColorMode}
-                colorScheme="orange"
-                size="lg"
-              />
-            </Flex>
           </Stack>
         </Box>
       ) : null}

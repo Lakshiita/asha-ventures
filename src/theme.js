@@ -12,7 +12,7 @@ const colors = {
     54: "#f8a048ff",
     55: "#fa8d1fff",
     100: "#f1e8d9",
-    200: "#fff9eeff",
+    200: "#fffcf6ff",
     300: "#d8c49a",
     400: "#c9af7a",
     500: "#ad4b00de", // primary beige
@@ -25,7 +25,7 @@ const colors = {
       sectors: "#d3e8ffff",
       carousel: "#ffd1fdff",
       testimonials: "#d6ffd6ff",
-      signatory: "#fffccdff",
+      signatory: "#ffffffff",
     },
   },
 
@@ -60,8 +60,7 @@ const components = {
         _hover: { bg: "brand.200", color: "brand.55" },
         "&.active": {
           fontWeight: 700,
-          bg: "brand.300",
-          color: "brand.900",
+          color: "brand.55",
         },
       },
     },

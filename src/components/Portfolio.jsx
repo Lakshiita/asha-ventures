@@ -230,18 +230,16 @@ export default function Portfolio({ investments, onCompanySelect }) {
 
         {grouped.length > 0 ? (
           grouped.map(({ sector, companies }, idx) => (
-            <Box key={sector} mb={10}>
+            <Box key={sector} mb={20}>
               <Text
-                fontSize={{ base: "lg", md: "2xl" }}
+                fontSize={{ base: "lg", md: "3xl" }}
                 textTransform="uppercase"
-                mb={4}
-                color="gray.700"
+                color="brand.800"
+                mb={2}
               >
-                {sector.split(' ').slice(0, -1).join(' ')}
-                <Divider mb={4} borderColor="gray.400" />
-                {sector.split(' ').slice(-1)}
+                {sector}
               </Text>
-
+              <Divider mb={4} borderColor="gray.400" />
               <VStack align="stretch" spacing={6}>
                 {companies.map((c) => (
                   <Box

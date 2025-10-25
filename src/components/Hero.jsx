@@ -67,7 +67,7 @@ const Hero = ({ scrollYProgress }) => {
           <Stack spacing={8} maxW="lg" pointerEvents="auto">
             <Heading
               fontWeight="600"
-              fontFamily="Avenir, sans-serif"
+              // fontFamily="Avenir, sans-serif"
               fontSize={{ base: "1.5rem", md: "2.4rem" }}
               letterSpacing={0.5}
             >

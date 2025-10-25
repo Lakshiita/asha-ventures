@@ -6,7 +6,7 @@ import {
   FaLeaf,
   FaShoppingCart,
   FaLaptopCode,
-} from "react-icons/fa";
+} from "react-icons/fa"; 
 
 const MotionBox = motion(Box);
 
@@ -59,49 +59,91 @@ export default function Sectors() {
         Areas where Asha Ventures drives inclusive growth and sustainable impact.
       </Text>
 
-      <SimpleGrid
-        columns={{ base: 1, md: 2, lg: 3 }}
-        spacing={8}
-        justifyItems="center"
-      >
-        {sectors.map((sector, index) => {
-          const Icon = sector.icon;
-          return (
-            <MotionBox
-              key={index}
-              whileHover={{ y: -6, scale: 1.03 }}
-              transition={{ duration: 0.3 }}
-              bg="brand.section.signatory"
-              // bg="white"
-              p={6}
-              rounded="2xl"
-              shadow="md"
-              maxW="xs"
-              textAlign="center"
-            >
-              <Box
-                as={Icon}
-                color={sector.color}
-                boxSize={10}
-                mx="auto"
-                mb={4}
-              />
-              <Heading
-                as="h3"
-                size="md"
-                mb={3}
-                color="gray.800"
-                fontWeight="bold"
+      <Flex direction="column" align="center" gap={8}>
+        <Flex direction={{ base: "column", md: "row" }} justify="center" gap={{ base: 6, md: 8 }}>
+          {sectors.slice(0, 3).map((sector, index) => {
+            const Icon = sector.icon;
+            return (
+              <MotionBox
+                key={index}
+                whileHover={{ y: -6, scale: 1.03 }}
+                transition={{ duration: 0.2 }}
+                bg="brand.section.signatory"
+                p={6}
+                rounded="3xl"
+                shadow="md"
+                maxW="sm"
+                textAlign="center"
+                minH="240px"
+                cursor="pointer"
               >
-                {sector.title}
-              </Heading>
-              <Text color="gray.600" fontSize="sm">
-                {sector.text}
-              </Text>
-            </MotionBox>
-          );
-        })}
-      </SimpleGrid>
+                <Box
+                  as={Icon}
+                  color={sector.color}
+                  boxSize={10}
+                  mx="auto"
+                  mb={4}
+                />
+                <Heading
+                  as="h2"
+                  size="md"
+                  mb={3}
+                  color="gray.800"
+                  fontWeight="bold"
+                >
+                  {sector.title}
+                </Heading>
+                <Text color="gray.600" fontSize="sm">
+                  {sector.text}
+                </Text>
+              </MotionBox>
+            );
+          })}
+        </Flex>
+        <Flex direction={{ base: "column", md: "row" }} justify="center" gap={{ base: 6, md: 8 }}>
+
+          {sectors.slice(3).map((sector, index) => {
+            const Icon = sector.icon;
+            return (
+              <MotionBox
+                key={index + 3}
+                whileHover={{ y: -6, scale: 1.03 }}
+                transition={{ duration: 0.2 }}
+                bg="brand.section.signatory"
+                p={6}
+                rounded="3xl"
+                shadow="md"
+                maxW="sm"
+                textAlign="center"
+                minH="240px"
+                cursor="pointer"
+              >
+                <Box
+                  as={Icon}
+                  color={sector.color}
+                  boxSize={10}
+                  mx="auto"
+                  mb={4}
+                />
+                <Heading
+                  as="h2"
+                  size="md"
+
+                  mb={3}
+                  color="gray.800"
+                  fontWeight="bold"
+                >
+                  {sector.title}
+                </Heading>
+                <Text color="gray.600" fontSize="sm">
+                  {sector.text}
+                </Text>
+              </MotionBox>
+            );
+          })}
+        </Flex>
+      </Flex>
+
     </Box>
   );
 }
