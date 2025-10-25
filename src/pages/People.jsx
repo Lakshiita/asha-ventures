@@ -237,20 +237,24 @@ export default function People() {
           </VStack>
         </Container>
       </Section>
-      <Modal isOpen={isOpen} onClose={onClose} size="6xl" isCentered>
+      <Modal isOpen={isOpen} onClose={onClose} size="10xl" isCentered>
         <ModalOverlay bg="blackAlpha.600" backdropFilter="blur(5px)" />
         <ModalContent
           as={MotionModalContent}
           bg="#e0e0e0ff"
           borderRadius="xl"
           p={6}
-          maxH="90vh"
+          maxW="85vw"
+          maxH="85vh"
+          w="85vw"
+          h="85vh"
           overflowY="auto"
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 60 }}
           transition={{ type: "spring", stiffness: 60, damping: 12 }}
         >
+
           <ModalCloseButton size="lg" top="1" right="1" color="gray.700" zIndex="10" />
 
           <Grid
