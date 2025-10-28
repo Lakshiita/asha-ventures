@@ -22,9 +22,9 @@ const colors = {
     900: "#391003ff",
     section: {
       hero: "#ffffffff",
-      sectors: "#d3e8ffff",
-      carousel: "#ffd1fdff",
-      testimonials: "#d6ffd6ff",
+      sectors: "#ebf5ffff",
+      carousel: "#ffeafeff",
+      testimonials: "#f0fff0ff",
       signatory: "#ffffffff",
     },
   },
