@@ -42,7 +42,7 @@ export default function Testimonials() {
       <Text textAlign="center" color="gray.500" mb={8}>
         Stories of collaboration and growth from our portfolio companies.
       </Text>
-      <Divider my={6} />
+      {/* <Divider my={6} /> */}
       <Flex
         maxW="6xl"
         mx="auto"
