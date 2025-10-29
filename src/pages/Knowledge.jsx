@@ -1,42 +1,28 @@
 import {
   Box, Button, Card, CardBody, Container, Grid, Heading, Input, Link, Stack, Tab, TabList,
-  TabPanel, TabPanels, Tabs, Text, Textarea, FormControl, FormLabel, FormHelperText
+  TabPanel, TabPanels, Tabs, Text, Textarea, FormControl, FormLabel, FormHelperText, Image
 } from "@chakra-ui/react";
 import Section from "../components/Section.jsx";
+import { mediaData } from "../data/media.json";
 
 export default function Knowledge() {
   return (
     <Box>
       <Section
         title="Knowledge Resource"
-        subtitle="Browse blogs, newsletters, media mentions, and get in touch."
+        subtitle="Browse newsletters, media mentions, and get in touch."
       >
-        <Container px={0}>
+        <Container maxW="100vw" px={0}>
           <Tabs variant="enclosed">
             <TabList>
-              <Tab>Blog</Tab>
               <Tab>Newsletters</Tab>
               <Tab>Media</Tab>
               <Tab id="contact">Contact</Tab>
             </TabList>
-            <TabPanels bg="brand.10" border="1px solid" borderColor="blackAlpha.200" rounded="md">
+            <TabPanels bg="#f7f7ff" border="1px solid" borderColor="blackAlpha.200" rounded="md">
               <TabPanel>
-                <Grid templateColumns={{ base: "1fr", md: "repeat(3,1fr)" }} gap={6}>
-                  {[1,2,3].map((i)=>(
-                    <Card key={i} bg="white" border="1px solid" borderColor="blackAlpha.100">
-                      <CardBody>
-                        <Heading size="md" mb={2}>How we evaluate early-stage impact ({i})</Heading>
-                        <Text color="gray.600" mb={3}>A short piece on our diligence approach and frameworks.</Text>
-                        <Link href="#" color="brand.700">Read more →</Link>
-                      </CardBody>
-                    </Card>
-                  ))}
-                </Grid>
-              </TabPanel>
-
-              <TabPanel>
-                <Stack spacing={4}>
-                  <Card bg="white" border="1px solid" borderColor="blackAlpha.100">
+                <Stack spacing={6}>
+                  <Card bg="white" border="1px solid" borderColor="blackAlpha.100" rounded="lg">
                     <CardBody>
                       <Heading size="md" mb={2}>Subscribe</Heading>
                       <Stack direction={{ base:"column", sm:"row" }} as="form" onSubmit={(e)=>e.preventDefault()} spacing={3}>
@@ -46,13 +32,42 @@ export default function Knowledge() {
                       <Text mt={2} fontSize="sm" color="gray.600">We send occasional updates. No spam.</Text>
                     </CardBody>
                   </Card>
-                  <Grid templateColumns={{ base: "1fr", md: "repeat(2,1fr)" }} gap={6}>
-                    {[1,2,3,4].map((i)=>(
-                      <Card key={i} bg="white" border="1px solid" borderColor="blackAlpha.100">
-                        <CardBody>
-                          <Heading size="sm" mb={1}>Newsletter #{i}</Heading>
-                          <Text color="gray.600">Quarterly portfolio updates and insights.</Text>
-                          <Link href="#" mt={2} display="inline-block" color="brand.700">Open →</Link>
+                  <Grid templateColumns={{ base: "1fr", md: "repeat(2,1fr)" }} gap={8} w="100vw" ml="calc(-50vw + 50%)" px={8}>
+                    {[1,2,3,4,5,6].map((i)=>(
+                      <Card 
+                        key={i} 
+                        bg="white" 
+                        border="2px solid" 
+                        borderColor="orange.400" 
+                        rounded="xl"
+                        boxShadow="md"
+                        overflow="hidden"
+                        transition="all 0.3s ease"
+                        _hover={{
+                          transform: "translateY(-4px)",
+                          boxShadow: "0 8px 25px rgba(255, 165, 0, 0.3)"
+                        }}
+                      >
+                        <Image
+                          src="https://via.placeholder.com/400x300/f0f0f0/666?text=Newsletter+Image"
+                          alt={`Newsletter ${i}`}
+                          w="100%"
+                          h="300px"
+                          objectFit="cover"
+                        />
+                        <CardBody textAlign="center" py={6}>
+                          <Heading 
+                            size="md" 
+                            mb={2} 
+                            fontWeight="bold"
+                            textDecoration="underline"
+                            textDecorationColor="orange.400"
+                          >
+                            Asha Impact Quarterly Newsletter
+                          </Heading>
+                          <Text color="gray.500" fontSize="sm">
+                            {i % 2 === 0 ? "December 2020" : "March 2021"}
+                          </Text>
                         </CardBody>
                       </Card>
                     ))}
@@ -61,13 +76,46 @@ export default function Knowledge() {
               </TabPanel>
 
               <TabPanel>
-                <Grid templateColumns={{ base: "1fr", md: "repeat(3,1fr)" }} gap={6}>
-                  {[1,2,3].map((i)=>(
-                    <Card key={i} bg="white" border="1px solid" borderColor="blackAlpha.100">
-                      <CardBody>
-                        <Heading size="sm" mb={1}>Media mention #{i}</Heading>
-                        <Text color="gray.600">Featured in Industry Daily on impact investing.</Text>
-                        <Link href="#" mt={2} display="inline-block" color="brand.700">View →</Link>
+                <Grid templateColumns={{ base: "1fr", md: "repeat(2,1fr)", lg: "repeat(3,1fr)" }} gap={6} w="100vw" ml="calc(-50vw + 50%)" px={8}>
+                  {mediaData.map((item, i)=>(
+                    <Card 
+                      key={i} 
+                      bg="white" 
+                      border="2px solid" 
+                      borderColor="orange.400" 
+                      rounded="xl"
+                      boxShadow="md"
+                      overflow="hidden"
+                      transition="all 0.3s ease"
+                      _hover={{
+                        transform: "translateY(-4px)",
+                        boxShadow: "0 8px 25px rgba(255, 165, 0, 0.3)"
+                      }}
+                    >
+                      <Image
+                        src={item.image}
+                        alt={item.heading}
+                        w="100%"
+                        h="250px"
+                        objectFit="contain"
+                      />
+                      <CardBody textAlign="center" py={4}>
+                        <Link href={item.link} isExternal>
+                          <Heading 
+                            size="md" 
+                            mb={2} 
+                            fontWeight="bold"
+                            textDecoration="underline"
+                            textDecorationColor="orange.400"
+                            cursor="pointer"
+                            _hover={{ color: "orange.500" }}
+                          >
+                            {item.heading}
+                          </Heading>
+                        </Link>
+                        <Text color="gray.600" fontSize="sm" mb={2} px={2}>
+                          {item.summary}
+                        </Text>
                       </CardBody>
                     </Card>
                   ))}
