@@ -1,16 +1,16 @@
 import { Box, Container, Heading, Text } from "@chakra-ui/react";
 
-export default function Section({ title, subtitle, children, ...rest }) {
+export default function Section({ title, subtitle, children, titleAlign = "center", ...rest }) {
   return (
     <Box py={{ base: 10, md: 16 }} {...rest}>
       <Container>
         {title && (
-          <Heading as="h2" size="lg" fontWeight="700" mb={2}>
+          <Heading as="h2" size="lg" fontWeight="700" mb={2} textAlign={titleAlign}>
             {title}
           </Heading>
         )}
         {subtitle && (
-          <Text color="gray.600" mb={8} maxW="3xl">
+          <Text color="gray.600" mb={8} maxW="3xl" textAlign={titleAlign}>
             {subtitle}
           </Text>
         )}

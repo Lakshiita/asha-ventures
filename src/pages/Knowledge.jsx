@@ -4,6 +4,7 @@ import {
 } from "@chakra-ui/react";
 import Section from "../components/Section.jsx";
 import { mediaData } from "../data/media.json";
+import { newsletterData } from "../data/newsletter.json";
 
 export default function Knowledge() {
   return (
@@ -32,8 +33,8 @@ export default function Knowledge() {
                       <Text mt={2} fontSize="sm" color="gray.600">We send occasional updates. No spam.</Text>
                     </CardBody>
                   </Card>
-                  <Grid templateColumns={{ base: "1fr", md: "repeat(2,1fr)" }} gap={8} w="100vw" ml="calc(-50vw + 50%)" px={8}>
-                    {[1,2,3,4,5,6].map((i)=>(
+                  <Grid templateColumns={{ base: "1fr", md: "repeat(2,1fr)", lg: "repeat(3,1fr)" }} gap={6} w="100vw" ml="calc(-50vw + 50%)" px={8}>
+                    {newsletterData.map((item, i)=>(
                       <Card 
                         key={i} 
                         bg="white" 
@@ -49,25 +50,34 @@ export default function Knowledge() {
                         }}
                       >
                         <Image
-                          src="https://via.placeholder.com/400x300/f0f0f0/666?text=Newsletter+Image"
-                          alt={`Newsletter ${i}`}
+                          src={item.image}
+                          alt={item.heading}
                           w="100%"
-                          h="300px"
-                          objectFit="cover"
+                          h="250px"
+                          objectFit="contain"
                         />
-                        <CardBody textAlign="center" py={6}>
-                          <Heading 
-                            size="md" 
-                            mb={2} 
-                            fontWeight="bold"
-                            textDecoration="underline"
-                            textDecorationColor="orange.400"
-                          >
-                            Asha Impact Quarterly Newsletter
-                          </Heading>
-                          <Text color="gray.500" fontSize="sm">
-                            {i % 2 === 0 ? "December 2020" : "March 2021"}
+                        <CardBody textAlign="center" py={4}>
+                          <Link href={item.link} isExternal>
+                            <Heading 
+                              size="md" 
+                              mb={2} 
+                              fontWeight="bold"
+                              textDecoration="underline"
+                              textDecorationColor="orange.400"
+                              cursor="pointer"
+                              _hover={{ color: "orange.500" }}
+                            >
+                              {item.heading}
+                            </Heading>
+                          </Link>
+                          <Text color="gray.600" fontSize="sm" mb={2} px={2}>
+                            {item.date}
                           </Text>
+                          {item.summary && (
+                            <Text color="gray.600" fontSize="sm" mb={2} px={2}>
+                              {item.summary}
+                            </Text>
+                          )}
                         </CardBody>
                       </Card>
                     ))}

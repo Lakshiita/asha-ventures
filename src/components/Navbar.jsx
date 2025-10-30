@@ -1,5 +1,5 @@
 import {
-  Box, Flex, HStack, IconButton, Text, Switch,useDisclosure, Stack, Link as CLink, Image, Button, useColorMode, useColorModeValue
+  Box, Flex, HStack, IconButton, Text, Switch,useDisclosure, Stack, Link as CLink, Image, Button, useColorMode, useColorModeValue, Menu, MenuButton, MenuList, MenuItem
 } from "@chakra-ui/react";
 import { Link, NavLink } from "react-router-dom";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
@@ -8,21 +8,53 @@ const links = [
   { to: "/people", label: "Team" },
   { to: "/investments", label: "Investments" },
   { to: "/impact", label: "Our Impact" },
-  { to: "/knowledge", label: "Knowledge Resources" },
+  { 
+    to: "/knowledge", 
+    label: "Knowledge Resources",
+    dropdown: [
+      { to: "/knowledge#newsletters", label: "Newsletters" },
+      { to: "/knowledge#media", label: "Media" },
+      { to: "/knowledge#contact", label: "Contact" }
+    ]
+  },
 ];
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 
-const NavLinkItem = ({ to, children }) => (
-  <CLink
-    as={NavLink}
-    to={to}
-    variant="nav"
-    className={({ isActive }) => `text-[30px] text-textColor2 font-[Supreme-Medium] leading-normal text-center ${isActive ? "active" : ""}`}
-  >
-    {children}
-  </CLink>
-);
+const NavLinkItem = ({ to, children, dropdown }) => {
+  if (dropdown) {
+    return (
+      <Menu trigger="hover">
+        <MenuButton
+          as={CLink}
+          variant="nav"
+          className="text-[30px] text-textColor2 font-[Supreme-Medium] leading-normal text-center"
+          _hover={{ textDecoration: "none" }}
+        >
+          {children}
+        </MenuButton>
+        <MenuList>
+          {dropdown.map((item) => (
+            <MenuItem key={item.to} as={Link} to={item.to}>
+              {item.label}
+            </MenuItem>
+          ))}
+        </MenuList>
+      </Menu>
+    );
+  }
+  
+  return (
+    <CLink
+      as={NavLink}
+      to={to}
+      variant="nav"
+      className={({ isActive }) => `text-[30px] text-textColor2 font-[Supreme-Medium] leading-normal text-center ${isActive ? "active" : ""}`}
+    >
+      {children}
+    </CLink>
+  );
+};
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -57,7 +89,7 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <HStack spacing={1} display={{ base: "none", md: "flex" }}>
           {links.map((l) => (
-            <NavLinkItem key={l.to} to={l.to}>{l.label}</NavLinkItem>
+            <NavLinkItem key={l.to} to={l.to} dropdown={l.dropdown}>{l.label}</NavLinkItem>
           ))}
 
           {/* Theme Switch with Icons */}
