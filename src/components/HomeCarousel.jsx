@@ -5,6 +5,7 @@ import {
   Image,
   IconButton,
   Flex,
+  Text
 } from "@chakra-ui/react";
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -34,17 +35,17 @@ export default function HomeCarousel() {
     <Flex w="100%" direction="column" align="center" py={8}>
       {/* Heading Section */}
       <Box textAlign="center" mb={6}>
-        <Heading fontSize="4xl" color="Blue" fontWeight="bold" fontFamily={"times new roman"}>
+        <Heading fontSize="4xl" color="blue.700" fontWeight="bold" fontFamily="'Playfair Display', serif">
           Our Reach and Impact
         </Heading>
-        <Heading fontSize="lg" color="gray.600" mt={2}>
+        <Text textAlign="center" color="gray.500" mb={8}>
           Real stories of measurable progress.
-        </Heading>
+        </Text>
       </Box>
 
       {/* Carousel Container */}
       <Box
-        w={"80%"} // Reduced width
+        w={"70%"} // Reduced width
         h={"500px"} // Reduced height
         position="relative"
         overflow="hidden"
@@ -57,6 +58,7 @@ export default function HomeCarousel() {
             position="absolute"
             top="0"
             left="0"
+            height="100vh"
             w="100%"
             h="100%"
             initial={{ opacity: 0 }}
@@ -68,6 +70,7 @@ export default function HomeCarousel() {
               src={slides[current].image}
               alt={`slide-${current}`}
               objectFit="cover"
+              objectPosition="top"
               w="100%"
               h="100%"
             />

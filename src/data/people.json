@@ -8,7 +8,7 @@
     },
     {
       "name": "Pramod Bhasin",
-      "role": "Founding Partner", 
+      "role": "Founding Partner",
       "bio": "Veteran business leader with expertise in scaling organizations.",
       "img": "/assets/founders/Pramod-founder.jpg"
     }
@@ -17,57 +17,65 @@
     {
       "name": "Amit Mehta",
       "role": "Managing Partner",
-      "heading":"Amit is the Managing Partner at Asha Ventures and is responsible for the firm’s overall strategy, fund raising and investments.",
+      "heading": "Amit is the Managing Partner at Asha Ventures and is responsible for the firm’s overall strategy, fund raising and investments.",
       "bio": "Amit is Managing Partner at Asha Ventures and is responsible for the firm’s overall strategy, fund-raising and investments. He has 17+ years of end-to-end investment experience focused on mid-market segment in India. Most recently, Amit was part of IIFL Private Equity where he led the firm’s investments across Financial, Technology and Consumer sectors.\n\nDuring his tenure Amit was responsible for several marquee investments which delivered stellar returns to investors. He has served as Director on the board of Northern Arc (filed for IPO), Kogta Financial (Exited), Happily Unmarried and Pickrr Technologies (Exited). Other investments at IIFL that Amit was responsible for include Nazara Tech (Exited), NSDL Ltd (Exited), NSE (Exited) and Vastu Housing Finance. \n\nEarlier, Amit has worked with Motilal Oswal Private Equity a mid-market focused domestic private equity fund. At Motilal, Amit was responsible for investment in Arinna Lifesciences and was involved in Dixon Technologies (Exited). He has earlier worked with Mayfield Fund, ICICI Prudential AMC, PwC & Citibank. Amit holds an MBA from IIM Ahmedabad and B.Tech from LIT, Nagpur. \n\nHe has been recognized as Top 40 under 40 Investment Professionals by AIWMI. In his free time Amit loves traveling and spending time with his kids.",
       "img": "/assets/team/Amit.jpg",
-      "linkedin":"https://in.linkedin.com/in/amit-mehta-6b90b92",
-      "email":"amit@ashaventures.in"
+      "linkedin": "https://in.linkedin.com/in/amit-mehta-6b90b92",
+      "email": "amit@ashaventures.in"
     },
     {
       "name": "Aditi Gupta",
       "role": "Partner",
-      "heading":"Aditi leads investments for Asha Ventures and represents the firm on the Boards of Truemeds, Let’s Recycle, Adda247, Gramophone and AutoMony.",
+      "heading": "Aditi leads investments for Asha Ventures and represents the firm on the Boards of Truemeds, Let’s Recycle, Adda247, Gramophone and AutoMony.",
       "bio": "Aditi leads investments for Asha Ventures and represents the firm on the Boards of Truemeds, Let’s Recycle, Adda247, Gramophone and AutoMony. Her prior experience includes Co-Founding Contrarian Capital, an early stage investment fund focused on technology led businesses built for the mass markets. At Contrarian, she led investments in consumer and enterprise technology businesses across finance, healthcare, education, and enterprise SaaS. \n\nThese included category defining companies like Pratilipi, Progcap, Minjar (acq. by $NTNX), Squad, Signzy and Crediwatch. Prior to this, Aditi worked with Motilal Oswal Private Equity. \n\nAditi holds an MBA in Finance from FMS, Delhi and a Bachelors in Technology (Mechanical & Automation) from Indraprastha University. Aditi is a Member of “CII Western Region Sub-committee on Startups”, with the aim to facilitate closer interaction between startups and corporates. She’s passionate about supporting women founders and has been a mentor in Facebook SheLeadsTech program over multiple years. \n\nShe was named to Equalifi’s list of Top 40 Alternative Investment Professionals in India and AIWMI’s list of Top 100 Women in Finance. In her free time Aditi loves reading, hiking and practicing Martial Arts (Krav Maga- Practitioner Level 4).",
       "img": "/assets/team/Aditi.jpg",
-      "linkedin":"https://www.linkedin.com/in/aditig10",
-      "email":"aditi@ashaventures.in"
+      "linkedin": "https://www.linkedin.com/in/aditig10",
+      "email": "aditi@ashaventures.in"
     },
     {
       "name": "Nishtha Gaur",
       "role": "Associate Vice President",
-      "heading":"Nishtha leads coverage on Agriculture, Education and Climate sectors at Asha Ventures.",
+      "heading": "Nishtha leads coverage on Agriculture, Education and Climate sectors at Asha Ventures.",
       "bio": "Before moving to the VC world, she was working with Synergy Consulting as a financial advisor in the infrastructure space primarily covering renewable energy projects and was actively involved on mega-financing transactions including entities like Saudi Arabia’s PIF, World Bank, and others. \n\nShe has also worked as an Analyst for Goldman Sachs in their Corporate Treasury division. Nishtha has completed her MBA from Indian Institute of Management Indore and has a Bachelor of Commerce degree from Shri Ram College of Commerce, Delhi University. Outside of work, she enjoys cooking, dancing and spending time with her family and close friends.",
       "img": "/assets/team/Nishtha.jpg",
-      "linkedin":"https://www.linkedin.com/in/nishtha-gaur-a78684127",
-      "email":"nishtha@ashaventures.in"
+      "linkedin": "https://www.linkedin.com/in/nishtha-gaur-a78684127",
+      "email": "nishtha@ashaventures.in"
+    },
+    {
+      "name": "Arpita Gujrati",
+      "role": "Senior Associate",
+      "heading": "Avisha covers sectors like Agri and Climate at Asha Ventures.",
+      "bio": "Arpita covers Healthcare, Logistics, and MSME Tech sectors at the fund. Prior to joining Asha Ventures, she was part of Lighthouse private equity (domestic growth fund), where she specialized in the healthcare and consumer sectors.\n\n She also has experience at Kotak Investment Banking in their M&A division, focusing on restructuring and sell-side transactions across the industrials, pharmaceuticals, and consumer verticals. Arpita is a Chartered Accountant and a CFA Level III candidate. In her leisure time, she enjoys trekking and watching movies.",
+      "img": "/assets/team/Arpita.jpg",
+      "linkedin": "https://www.linkedin.com",
+      "email": "arpita@ashaventures.in"
     },
     {
       "name": "Aayush Khutate",
       "role": "Investment Analyst",
-      "heading":"Aayush leads Financial services and also covers Agri and Climate.",
+      "heading": "Aayush leads Financial services and also covers Agri and Climate.",
       "bio": "Before joining Asha, Aayush had gained valuable experience working as an associate in the Strategy and Transaction department of Ernst and Young for a period of 11 months. \n\nThis experience has equipped him with valuable insights into the corporate world and various financial transactions. Aayush is a qualified Chartered Accountant and has achieved All India Rank 22 in CA Final and 20 in CA Intermediate exams. In addition to his CA qualification, Aayush also holds a bachelor’s degree in Commerce. \n\nApart from work, Aayush is an avid cricket enthusiast and a keen observer of the stock market, reflecting his deep interest in both sports and financial markets.",
       "img": "/assets/team/Aayush.jpg",
-      "linkedin":"https://www.linkedin.com/in/aayush-khutate-096a47192/",
-      "email":"aayush@ashaventures.in"
+      "linkedin": "https://www.linkedin.com/in/aayush-khutate-096a47192/",
+      "email": "aayush@ashaventures.in"
     },
     {
       "name": "Vatsal Chitalia",
       "role": "Investment Analyst",
-      "heading":"Vatsal covers Health, Education and Consumer at Asha Ventures.",
+      "heading": "Vatsal covers Health, Education and Consumer at Asha Ventures.",
       "bio": "Prior to joining Asha, Vatsal built significant expertise as a Senior Analyst in Investment Banking at Ernst & Young. He worked on live transactions (M&A/fundraising) and deal sourcing projects in the Indian industrial segment. \n\nThis experience has equipped him with deep insights in front-end deal sourcing and execution. Vatsal has completed graduation in BSc Finance from NMIMS’ School of Commerce and is a CFA L3 candidate. In his free time, he enjoys playing cricket and badminton in addition to exploring new cafes in the city.",
       "img": "/assets/team/Vatsal.jpg",
-      "linkedin":"https://www.linkedin.com/in/vatsal-chitalia-900879157/",
-      "email":"vatsal@ashaventures.in"
+      "linkedin": "https://www.linkedin.com/in/vatsal-chitalia-900879157/",
+      "email": "vatsal@ashaventures.in"
     },
     {
       "name": "Avisha Bhandari",
       "role": "Investment Analyst",
-      "heading":"Avisha covers sectors like Agri and Climate at Asha Ventures.",
+      "heading": "Avisha covers sectors like Agri and Climate at Asha Ventures.",
       "bio": "Before becoming a part of Asha Ventures, Avisha developed strong professional experience at BDO within their Internal Audit division, where she contributed to projects spanning industries like FMCG and Pharmaceuticals. This exposure helped her build a strong foundation in evaluating business processes and strengthening internal control systems. \n\nShe is a qualified Chartered Accountant and holds a Bachelor’s degree in Commerce from R.A. Podar College of Commerce and Economics. \n\nAvisha is also deeply passionate about impact investing and is a keen learner of various impact measurement frameworks. Outside of work, Avisha is passionate about exploring new places, enjoys playing a variety of board games, and is currently training in Hindustani Classical Music.",
       "img": "/assets/team/Avisha.jpg",
-      "linkedin":"https://www.linkedin.com/in/avisha-bhandari-452a16211/",
-      "email":"avisha@ashaventures.in"
-
+      "linkedin": "https://www.linkedin.com/in/avisha-bhandari-452a16211/",
+      "email": "avisha@ashaventures.in"
     }
   ],
   "supporters": [
@@ -87,7 +95,7 @@
       "name": "Ajay Parekh",
       "role": "Pidilite Group",
       "bio": "Ajay Parekh is an Executive Director at Pidilite Industries Ltd, founded by his late father Shri B.K. Parekh in 1959. Pidilite Industries has been a pioneer in consumer and specialties chemicals in India. With a turnover of close a billion dollars, it is the market leader in adhesives and sealants, construction chemicals, colors and polymer emulsions. \n\nFevicol, one of Pidilite’s flagship products, is the largest selling adhesives brand in Asia. Ajay holds a Bachelor in Chemical Engineering and has completed his Masters of Business Administration (U.S.A.) from University of California, Berkeley.",
-      "img": "/assets/supporters/AJAYPAREKH.jpg"
+      "img": "/assets/supporters/AJAYPAREKH.png"
     },
     {
       "name": "Padmini Somani",

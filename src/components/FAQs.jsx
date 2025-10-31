@@ -12,7 +12,7 @@ import {
 export default function FAQs({ faqs }) {
   return (
     <Box>
-      <Heading size={{ base: "lg", md: "xl" }} mb={4} textStyle="defaultText">
+      <Heading size={{ base: "lg", md: "xl" }} mb={20} fontWeight="600" textAlign="center" fontFamily="'Playfair Display', serif" color="blue.800">
         FAQs
       </Heading>
       <Accordion

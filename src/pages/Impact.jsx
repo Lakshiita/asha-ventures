@@ -8,15 +8,15 @@ import Section from "../components/Section.jsx";
 
 function CardBlock({ title, children, image, tag }) {
   return (
-    <Card 
-      bg="white" 
-      border="1px solid" 
-      borderColor="blackAlpha.100" 
-      minH="300px" 
-      w="60vw" 
-      mx="auto" 
-      px={16} 
-      py={12} 
+    <Card
+      bg="white"
+      border="1px solid"
+      borderColor="blackAlpha.100"
+      minH="300px"
+      w="60vw"
+      mx="auto"
+      px={16}
+      py={12}
       borderRadius="0"
       _hover={{ bg: "blue.50" }}
       transition="background-color 0.2s"
@@ -74,7 +74,7 @@ function ReportCard({ title, image, pdfUrl, summary }) {
 
 function TestimonialCarousel() {
   const [index, setIndex] = useState(0);
-  
+
   const testimonials = [
     {
       text: "My mother suffers from Diabetes and Blood Pressure. Every month I used to spend more than INR 5,000 on medicines alone. I have tried buying generic medicines before as well, but the supply with the local chemist is erratic. They also try to sell medicines of companies that I have not even heard of. Ever since I have discovered Truemeds I have been ordering medicines through the app. Each month I am able to save more than INR 2,000. They do a doctor consultation before changing your medicine and that is very reassuring. The medicines that they sell are of high quality companies and you are confident that you are getting the best products at best prices.",
@@ -159,7 +159,7 @@ function TestimonialCarousel() {
           </Stack>
 
           <Box flex="1" textAlign="center" mt={{ base: 8, md: 0 }}>
-            <Box w="300px" h="300px" mx="auto">
+            <Box w="400px" h="350px" mx="auto">
               {testimonial.image ? (
                 <Image
                   src={testimonial.image}
@@ -267,7 +267,7 @@ function SquareCard({ title, bgColor = "white", content = "Content coming soon..
             {title}
           </Heading>
         </Card>
-        
+
         {/* Back Side */}
         <Card
           bg="white"
@@ -297,7 +297,7 @@ function SquareCard({ title, bgColor = "white", content = "Content coming soon..
 
 export default function Impact() {
   const [currentCard, setCurrentCard] = useState(0);
-  
+
   const cards = [
     { title: "1. No Poverty", content: "We invest to improve access to basic services, natural resources and appropriate new technology and financial services.", image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
     { title: "2. Zero Hunger", content: "We invest to ensure sustainable food production and improve access to input, knowledge, market and financial resources to increase the production and income of smallholder farmers of India.", image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
@@ -324,75 +324,107 @@ export default function Impact() {
 
   return (
     <Box>
-      <Section
-        title="Our Impact"
-        subtitle="We pair rigorous measurement with on-the-ground empathy to deliver meaningful, verifiable outcomes."
+      <Box height="20px" />
+      <Heading
+        textAlign="center"
+        color="blue.700"
+        fontFamily="'Playfair Display', serif"
+        mb={2}
       >
-        <Container maxW="1200px" mx="auto" px={8}>
-          <Flex align="center" gap={4} justify="center" minH="400px">
+        Our Impact
+      </Heading>
+
+      <Text textAlign="center" color="gray.500" mb={12}>
+        We pair rigorous measurement with on-the-ground empathy to deliver meaningful, verifiable outcomes
+      </Text>
+
+      <Container maxW="1200px" mx="auto" px={8}>
+        <Flex align="center" justify="center" minH="400px">
+          <Box position="relative" w="fit-content">
+            {/* Left button */}
             <IconButton
+              aria-label="Previous"
               icon={<ChevronLeftIcon />}
               onClick={prevCard}
-              colorScheme="brand"
-              size="lg"
-              aria-label="Previous card"
-              alignSelf="center"
+              position="absolute"
+              top="50%"
+              left="-50px"
+              transform="translateY(-50%)"
+              bg="transparent"
+              color="gray.600"
+              _hover={{ bg: "transparent", color: "orange.500" }}
             />
-            <Box>
-              <CardBlock title={cards[currentCard].title} image={cards[currentCard].image}>
-                <Text>{cards[currentCard].content}</Text>
-              </CardBlock>
-            </Box>
+
+            {/* Card content */}
+            <CardBlock title={cards[currentCard].title} image={cards[currentCard].image}>
+              <Text>{cards[currentCard].content}</Text>
+            </CardBlock>
+
+            {/* Right button */}
             <IconButton
+              aria-label="Next"
               icon={<ChevronRightIcon />}
               onClick={nextCard}
-              colorScheme="brand"
-              size="lg"
-              aria-label="Next card"
-              alignSelf="center"
+              position="absolute"
+              top="50%"
+              right="-50px"
+              transform="translateY(-50%)"
+              bg="transparent"
+              color="gray.600"
+              _hover={{ bg: "transparent", color: "orange.500" }}
             />
-          </Flex>
-        </Container>
-      </Section>
-      
-      <Section
-        title={<><Text>2X Challenge</Text><Text>Financing for Women</Text></>}
-        subtitle="Empowering women through strategic financing across key areas."
+          </Box>
+        </Flex>
+      </Container>
+
+      <Divider my={20} />
+
+      <Heading
+        textAlign="center"
+        color="blue.700"
+        fontFamily="'Playfair Display', serif"
+        mb={2}
       >
-        <Grid templateColumns="repeat(4, 1fr)" gap={6} w="100vw" ml="calc(-50vw + 50%)" px={6}>
-          <SquareCard title="Entrepreneurship" bgColor="blue.500" content="Eliminating bias by investing in women entrepreneurs." />
-          <SquareCard title="Leadership" bgColor="green.500" content="Fostering women leaders across levels." />
-          <SquareCard title="Employment" bgColor="teal.500" content="Increasing representation of women in the workforce of investee companies." />
-          <SquareCard title="Consumption" bgColor="orange.500" content="Backing products and services disproportionally benefiting women and contributing to their agency and wellness" />
-        </Grid>
-      </Section>
-      
-      <Section
-        title="Annual Reports"
-        subtitle="Access our comprehensive annual reports and impact assessments."
-      >
-        <Grid templateColumns="1fr" gap={0} w="100vw" ml="calc(-50vw + 50%)">
-          <ReportCard
-            title="Annual Report 2022"
-            summary="Comprehensive overview of our impact and achievements in 2022."
-            image="/assets/annual reports images/annual-Report_2022.jpg"
-            pdfUrl="/assets/annual reports pdf/Asha-Impact-Report_2022.pdf"
-          />
-          <ReportCard
-            title="Annual Report 2019"
-            summary="Detailed analysis of our initiatives and outcomes in 2019."
-            image="/assets/annual reports images/annual report 2019.png"
-            pdfUrl="/assets/annual reports pdf/Asha-Impact-Annual-Impact-Report-2019.pdf"
-          />
-          <ReportCard
-            title="Annual Report 2018"
-            summary="Key milestones and impact metrics from our 2018 activities."
-            image="/assets/annual reports images/annual report 2018.jpg"
-            pdfUrl="/assets/annual reports pdf/Asha-Impact-Annual-Impact-Report-2018.pdf"
-          />
-        </Grid>
-      </Section>
-      
+        2x Challenge <br></br>Financing for Women
+      </Heading>
+      <Text textAlign="center" color="gray.500" mb={12}>
+        Empowering women through strategic financing across key areas</Text>
+      <Grid templateColumns="repeat(4, 1fr)" gap={6} w="100vw" ml="calc(-50vw + 50%)" px={6}>
+        <SquareCard title="Entrepreneurship" bgColor="blue.500" content="Eliminating bias by investing in women entrepreneurs." />
+        <SquareCard title="Leadership" bgColor="green.500" content="Fostering women leaders across levels." />
+        <SquareCard title="Employment" bgColor="teal.500" content="Increasing representation of women in the workforce of investee companies." />
+        <SquareCard title="Consumption" bgColor="orange.500" content="Backing products and services disproportionally benefiting women and contributing to their agency and wellness" />
+      </Grid>
+      <Divider my={20} />
+      <Heading
+        textAlign="center"
+        color="blue.700"
+        fontFamily="'Playfair Display', serif"
+        mb={2}
+      >Annual Reports</Heading>
+      <Text textAlign="center" color="gray.500" mb={8}>
+        Access our comprehensive annual reports and impact assessments</Text>
+      <Grid templateColumns="1fr" gap={0} w="100vw" ml="calc(-50vw + 50%)">
+        <ReportCard
+          title="Annual Report 2022"
+          summary="Comprehensive overview of our impact and achievements in 2022."
+          image="/assets/annual reports images/annual-Report_2022.jpg"
+          pdfUrl="/assets/annual reports pdf/Asha-Impact-Report_2022.pdf"
+        />
+        <ReportCard
+          title="Annual Report 2019"
+          summary="Detailed analysis of our initiatives and outcomes in 2019."
+          image="/assets/annual reports images/annual report 2019.png"
+          pdfUrl="/assets/annual reports pdf/Asha-Impact-Annual-Impact-Report-2019.pdf"
+        />
+        <ReportCard
+          title="Annual Report 2018"
+          summary="Key milestones and impact metrics from our 2018 activities."
+          image="/assets/annual reports images/annual report 2018.jpg"
+          pdfUrl="/assets/annual reports pdf/Asha-Impact-Annual-Impact-Report-2018.pdf"
+        />
+      </Grid>
+
       <TestimonialCarousel />
     </Box>
   );
