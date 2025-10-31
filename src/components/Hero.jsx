@@ -6,8 +6,8 @@ import { motion, useSpring, useTransform } from "framer-motion";
 const MotionBox = motion(Box);
 
 const Hero = ({ scrollYProgress }) => {
-  const heroOpacityRaw = useTransform(scrollYProgress, [0, 0.18, 0.35], [1, 1, 0.2]);
-  const heroYRaw = useTransform(scrollYProgress, [0, 0.4], ["0%", "-6%"]);
+  const heroOpacityRaw = useTransform(scrollYProgress, [0, 0.25, 0.45], [1, 1, 0]);
+  const heroYRaw = useTransform(scrollYProgress, [0, 0.4], ["0%", "0%"]);
   const heroOpacity = useSpring(heroOpacityRaw, { stiffness: 120, damping: 20 });
   const heroY = useSpring(heroYRaw, { stiffness: 120, damping: 26 });
 
@@ -17,7 +17,7 @@ const Hero = ({ scrollYProgress }) => {
       position="sticky"
       top="0"
       // bg="brand.section.hero"
-      bgGradient="linear(135deg, #f9b262ff  10%, #ffffffff 40%, #f8d872ff  100%)"
+      bgGradient="linear(135deg, #fcddb9ff  10%, #ffffffff 40%, #e9efffff  100%)"
       m="0"               // Remove any margin
       p="0"
       zIndex={10}
@@ -27,7 +27,15 @@ const Hero = ({ scrollYProgress }) => {
         y: heroY,
       }}
     >
-      <Flex w="100%" h="100%" direction={{ base: "column", md: "row" }}>
+      <Flex
+        w="100%"
+        h="100%"
+        direction={{ base: "column", md: "row" }}
+        align="center"
+        justify="center"
+        gap={{ base: 8, md: 0 }}
+      >
+
         <Box
           w={{ base: "100%", md: "50%" }}
           display="flex"
@@ -40,11 +48,12 @@ const Hero = ({ scrollYProgress }) => {
             bg="rgba(255,255,255,0.08)"
             backdropFilter="blur(10px)"
             boxShadow="0 8px 40px rgba(0,0,0,0.3)"
-            w="90%"
-            h="65%"
+            w={{ base: "90%", md: "85%" }}
+            h={{ base: "40vh", md: "55vh" }}
             whileHover={{ scale: 1.03 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
+
             <video
               autoPlay
               loop

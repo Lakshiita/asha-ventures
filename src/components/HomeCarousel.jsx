@@ -58,6 +58,7 @@ export default function HomeCarousel() {
             position="absolute"
             top="0"
             left="0"
+            height="100vh"
             w="100%"
             h="100%"
             initial={{ opacity: 0 }}

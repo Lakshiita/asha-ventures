@@ -48,8 +48,16 @@ export default function Footer() {
   };
 
   return (
-    <Box bg="brand.100" color="gray.800" mt={10}>
-      <Container as={Stack} maxW="7xl" py={10} spacing={8}>
+    <Box
+      as="footer"
+      bg="brand.100"
+      color="gray.800"
+      mt="auto"
+      w="100%"
+    >
+
+      <Container as={Stack} maxW="7xl" pt={10} pb={10} spacing={8}>
+
 
         {/* Main Footer Grid */}
         <SimpleGrid columns={{ base: 1, md: 4 }} spacing={10}>
@@ -267,6 +275,6 @@ export default function Footer() {
           </HStack>
         </Stack>
       </Container>
-    </Box>
-  );
+    </Box>
+  );
 }

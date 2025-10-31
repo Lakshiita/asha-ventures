@@ -78,41 +78,55 @@ export default function Portfolio({ investments, onCompanySelect }) {
           mr={2}
           mb={2}
           w="full"
+          minW="180px"  // ✅ added fixed width baseline
           justifyContent="space-between"
           variant={activeCount > 0 ? "solid" : "outline"}
           colorScheme={activeCount > 0 ? "gray" : "gray"}
         >
           <Flex align="center" justify="space-between" w="full">
             <Text>{label}</Text>
-            {activeCount > 0 && (
-              <Tag
-                size="sm"
-                borderRadius="full"
-                colorScheme="blue"
-                ml={2}
-              >
-                {activeCount}
-              </Tag>
-            )}
+            <Box w="20px" textAlign="right">
+              {activeCount > 0 && (
+                <Tag
+                  size="sm"
+                  borderRadius="full"
+                  colorScheme="blue"
+                  ml={2}
+                  minW="20px"
+                  textAlign="center"
+                >
+                  {activeCount}
+                </Tag>
+              )}
+            </Box>
           </Flex>
         </MenuButton>
 
+
         <MenuList maxH="250px" overflowY="auto">
-          {options.map((option) => (
-            <MenuItem key={option}>
-              <Checkbox
-                isChecked={selected.includes(option)}
-                onChange={() => {
-                  if (selected.includes(option))
+          {options.map((option) => {
+            const isSelected = selected.includes(option);
+            return (
+              <MenuItem
+                key={option}
+                onClick={() => {
+                  if (isSelected)
                     setSelected(selected.filter((s) => s !== option));
-                  else setSelected([...selected, option]);
+                  else
+                    setSelected([...selected, option]);
                 }}
-                mr={2}
+                _hover={{ bg: "gray.100" }}
               >
+                <Checkbox
+                  isChecked={isSelected}
+                  pointerEvents="none" // ✅ disables double click issue, text now clickable too
+                  mr={2}
+                />
                 {option}
-              </Checkbox>
-            </MenuItem>
-          ))}
+              </MenuItem>
+            );
+          })}
+
         </MenuList>
       </Menu>
     );
@@ -125,21 +139,31 @@ export default function Portfolio({ investments, onCompanySelect }) {
       {/* === Fixed Elegant Sidebar (below top navbar) === */}
       <Box
         as="aside"
-        position="fixed"
-        left="0"
-        top="90px"
-        h="calc(100vh - 80px)"
-        w={{ base: "full", md: "200px" }}
-        bgGradient="linear(to-b, white, gray.50)"
-        boxShadow="md"
-        borderRight="1px solid"
-        borderColor="gray.200"
-        px={6}
-        py={6}
+        position="sticky"
+        top="180px"
+        w="230px"  // ✅ fixed width prevents resizing
+        maxW="230px"
+        h="fit-content"
+        maxH="calc(100vh - 180px)"
         overflowY="auto"
-        zIndex="900"
+        overflowX="hidden"
+        bg="white"
+        boxShadow="xl"
+        border="1px solid"
+        borderColor="gray.100"
+        rounded="2xl"
+        px={5}
+        py={6}
+        zIndex="10"
         display={{ base: "none", md: "block" }}
+        transition="all 0.3s ease"
+        _hover={{
+          boxShadow: "2xl",
+          transform: "translateY(-2px)",
+        }}
       >
+
+
         {/* <Heading
           size="md"
           mb={4}
@@ -220,7 +244,7 @@ export default function Portfolio({ investments, onCompanySelect }) {
           size={{ base: "2xl", md: "3xl" }}
           mb={10}
           textAlign="left"
-          color="blue.800"
+          color="blue.700"
           fontWeight="extrabold"
           letterSpacing="wide"
           fontFamily="'Playfair Display', serif"
@@ -235,6 +259,7 @@ export default function Portfolio({ investments, onCompanySelect }) {
                 fontSize={{ base: "lg", md: "3xl" }}
                 textTransform="uppercase"
                 color="brand.800"
+                align="centre"
                 mb={2}
               >
                 {sector}

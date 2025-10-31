@@ -8,8 +8,8 @@ const links = [
   { to: "/people", label: "Team" },
   { to: "/investments", label: "Investments" },
   { to: "/impact", label: "Our Impact" },
-  { to: "/faqs", label: "FAQs" },
   { to: "/knowledge", label: "Knowledge Resources" },
+  { to: "/faqs", label: "FAQs" },
 ];
 // import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 

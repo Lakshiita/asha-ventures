@@ -20,38 +20,13 @@ export default function Home() {
   const { scrollYProgress } = useScroll();
 
   // ----------------
-  // HERO (sticky)
-  // ----------------
-  // Keep hero visually fixed at top and then fade it out a little after sectors come up.
-  const heroOpacityRaw = useTransform(scrollYProgress, [0, 0.18, 0.35], [1, 1, 0.2]);
-  const heroYRaw = useTransform(scrollYProgress, [0, 0.4], ["0%", "-6%"]); // tiny lift for a parallax feel
-
-  // ----------------
   // SECTORS (slides up over hero)
   // ----------------
   // We map container progress to a translate value that takes sectors from fully below
   // (100%) to 0 (aligned) and then slightly negative to tuck over the hero while hero fades.
   // tweak the input range to move overlap timing.
-  const sectorsYRaw = useTransform(scrollYProgress, [0.12, 0.28, 0.42], ["100%", "0%", "-12%"]);
+  const sectorsYRaw = useTransform(scrollYProgress, [0.05, 0.25, 0.45], ["100%", "0%", "-12%"]);
   const sectorsOpacityRaw = useTransform(scrollYProgress, [0.12, 0.28], [0, 1]);
-  const sectorsY = useSpring(sectorsYRaw, { stiffness: 150, damping: 30 });
-  const sectorsOpacity = useSpring(sectorsOpacityRaw, { stiffness: 120, damping: 22 });
-  const sectorsScale = useSpring(useTransform(scrollYProgress, [0.12, 0.42], [0.995, 1]), {
-    stiffness: 120,
-    damping: 20,
-  });
-
-  // ----------------
-  // CAROUSEL / subsequent sections
-  // ----------------
-  const carouselYRaw = useTransform(scrollYProgress, [0.4, 0.62], ["40%", "0%"]);
-  const carouselOpacityRaw = useTransform(scrollYProgress, [0.45, 0.62], [0, 1]);
-
-  // Generic fade/slide for the rest sections (testimonials, signatory)
-  const sectionOpacityRaw = useTransform(scrollYProgress, [0.55, 0.8], [0, 1]);
-  const sectionYRaw = useTransform(scrollYProgress, [0.55, 0.8], ["20px", "0px"]);
-  const sectionOpacity = useSpring(sectionOpacityRaw, { stiffness: 120, damping: 20 });
-  const sectionY = useSpring(sectionYRaw, { stiffness: 120, damping: 20 });
 
   // refs used for other UI (optional)
   const refSectors = useRef(null);
@@ -104,8 +79,9 @@ export default function Home() {
       unsubscribeY();
     };
   }, [sectorsOpacityRaw, sectorsYRaw]);
-
+  const numberOfSections = 4;
   return (
+
     // Outer scroll container: full viewport, internal scroll. We drive all scroll progress from here.
     <Box
       ref={containerRef}
@@ -116,7 +92,8 @@ export default function Home() {
       }}
     >
       {/* Spacer to create scroll height */}
-      <Box position="absolute" top="0" left="0" right="0" height="600vh" />
+      {/* <Box position="absolute" top="0" left="0" right="0" height={`${numberOfSections * 100}vh`}
+      /> */}
       {/* HERO - sticky at top. pointerEvents none so underlying sections can be interactive when overlapped */}
       <Hero scrollYProgress={scrollYProgress} />
 
@@ -135,7 +112,7 @@ export default function Home() {
         }}
 
       >
-        <Sectors/>
+        <Sectors />
       </MotionBox>
       {/* CAROUSEL (placed below sectors in DOM so it appears after) */}
       <MotionBox
@@ -172,7 +149,7 @@ export default function Home() {
       </MotionBox>
       {/* <Box height="50vh" /> */}
       {/* Spacer at bottom to push footer into view */}
-      <Box height="50vh" bg="transparent" />
+      {/* <Box height="50vh" bg="transparent" /> */}
     </Box>
   );
 }

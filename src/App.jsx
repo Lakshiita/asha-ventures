@@ -15,7 +15,7 @@ export default function App() {
   return (
     <Box minH="100dvh" display="flex" flexDirection="column">
       <Navbar />
-      <Box as="main" flex="1">
+       <Box as="main" flex="1" position="relative">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/people" element={<People />} />
