@@ -34,11 +34,11 @@ export default function HomeCarousel() {
   return (
     <Flex w="100%" direction="column" align="center" py={8}>
       {/* Heading Section */}
-      <Box textAlign="center" mb={6}>
+      <Box textAlign="center" mb={6} mt={4}>
         <Heading fontSize="4xl" color="blue.700" fontWeight="bold" fontFamily="'Playfair Display', serif">
           Our Reach and Impact
         </Heading>
-        <Text textAlign="center" color="gray.500" mb={8}>
+        <Text textAlign="center" color="gray.500" mb={3}>
           Real stories of measurable progress.
         </Text>
       </Box>

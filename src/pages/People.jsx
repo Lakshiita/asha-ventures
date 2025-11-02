@@ -33,7 +33,7 @@ export default function People() {
         <Container maxW="container.xl" centerContent>
           <VStack spacing={12} align="stretch">
             <Heading
-              size={{ base: "2xl", md: "3xl" }}
+              fontSize={{ base: "4xl", md: "6xl" }}
               mb={0}
               color="blue.700"
               fontWeight="extrabold"

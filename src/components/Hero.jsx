@@ -49,7 +49,7 @@ const Hero = ({ scrollYProgress }) => {
             backdropFilter="blur(10px)"
             boxShadow="0 8px 40px rgba(0,0,0,0.3)"
             w={{ base: "90%", md: "85%" }}
-            h={{ base: "40vh", md: "55vh" }}
+            h={{ base: "55vh", md: "65vh" }}
             whileHover={{ scale: 1.03 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
@@ -76,9 +76,10 @@ const Hero = ({ scrollYProgress }) => {
           <Stack spacing={8} maxW="lg" pointerEvents="auto">
             <Heading
               fontWeight="600"
+              fontFamily="Barlow Semi Condensed, sans-serif"
               // fontFamily="Avenir, sans-serif"
-              fontSize={{ base: "1.5rem", md: "2.4rem" }}
-              letterSpacing={0.5}
+              fontSize={{ base: "3rem", md: "3.1rem" }}
+              letterSpacing="0.8px"
             >
               Partnering With Ambitious{" "}
               <Text as="span" color="orange.500" fontWeight="inherit">

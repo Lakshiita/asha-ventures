@@ -244,7 +244,7 @@ export default function Portfolio({ investments, onCompanySelect }) {
       <Box
         flex="1"
         ml={{ base: 0, md: "200px" }}
-        pt="20px" // 👈 space below navbar
+        pt="10px" // 👈 space below navbar
         px={{ base: 4, md: 10 }}
         pb={{ base: 8, md: 16 }}
         minH="100vh"
@@ -308,9 +308,9 @@ export default function Portfolio({ investments, onCompanySelect }) {
                         mr={{ base: 8, md: 14 }}
                       />
                       <Box flex="1">
-                        <Text fontWeight="bold" fontSize={{ base: "md", md: "3xl" }} color="brand.800" mb={4}>
+                        <Heading variant="section" color="blue.700" mb={4}>
                           {c.name}
-                        </Text>
+                        </Heading>
                         <Text fontSize="sm" color="gray.600" mb={2} noOfLines={4}>
                           {c.shortDescription
                             ? c.shortDescription

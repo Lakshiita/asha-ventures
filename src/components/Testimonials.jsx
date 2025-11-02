@@ -48,13 +48,14 @@ export default function Testimonials() {
         color="blue.700"
         fontFamily="'Playfair Display', serif"
         mb={{ base: 2, md: 4 }}
+        mt={4}
       >
         What Our Partners Say
       </Heading>
       <Text
         textAlign="center"
         color="gray.500"
-        mb={{ base: 6, md: 8 }}
+        mb={{ base: 12, md: 16 }} // increase this
         fontSize={{ base: "sm", md: "md" }}
       >
         Stories of collaboration and growth from our portfolio companies.
@@ -62,6 +63,7 @@ export default function Testimonials() {
 
       {/* Testimonial Content */}
       <Box
+        mt={10}
         position="relative"
         maxW="6xl"
         mx="auto"
@@ -69,7 +71,8 @@ export default function Testimonials() {
       >
         <Flex
           key={index} // re-render on index change
-          px={{ base: 2, md: 6 }}
+          px={{ base: 4, md: 6 }}
+          mt={10}
           direction={{ base: "column-reverse", md: "row" }}
           align="center"
           textAlign={{ base: "center", md: "left" }}
@@ -87,7 +90,7 @@ export default function Testimonials() {
               <FaQuoteLeft size="32px" color="#ED8936" />
             </Box>
             <Text
-              fontSize={{ base: "sm", sm: "md", md: "lg" }}
+              fontSize={{ base: "sm", sm: "md", md: "2xl" }}
               color="gray.700"
               px={{ base: 2, md: 0 }}
             >

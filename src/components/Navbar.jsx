@@ -19,11 +19,11 @@ const NavLinkItem = ({ to, children, dropdown }) => {
         <MenuButton
           as={CLink}
           variant="nav"
-          className="text-[30px] text-textColor2 font-[Supreme-Medium] leading-normal text-center"
           _hover={{ textDecoration: "none" }}
         >
           {children}
         </MenuButton>
+
         <MenuList>
           {dropdown.map((item) => (
             <MenuItem key={item.to} as={Link} to={item.to}>
@@ -40,10 +40,18 @@ const NavLinkItem = ({ to, children, dropdown }) => {
       as={NavLink}
       to={to}
       variant="nav"
-      className={({ isActive }) => `text-[30px] text-textColor2 font-[Supreme-Medium] leading-normal text-center ${isActive ? "active" : ""}`}
+      // fontFamily="Barlow, sans-serif"
+      fontFamily="Barlow Semi Condensed, sans-serif"
+
+      fontSize="1.25rem"
+      fontWeight="500"
+      letterSpacing="0.5px"
+      transform="scaleY(1.1)" // ✅ vertically stretches letters by 10%
+      transformOrigin="center"
     >
       {children}
     </CLink>
+
   );
 };
 
@@ -74,7 +82,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        <HStack spacing={6} display={{ base: "none", md: "flex" }}>
+        <HStack spacing={4} display={{ base: "none", md: "flex" }}>
           {links.map((l) => (
             <NavLinkItem key={l.to} to={l.to} dropdown={l.dropdown}>{l.label}</NavLinkItem>
           ))}

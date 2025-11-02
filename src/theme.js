@@ -39,9 +39,46 @@ const fonts = {
   heading: `'Poppins', 'Supreme-Medium', 'Inter', sans-serif`,
   body: `'Inter', 'Poppins', 'Supreme-Medium', sans-serif`,
   supreme: `'Supreme-Medium', 'Poppins', sans-serif`,
+  barlow: `'Barlow', sans-serif`,
 };
 
 const components = {
+  Heading: {
+    variants: {
+      // Big page titles
+      page: {
+        fontSize: { base: "4xl", md: "6xl" },
+        color: "blue.700",
+        textAlign: "center",
+        fontFamily: "'Playfair Display', serif",
+        letterSpacing: "wide",
+        mt: { base: 6, md: 10 },
+        mb: 4,
+      },
+      // Smaller section titles
+      section: {
+        as: "h2",
+        size: "lg",
+        mb: 4,
+        fontWeight: "bold",
+        fontFamily: "'Barlow Semi Condensed', sans-serif",
+      },
+    },
+  },
+  MenuButton: { // ✅ style for menu buttons
+    baseStyle: {
+      fontFamily: "Barlow, sans-serif",
+      fontWeight: 500,
+      fontSize: "lg", // increases size slightly
+    },
+  },
+  MenuItem: { // optional: match dropdown items
+    baseStyle: {
+      fontFamily: "Barlow, sans-serif",
+      fontSize: "md",
+    },
+  },
+
   Button: {
     baseStyle: { rounded: "xl" },
     defaultProps: { colorScheme: "brand" },

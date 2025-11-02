@@ -7,6 +7,14 @@ import impact_cards from "../data/impact_card.json";
 import customer_testimonials from "../data/customer_testimonials.json";
 import squareCards from "../data/squareCards.json";
 import impact_dimensions from "../data/impact_dimensions.json";
+import { FaQuestionCircle, FaChartBar, FaUsers, FaBalanceScale, FaExclamationTriangle } from "react-icons/fa";
+const iconMap = {
+  FaQuestionCircle,
+  FaChartBar,
+  FaUsers,
+  FaBalanceScale,
+  FaExclamationTriangle,
+};
 
 function TestimonialCarousel() {
   const [index, setIndex] = useState(0);
@@ -24,19 +32,17 @@ function TestimonialCarousel() {
   const testimonial = customer_testimonials[index];
 
   return (
-    <Box w="100%" py={20}>
+    <Box w="100%" py={20} mt={10}>
       <Heading
         textAlign="center"
         color="blue.700"
-        fontFamily="'Playfair Display', serif"
         mb={2}
       >
         Experiences That Inspire Us
       </Heading>
-      <Text textAlign="center" color="gray.500" mb={8}>
+      <Text textAlign="center" color="gray.500" mb={10}>
         Real stories of transformation and impact from the communities we serve.
       </Text>
-      <Divider my={6} />
       <Box position="relative" minH="400px">
         <Flex
           maxW="6xl"
@@ -205,8 +211,7 @@ function SquareCard({ title, bgColor = "white", content = "Content coming soon..
   );
 }
 
-// Replace existing FlipCard with this version
-function FlipCard({ title, description, bgFront, bgBack }) {
+function FlipCard({ title, description, bgFront, bgBack, icon: Icon }) {
   const [flipped, setFlipped] = useState(false);
 
   return (
@@ -214,12 +219,11 @@ function FlipCard({ title, description, bgFront, bgBack }) {
       onMouseEnter={() => setFlipped(true)}
       onMouseLeave={() => setFlipped(false)}
       w="100%"
-      maxW="220px"                 // ensure predictable width inside the grid
+      maxW="220px"
       h="230px"
       style={{ perspective: "1000px" }}
       cursor="pointer"
     >
-      {/* wrapper that performs the flip */}
       <Box
         position="relative"
         w="100%"
@@ -243,24 +247,18 @@ function FlipCard({ title, description, bgFront, bgBack }) {
           rounded="xl"
           boxShadow="md"
           display="flex"
+          flexDir="column"
           alignItems="center"
           justifyContent="center"
           zIndex={2}
           sx={{
             backfaceVisibility: "hidden",
-            WebkitBackfaceVisibility: "hidden",
-            transform: "rotateY(0deg)",
-            WebkitTransform: "rotateY(0deg)"
+            WebkitBackfaceVisibility: "hidden"
           }}
         >
-          <Heading
-            size="md"
-            textAlign="center"
-            fontFamily="'Playfair Display', serif"
-            color="blue.800"
-            px={3}
-          >
-            {title}
+          {Icon && <Icon size="32px" color="#1E3A8A" style={{ marginBottom: "20px" }} />}
+          <Heading size="md" textAlign="center"  fontFamily="cursive" color="blue.800" px={3}>
+            {title}?
           </Heading>
         </Box>
 
@@ -285,7 +283,7 @@ function FlipCard({ title, description, bgFront, bgBack }) {
             WebkitTransform: "rotateY(180deg)"
           }}
         >
-          <Text fontSize="sm" textAlign="center" fontWeight="medium" color="gray.800" px={2}>
+          <Text fontSize="lg" textAlign="center" fontFamily="cursive" fontWeight="bold" color="gray.800" px={2}>
             {description}
           </Text>
         </Box>
@@ -293,6 +291,7 @@ function FlipCard({ title, description, bgFront, bgBack }) {
     </Box>
   );
 }
+
 
 
 export default function Impact() {
@@ -337,20 +336,19 @@ export default function Impact() {
       >
         Our Impact
       </Heading>
+      <Divider my={20} />
 
-      <Text textAlign="center" color="gray.500" mb={12}>
-        We pair rigorous measurement with on-the-ground empathy to deliver meaningful, verifiable outcomes
-      </Text>
 
-      {/* // ✅ Grid for Square Cards — responsive and centered */}
       <Heading
         textAlign="center"
-        color="blue.700"
-        fontFamily="'Playfair Display', serif"
         mb={2}
+        color="blue.700"
       >
-        2x Challenge <br /> Financing for Women
+        <Text as="span" color="red.500">2X</Text>{" "}
+        <Text as="span" color="green.500">Challenge</Text> <br />
+        Financing for Women
       </Heading>
+
 
       <Text textAlign="center" color="gray.500" mb={12}>
         Empowering women through strategic financing across key areas
@@ -466,7 +464,6 @@ export default function Impact() {
       <Heading
         textAlign="center"
         color="blue.700"
-        fontFamily="'Playfair Display', serif"
         mb={2}
       >
         The Five Dimensions of Impact
@@ -493,9 +490,9 @@ export default function Impact() {
             const colorPairs = [
               ["#e1f5ffff", "#abdaf5ff"], // blue
               ["#f5edffff", "#D6BCFA"], // purple
-              ["#fffee0ff", "#f1f387ff"], // indigo
-              ["#f3fff4ff", "#86de86ff"],  // lavender
               ["#e8faf6ff", "#aaf7eaff"], // cyan/teal
+              ["#e2fde4ff", "#86de86ff"],  // lavender
+              ["#ffe1e0ff", "#ff8585ff"], // indigo
             ];
             const [bgFront, bgBack] = colorPairs[index % colorPairs.length];
 
@@ -505,6 +502,7 @@ export default function Impact() {
                 <FlipCard
                   title={item.title}
                   description={item.description}
+                  icon={iconMap[item.icon]}
                   bgFront={bgFront}
                   bgBack={bgBack}
                 />
@@ -514,9 +512,9 @@ export default function Impact() {
         </Grid>
       </Container>
 
+      <Divider my={20} />
 
 
-    
       <TestimonialCarousel />
       <style>
         {`

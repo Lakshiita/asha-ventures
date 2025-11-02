@@ -101,6 +101,7 @@ export default function Knowledge() {
                   </Link>
                 ))}
               </Grid>
+              <Box mb="100px"/>
             </TabPanel>
 
             {/* 📰 NEWSLETTERS */}

@@ -1,22 +1,27 @@
 [
   {
     "title": "What",
-    "description": "What outcomes does the effect relate to, and how important are they to the people (or planet) experiencing it?"
+    "description": "What outcomes does the effect relate to, and how important are they to the people (or planet) experiencing it?",
+    "icon": "FaQuestionCircle"
   },
   {
     "title": "How Much",
-    "description": "How much of the effect occurs in the time period?"
+    "description": "How much of the effect occurs in the time period?",
+    "icon": "FaChartBar"
   },
   {
     "title": "Who",
-    "description": "Who experiences the effect and how underserved are they in relation to the outcome?"
+    "description": "Who experiences the effect and how underserved are they in relation to the outcome?",
+    "icon": "FaUsers"
   },
   {
     "title": "How",
-    "description": "How does the effect compare and contribute to what is likely to occur anyway?"
+    "description": "How does the effect compare and contribute to what is likely to occur anyway?",
+    "icon": "FaBalanceScale"
   },
   {
     "title": "Which",
-    "description": "Which risk factors are significant and how likely is it that the outcome is different from the expectation?"
+    "description": "Which risk factors are significant and how likely is it that the outcome is different from the expectation?",
+    "icon": "FaExclamationTriangle"
   }
 ]

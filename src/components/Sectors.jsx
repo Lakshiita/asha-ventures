@@ -58,7 +58,8 @@ export default function Sectors() {
         textAlign="center"
         color="blue.700"
         fontFamily="'Playfair Display', serif"
-        mb={{ base: 2, md: 4 }}
+        mb={{ base: 2, md: 2 }}
+        mt={6}
       // fontSize={{ base: "xl", md: "2xl" }}
       >
         Sectors We Cover
@@ -66,7 +67,7 @@ export default function Sectors() {
       <Text
         textAlign="center"
         color="gray.500"
-        mb={{ base: 4, md: 8 }}
+        mb={{ base: 2, md: 4 }}
         fontSize={{ base: "sm", md: "md" }}
       >
         Areas where Asha Ventures drives inclusive growth and sustainable impact.
@@ -105,10 +106,11 @@ export default function Sectors() {
               />
               <Heading
                 as="h2"
-                size={{ base: "xs", md: "md" }}
+                size={{ base: "lg", md: "lg" }}
                 mb={4}
                 color="gray.800"
                 fontWeight="bold"
+                fontFamily="Barlow Semi Condensed, sans-serif"
               >
                 {sector.title}
               </Heading>

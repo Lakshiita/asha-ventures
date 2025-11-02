@@ -5,7 +5,10 @@ export default function Section({ title, subtitle, children, titleAlign = "cente
     <Box py={{ base: 10, md: 16 }} {...rest}>
       <Container>
         {title && (
-          <Heading as="h2" size="lg" fontWeight="700" mb={2} textAlign={titleAlign}>
+          <Heading as="h2" size="3xl" fontWeight="700" textAlign={titleAlign}
+            color="blue.700"
+            fontFamily="'Playfair Display', serif"
+            mb={{ base: 2, md: 4 }}>
             {title}
           </Heading>
         )}
