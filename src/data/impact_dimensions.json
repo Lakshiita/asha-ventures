@@ -1,0 +1,22 @@
+[
+  {
+    "title": "What",
+    "description": "What outcomes does the effect relate to, and how important are they to the people (or planet) experiencing it?"
+  },
+  {
+    "title": "How Much",
+    "description": "How much of the effect occurs in the time period?"
+  },
+  {
+    "title": "Who",
+    "description": "Who experiences the effect and how underserved are they in relation to the outcome?"
+  },
+  {
+    "title": "How",
+    "description": "How does the effect compare and contribute to what is likely to occur anyway?"
+  },
+  {
+    "title": "Which",
+    "description": "Which risk factors are significant and how likely is it that the outcome is different from the expectation?"
+  }
+]

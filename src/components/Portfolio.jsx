@@ -28,7 +28,20 @@ export default function Portfolio({ investments, onCompanySelect }) {
   const sectors = useMemo(() => [...new Set(investments.map((c) => c.sector))], [investments]);
   const statuses = ["Active", "Partially Exited", "Exited"];
   const funds = ["Fund I", "Fund II"];
-  const years = useMemo(() => Array.from({ length: 11 }, (_, i) => 2015 + i), []);
+  const years = useMemo(() => {
+    const yearSet = new Set();
+    investments.forEach((inv) => {
+      const y = inv["year-of-investment"];
+      if (Array.isArray(y)) {
+        y.forEach((val) => yearSet.add(Number(val)));
+      } else if (y) {
+        yearSet.add(Number(y));
+      }
+    });
+    return Array.from(yearSet).sort((a, b) => b - a); // newest → oldest
+  }, [investments]);
+
+
 
   // Filter states
   const [selectedSectors, setSelectedSectors] = useState([]);
@@ -71,66 +84,62 @@ export default function Portfolio({ investments, onCompanySelect }) {
     const activeCount = selected.length;
 
     return (
-      <Menu closeOnSelect={false}>
+      <Menu
+        closeOnSelect={false}
+        usePortal={true}
+        isLazy
+        autoSelect={false}
+        initialFocusRef={null}
+      >
         <MenuButton
           as={Button}
           rightIcon={<ChevronDownIcon />}
           mr={2}
           mb={2}
           w="full"
-          minW="180px"  // ✅ added fixed width baseline
+          minW="190px"
           justifyContent="space-between"
           variant={activeCount > 0 ? "solid" : "outline"}
           colorScheme={activeCount > 0 ? "gray" : "gray"}
         >
           <Flex align="center" justify="space-between" w="full">
             <Text>{label}</Text>
-            <Box w="20px" textAlign="right">
-              {activeCount > 0 && (
-                <Tag
-                  size="sm"
-                  borderRadius="full"
-                  colorScheme="blue"
-                  ml={2}
-                  minW="20px"
-                  textAlign="center"
-                >
-                  {activeCount}
-                </Tag>
-              )}
-            </Box>
+            {activeCount > 0 && (
+              <Tag size="sm" borderRadius="full" colorScheme="blue" ml={2}>
+                {activeCount}
+              </Tag>
+            )}
           </Flex>
         </MenuButton>
 
-
-        <MenuList maxH="250px" overflowY="auto">
+        <MenuList
+          maxH="250px"
+          overflowY="auto"
+          scrollBehavior="smooth"
+          tabIndex={-1}  // 👈 prevents focus jump
+        >
           {options.map((option) => {
             const isSelected = selected.includes(option);
             return (
               <MenuItem
                 key={option}
-                onClick={() => {
-                  if (isSelected)
-                    setSelected(selected.filter((s) => s !== option));
-                  else
-                    setSelected([...selected, option]);
-                }}
+                onClick={() =>
+                  isSelected
+                    ? setSelected(selected.filter((s) => s !== option))
+                    : setSelected([...selected, option])
+                }
                 _hover={{ bg: "gray.100" }}
               >
-                <Checkbox
-                  isChecked={isSelected}
-                  pointerEvents="none" // ✅ disables double click issue, text now clickable too
-                  mr={2}
-                />
+                <Checkbox isChecked={isSelected} pointerEvents="none" mr={2} />
                 {option}
               </MenuItem>
             );
           })}
-
         </MenuList>
       </Menu>
     );
   }
+
 
 
   // ✅ The main JSX return starts here
@@ -226,7 +235,7 @@ export default function Portfolio({ investments, onCompanySelect }) {
           <MultiSelectMenu label="Sectors" options={sectors} selected={selectedSectors} setSelected={setSelectedSectors} />
           <MultiSelectMenu label="Statuses" options={statuses} selected={selectedStatuses} setSelected={setSelectedStatuses} />
           <MultiSelectMenu label="Funds" options={funds} selected={selectedFunds} setSelected={setSelectedFunds} />
-          <MultiSelectMenu label="Years" options={years} selected={selectedYears} setSelected={setSelectedYears} />
+          <MultiSelectMenu label="Years" options={years} selected={selectedYears} setSelected={setSelectedYears} placement="top" />
         </VStack>
       </Box>
 
@@ -241,10 +250,10 @@ export default function Portfolio({ investments, onCompanySelect }) {
         minH="100vh"
       >
         <Heading
-          size={{ base: "2xl", md: "3xl" }}
+          fontSize={{ base: "4xl", md: "6xl" }}
+          color="blue.700"
           mb={10}
           textAlign="left"
-          color="blue.700"
           fontWeight="extrabold"
           letterSpacing="wide"
           fontFamily="'Playfair Display', serif"
@@ -258,7 +267,8 @@ export default function Portfolio({ investments, onCompanySelect }) {
               <Text
                 fontSize={{ base: "lg", md: "3xl" }}
                 textTransform="uppercase"
-                color="brand.800"
+                fontFamily="monospace"
+                color="brand.600"
                 align="centre"
                 mb={2}
               >

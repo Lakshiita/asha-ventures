@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Entrepreneurship",
+    "bgColor": "blue.500",
+    "content": "Eliminating bias by investing in women entrepreneurs."
+  },
+  {
+    "title": "Leadership", 
+    "bgColor": "green.500",
+    "content": "Fostering women leaders across levels."
+  },
+  {
+    "title": "Employment",
+    "bgColor": "teal.500", 
+    "content": "Increasing representation of women in the workforce of investee companies."
+  },
+  {
+    "title": "Consumption",
+    "bgColor": "orange.500",
+    "content": "Backing products and services disproportionally benefiting women and contributing to their agency and wellness"
+  }
+]

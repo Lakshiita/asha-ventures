@@ -10,6 +10,7 @@ import VikramGandhi from "./pages/VikramGandhi.jsx";
 import PramodBhasin from "./pages/PramodBhasin.jsx";
 import FAQsPage from "./pages/FAQsPage.jsx";
 import { Box } from "@chakra-ui/react";
+import Contact from "./pages/Contact.jsx";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/faqs" element={<FAQsPage />} />
           <Route path="/founders/vikram-gandhi" element={<VikramGandhi />} />
           <Route path="/founders/pramod-bhasin" element={<PramodBhasin />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Box>
       <Footer />

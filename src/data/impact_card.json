@@ -1,0 +1,67 @@
+[
+    {
+        "title": "1. No Poverty",
+        "content": "We invest to improve access to basic services, natural resources and appropriate new technology and financial services.",
+        "image": "/assets/impact_card/sdg1.png"
+    },
+    {
+        "title": "2. Zero Hunger",
+        "content": "We invest to ensure sustainable food production and improve access to input, knowledge, market and financial resources to increase the production and income of smallholder farmers of India.",
+        "image": "/assets/impact_card/sdg2.png" 
+    },
+    {
+        "title": "3. Good Health and Well-Being",
+        "content": "We invest to increase the reach of essential health-care services and access to safe and affordable critical medicines & vaccines.",
+        "image": "/assets/impact_card/sdg3.png" 
+    },
+    {
+        "title": "4. Quality Education",
+        "content": "We invest to ensure equal access to affordable and quality education, relevant skills and improve education outcomes.",
+        "image": "/assets/impact_card/sdg4.png" 
+    },
+    {
+        "title": "5. Gender Equality",
+        "content": "We invest to empower women with technology and provide them with equal access to job opportunities at all levels.",
+        "image": "/assets/impact_card/sdg5.png" 
+    },
+    {
+        "title": "6. Affordable and Clean Energy",
+        "content": "We invest to increase the share and efficiency of renewable energy in India's overall energy mix.",
+        "image": "/assets/impact_card/sdg6.png" 
+    },
+    {
+        "title": "7. Decent Work and Economic Growth",
+        "content": "We invest to ensure safe and respectable work for all women and men and increase the formalization and growth of India's MSMEs.",
+        "image": "/assets/impact_card/sdg7.png" 
+    },
+    {
+        "title": "8. Industry, Innovation and Infrastructure",
+        "content": "We invest to promote sustainable industrialization and infrastructure development which has the potential to lift people out of poverty without putting additional stress on people and the environment.",
+        "image": "/assets/impact_card/sdg8.png" 
+    },
+    {
+        "title": "9. Reduced Inequality",
+        "content": "We invest to accelerate economic and social growth for India's emerging middle class.",
+        "image": "/assets/impact_card/sdg9.png" 
+    },
+    {
+        "title": "10. Sustainable Cities and Communities",
+        "content": "We invest to provide adequate and affordable housing to India's masses and improve the quality of air and water.",
+        "image": "/assets/impact_card/sdg10.png" 
+    },
+    {
+        "title": "11. Responsible Consumption and Production",
+        "content": "We invest to promote sustainable resource utilization and minimize the amount and adverse impact of waste on humans and the environment.",
+        "image": "/assets/impact_card/sdg11.png" 
+    },
+    {
+        "title": "12. Climate Action",
+        "content": "We invest to measure and mitigate the impact of climate change.",
+        "image": "/assets/impact_card/sdg12.png" 
+    },
+    {
+        "title": "13. Life Below Water",
+        "content": "We invest to minimize the impact of several types of pollution and contamination on marine life.",
+        "image": "/assets/impact_card/sdg13.png" 
+    }
+]

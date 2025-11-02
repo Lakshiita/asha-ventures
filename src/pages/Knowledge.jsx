@@ -1,163 +1,250 @@
 import {
-  Box, Button, Card, CardBody, Container, Grid, Heading, Input, Link, Stack, Tab, TabList,
-  TabPanel, TabPanels, Tabs, Text, Textarea, FormControl, FormLabel, FormHelperText, Image
+  Box, Card, CardBody, Container, Grid, Heading, Image, Stack, Tab,
+  TabList, TabPanel, TabPanels, Tabs, Text, Link, Tag
 } from "@chakra-ui/react";
-import Section from "../components/Section.jsx";
-import { mediaData } from "../data/media.json";
-import { newsletterData } from "../data/newsletter.json";
-
+import mediaData from "../data/media.json";
+import newsletterData from "../data/newsletter.json";
+import annual_reports from "../data/annual_reports.json";
+import { CalendarIcon } from "@chakra-ui/icons";
 export default function Knowledge() {
+  const cardStyles = {
+    bg: "gray.100",
+    border: "1px solid",
+    borderColor: "gray.200",
+    rounded: "40px",
+    overflow: "hidden",
+    transition: "all 0.3s ease",
+    cursor: "pointer",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    minH: "320px",
+    w: "380px",
+    boxShadow: "base",
+    _hover: {
+      transform: "translateY(-8px)",
+      boxShadow: "-12px 12px 0px 0px rgba(72, 109, 255, 1)",
+      borderColor: "blue.400",
+    },
+  };
+
   return (
     <Box>
-      <Section
-        title="Knowledge Resource"
-        subtitle="Browse newsletters, media mentions, and get in touch."
+      <Heading
+        fontSize={{ base: "4xl", md: "6xl" }}
+        color="blue.700"
+        letterSpacing="wide"
+        textAlign="center"
+        fontFamily="'Playfair Display', serif"
+        mt={{ base: 6, md: 10 }}
       >
-        <Container maxW="100vw" px={0}>
-          <Tabs variant="enclosed">
-            <TabList>
-              <Tab>Newsletters</Tab>
-              <Tab>Media</Tab>
-              <Tab id="contact">Contact</Tab>
-            </TabList>
-            <TabPanels bg="#f7f7ff" border="1px solid" borderColor="blackAlpha.200" rounded="md">
-              <TabPanel>
-                <Stack spacing={6}>
-                  <Card bg="white" border="1px solid" borderColor="blackAlpha.100" rounded="lg">
-                    <CardBody>
-                      <Heading size="md" mb={2}>Subscribe</Heading>
-                      <Stack direction={{ base:"column", sm:"row" }} as="form" onSubmit={(e)=>e.preventDefault()} spacing={3}>
-                        <Input type="email" placeholder="you@example.com" required />
-                        <Button type="submit">Subscribe</Button>
-                      </Stack>
-                      <Text mt={2} fontSize="sm" color="gray.600">We send occasional updates. No spam.</Text>
-                    </CardBody>
-                  </Card>
-                  <Grid templateColumns={{ base: "1fr", md: "repeat(2,1fr)", lg: "repeat(3,1fr)" }} gap={6} w="100vw" ml="calc(-50vw + 50%)" px={8}>
-                    {newsletterData.map((item, i)=>(
-                      <Card 
-                        key={i} 
-                        bg="white" 
-                        border="2px solid" 
-                        borderColor="orange.400" 
-                        rounded="xl"
-                        boxShadow="md"
-                        overflow="hidden"
-                        transition="all 0.3s ease"
-                        _hover={{
-                          transform: "translateY(-4px)",
-                          boxShadow: "0 8px 25px rgba(255, 165, 0, 0.3)"
-                        }}
+        Knowledge Resources
+      </Heading>
+
+      <Container mt={{ base: 8, md: 10 }} maxW="7xl" px={4}>
+        <Tabs variant="soft-rounded" colorScheme="blue" align="center">
+          <TabList
+            justifyContent="center"
+            mb={7}
+            borderRadius="xl"
+            bg="gray.100"
+            p={2}
+            w={{ base: "95%", sm: "100%", md: "510px" }}
+            mx="auto"
+            gap={{ base: 1, sm: 2, md: 8 }}
+          >
+            <Tab _selected={{ color: "white", bg: "blue.700" }}>Annual Reports</Tab>
+            <Tab _selected={{ color: "white", bg: "blue.700" }}>Newsletters</Tab>
+            <Tab _selected={{ color: "white", bg: "blue.700" }}>Media</Tab>
+          </TabList>
+
+          <TabPanels>
+            {/* 📘 ANNUAL REPORTS */}
+            <TabPanel>
+              <Grid
+                templateColumns={{
+                  base: "1fr",
+                  md: "repeat(2,1fr)",
+                  lg: "repeat(3,1fr)",
+                }}
+                gap={6}
+                px={4}
+              >
+                {annual_reports.map((report, i) => (
+                  <Link
+                    key={i}
+                    href={report.pdfUrl}
+                    isExternal
+                    _hover={{ textDecoration: "none" }}
+                  >
+                    <Card {...cardStyles} >
+                      <Image
+                        src={report.image}
+                        alt={report.title}
+                        w="100%"
+                        h="430px"
+                        objectFit="cover"
+                      />
+                      {/* Dark Blue Divider */}
+                      <Box h="3px" bg="blue.800" w="100%" />
+                      <CardBody textAlign="center" py={4}>
+                        <Heading size="md" mb={2} fontWeight="bold" color="blue.700">
+                          {report.title}
+                        </Heading>
+                        {report.summary && (
+                          <Text color="gray.500" fontSize="sm" noOfLines={2}>
+                            {report.summary}
+                          </Text>
+                        )}
+                      </CardBody>
+                    </Card>
+                  </Link>
+                ))}
+              </Grid>
+            </TabPanel>
+
+            {/* 📰 NEWSLETTERS */}
+            <TabPanel>
+              <Stack spacing={6}>
+                <Grid
+                  templateColumns={{
+                    base: "1fr",
+                    md: "repeat(2,1fr)",
+                    lg: "repeat(3,1fr)",
+                  }}
+                  gap={6}
+                  px={4}
+                >
+                  {[...newsletterData]
+                    .sort((a, b) => {
+                      const dateA = new Date(a.date);
+                      const dateB = new Date(b.date);
+                      return dateB - dateA; // newest first
+                    })
+                    .map((item, i) => (
+                      <Link
+                        key={i}
+                        href={item.link}
+                        isExternal
+                        _hover={{ textDecoration: "none" }}
+                      >
+                        <Card
+                          {...cardStyles}
+                          h="100%"
+                        >
+                          <Image
+                            src={item.image}
+                            alt={item.heading}
+                            w="100%"
+                            h="330px"
+                            objectFit="cover"
+                            borderTopRadius="md"
+                          />
+                          {/* Dark Blue Divider */}
+                          <Box h="3px" bg="blue.800" w="100%" />
+                          <CardBody
+                            textAlign="center"
+                            py={4}
+                            display="flex"
+                            flexDirection="column"
+                            justifyContent="space-between"
+                            flex="1"
+                          >
+                            <Tag size="md" variant="unstyled">
+                              <Text
+                                as="span"
+                                color="blue.700"
+                                px={4}
+                                py={1}
+                                borderRadius="full"
+                                fontWeight="semibold"
+                                fontSize="sm"
+                                display="inline-block"
+                                mx="auto"
+                                mt={2}
+                              >
+                                <CalendarIcon mr={2} />
+                                {item.date}
+                              </Text>
+                            </Tag>
+
+                          </CardBody>
+                        </Card>
+                      </Link>
+                    ))}
+                </Grid>
+              </Stack>
+            </TabPanel>
+
+
+            {/* 🗞 MEDIA */}
+            <TabPanel>
+              <Grid
+                templateColumns={{
+                  base: "1fr",
+                  md: "repeat(2,1fr)",
+                  lg: "repeat(3,1fr)",
+                }}
+                gap={6}
+                px={4}
+              >
+                {[...mediaData]
+                  .sort((a, b) => {
+                    const dateA = new Date(a.month_and_year);
+                    const dateB = new Date(b.month_and_year);
+                    return dateB - dateA;
+                  })
+                  .map((item, i) => (
+                    <Link
+                      key={i}
+                      href={item.link}
+                      isExternal
+                      _hover={{ textDecoration: "none" }}
+                    >
+                      <Card
+                        {...cardStyles}
                       >
                         <Image
                           src={item.image}
                           alt={item.heading}
                           w="100%"
-                          h="250px"
-                          objectFit="contain"
+                          h="330px"
+                          objectFit="cover"
+                          borderTopRadius="md"
                         />
+                        {/* Dark Blue Divider */}
+                        <Box h="3px" bg="blue.800" w="100%" />
                         <CardBody textAlign="center" py={4}>
-                          <Link href={item.link} isExternal>
-                            <Heading 
-                              size="md" 
-                              mb={2} 
-                              fontWeight="bold"
-                              textDecoration="underline"
-                              textDecorationColor="orange.400"
-                              cursor="pointer"
-                              _hover={{ color: "orange.500" }}
-                            >
-                              {item.heading}
-                            </Heading>
-                          </Link>
-                          <Text color="gray.600" fontSize="sm" mb={2} px={2}>
-                            {item.date}
-                          </Text>
-                          {item.summary && (
-                            <Text color="gray.600" fontSize="sm" mb={2} px={2}>
-                              {item.summary}
-                            </Text>
-                          )}
-                        </CardBody>
-                      </Card>
-                    ))}
-                  </Grid>
-                </Stack>
-              </TabPanel>
-
-              <TabPanel>
-                <Grid templateColumns={{ base: "1fr", md: "repeat(2,1fr)", lg: "repeat(3,1fr)" }} gap={6} w="100vw" ml="calc(-50vw + 50%)" px={8}>
-                  {mediaData.map((item, i)=>(
-                    <Card 
-                      key={i} 
-                      bg="white" 
-                      border="2px solid" 
-                      borderColor="orange.400" 
-                      rounded="xl"
-                      boxShadow="md"
-                      overflow="hidden"
-                      transition="all 0.3s ease"
-                      _hover={{
-                        transform: "translateY(-4px)",
-                        boxShadow: "0 8px 25px rgba(255, 165, 0, 0.3)"
-                      }}
-                    >
-                      <Image
-                        src={item.image}
-                        alt={item.heading}
-                        w="100%"
-                        h="250px"
-                        objectFit="contain"
-                      />
-                      <CardBody textAlign="center" py={4}>
-                        <Link href={item.link} isExternal>
-                          <Heading 
-                            size="md" 
-                            mb={2} 
-                            fontWeight="bold"
-                            textDecoration="underline"
-                            textDecorationColor="orange.400"
-                            cursor="pointer"
-                            _hover={{ color: "orange.500" }}
+                          <Heading
+                            size="md"
+                            mb={1}
+                            // fontWeight="bold"
+                            color="blue.700"
+                            noOfLines={4} // limits visible lines
+                            minH="5.2em" // maintains height for 4 lines even if text is shorter
                           >
                             {item.heading}
                           </Heading>
-                        </Link>
-                        <Text color="gray.600" fontSize="sm" mb={2} px={2}>
-                          {item.summary}
-                        </Text>
-                      </CardBody>
-                    </Card>
-                  ))}
-                </Grid>
-              </TabPanel>
 
-              <TabPanel>
-                <Box as="form" onSubmit={(e)=>e.preventDefault()}>
-                  <FormControl isRequired mb={4}>
-                    <FormLabel>Your Name</FormLabel>
-                    <Input placeholder="Full name" />
-                  </FormControl>
-                  <FormControl isRequired mb={4}>
-                    <FormLabel>Email</FormLabel>
-                    <Input type="email" placeholder="you@example.com" />
-                  </FormControl>
-                  <FormControl mb={4}>
-                    <FormLabel>Organization</FormLabel>
-                    <Input placeholder="Optional" />
-                  </FormControl>
-                  <FormControl isRequired mb={4}>
-                    <FormLabel>Message</FormLabel>
-                    <Textarea rows={5} placeholder="Tell us how we can help" />
-                    <FormHelperText>We usually respond within a couple of business days.</FormHelperText>
-                  </FormControl>
-                  <Button type="submit">Send</Button>
-                </Box>
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
-        </Container>
-      </Section>
+                          <Text
+                            fontSize="sm"
+                            color="gray.500"
+                            letterSpacing="wide"
+                            mb={2}
+                          >
+                            {item.month_and_year}
+                          </Text>
+                        </CardBody>
+                      </Card>
+                    </Link>
+                  ))}
+              </Grid>
+            </TabPanel>
+
+
+          </TabPanels>
+        </Tabs>
+      </Container>
     </Box>
   );
 }

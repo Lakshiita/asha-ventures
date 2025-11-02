@@ -1,5 +1,6 @@
+// Navbar.jsx
 import {
-  Box, Flex, HStack, IconButton, Text, Switch,useDisclosure, Stack, Link as CLink, Image, Button, useColorMode, useColorModeValue, Menu, MenuButton, MenuList, MenuItem
+  Box, Flex, HStack, IconButton, Image, Link as CLink, Stack, useDisclosure, Button, Menu, MenuButton, MenuList, MenuItem
 } from "@chakra-ui/react";
 import { Link, NavLink } from "react-router-dom";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
@@ -8,18 +9,8 @@ const links = [
   { to: "/people", label: "Team" },
   { to: "/investments", label: "Investments" },
   { to: "/impact", label: "Our Impact" },
-  { 
-    to: "/knowledge", 
-    label: "Knowledge Resources",
-    dropdown: [
-      { to: "/knowledge#newsletters", label: "Newsletters" },
-      { to: "/knowledge#media", label: "Media" },
-      { to: "/knowledge#contact", label: "Contact" }
-    ]
-  },
+  { to: "/knowledge", label: "Knowledge Resources" },
 ];
-// import { MoonIcon, SunIcon } from "@chakra-ui/icons";
-
 
 const NavLinkItem = ({ to, children, dropdown }) => {
   if (dropdown) {
@@ -43,7 +34,7 @@ const NavLinkItem = ({ to, children, dropdown }) => {
       </Menu>
     );
   }
-  
+
   return (
     <CLink
       as={NavLink}
@@ -83,11 +74,21 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        <HStack spacing={1} display={{ base: "none", md: "flex" }}>
+        <HStack spacing={6} display={{ base: "none", md: "flex" }}>
           {links.map((l) => (
             <NavLinkItem key={l.to} to={l.to} dropdown={l.dropdown}>{l.label}</NavLinkItem>
           ))}
-
+          <Button
+            as={Link}
+            to="/contact"
+            bg="orange.400"
+            color="white"
+            _hover={{ bg: "orange.500" }}
+            rounded="full"
+            px={6}
+          >
+            Contact Us
+          </Button>
         </HStack>
 
         {/* Mobile Menu Button */}
@@ -103,10 +104,21 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {isOpen ? (
         <Box pb={4} display={{ md: "none" }}>
-          <Stack as="nav" spacing={2} px={4}>
+          <Stack as="nav" spacing={3} px={4}>
             {links.map((l) => (
               <NavLinkItem key={l.to} to={l.to}>{l.label}</NavLinkItem>
             ))}
+            <Button
+              as={Link}
+              to="/contact"
+              bg="orange.400"
+              color="white"
+              _hover={{ bg: "orange.500" }}
+              rounded="full"
+              w="full"
+            >
+              Contact Us
+            </Button>
           </Stack>
         </Box>
       ) : null}

@@ -23,8 +23,8 @@ export default function CompanyModal({ isOpen, onClose, company }) {
     company.status?.toLowerCase() === "active"
       ? "green"
       : company.status?.toLowerCase() === "exited"
-      ? "red"
-      : "yellow";
+        ? "red"
+        : "yellow";
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="full" scrollBehavior="inside">
@@ -32,6 +32,7 @@ export default function CompanyModal({ isOpen, onClose, company }) {
       <ModalContent
         bg="white"
         p={{ base: 4, md: 10 }}
+        pl={{ base: 8, md: 20 }}
         overflow="hidden"
         rounded="none"
       >
@@ -48,10 +49,27 @@ export default function CompanyModal({ isOpen, onClose, company }) {
           {/* LEFT SECTION - TEXT */}
           <Box flex="1" maxW={{ base: "100%", lg: "55%" }}>
             <VStack align="flex-start" spacing={6}>
-              <Heading size="2xl" color="gray.800">
+              <Box w="100%" mb={4}>
+              {/* Company Name */}
+              <Heading
+                fontSize={{ base: "4xl", md: "6xl" }} // Increased size
+                color="blue.700"
+                fontFamily="'Playfair Display', serif"
+                mt={{ base: 6, md: 10 }} // Added top margin
+              >
                 {company.name}
               </Heading>
-
+              {/* Year of Investment (Right Aligned) */}
+              {company["year-of-investment"] && (
+                <Text
+                  fontSize={{ base: "md", md: "lg" }}
+                  color="gray.600"
+                  textAlign="left" // right aligned
+                  mt={1}
+                >
+                  <b>Year of Investment:</b> {company["year-of-investment"].join(", ")}
+                </Text>
+              )}</Box>
               <Flex gap={3} wrap="wrap">
                 <Badge colorScheme="blue" px={3} py={1} rounded="full" fontSize="md">
                   {company.sector}
@@ -67,12 +85,18 @@ export default function CompanyModal({ isOpen, onClose, company }) {
                   {company.status}
                 </Badge>
               </Flex>
-
-              {company["year-of-investment"] && (
-                <Text fontSize="lg" color="gray.600">
-                  <b>Year of Investment:</b> {company["year-of-investment"].join(", ")}
+              <Box>
+                <Text
+                  fontSize="lg"
+                  color="gray.700"
+                  lineHeight="tall"
+                  w="680px"
+                  textAlign="left"
+                >
+                  {company.description}
                 </Text>
-              )}
+              </Box>
+
 
               <Flex gap={4}>
                 {company.linkedin && (
@@ -102,22 +126,6 @@ export default function CompanyModal({ isOpen, onClose, company }) {
                   />
                 )}
               </Flex>
-
-              <Divider borderColor="gray.200" />
-
-              <Box>
-                <Heading size="md" mb={3} color="gray.700">
-                  About
-                </Heading>
-                <Text
-                  fontSize="lg"
-                  color="gray.700"
-                  lineHeight="tall"
-                  textAlign="justify"
-                >
-                  {company.description}
-                </Text>
-              </Box>
 
               {company["latest-news"]?.length > 0 && (
                 <Box w="100%">
@@ -163,19 +171,14 @@ export default function CompanyModal({ isOpen, onClose, company }) {
             maxW={{ base: "100%", lg: "45%" }}
             display="flex"
             flexDir="column"
-            alignItems="center"
-            justifyContent="center"
+            alignItems="left"
+            justifyContent="left"
             gap={6}
           >
             <Box
-              bg="gray.50"
               rounded="2xl"
               p={{ base: 6, md: 10 }}
-              shadow="md"
-              transition="all 0.3s ease"
-              _hover={{ shadow: "lg", transform: "scale(1.03)" }}
-              w="100%"
-              textAlign="center"
+              textAlign="left"
             >
               <Image
                 src={company.logo}
