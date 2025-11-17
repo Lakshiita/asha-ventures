@@ -16,8 +16,7 @@ const Hero = ({ scrollYProgress }) => {
       as="section"
       position="sticky"
       top="0"
-      // bg="brand.section.hero"
-      bgGradient="linear(135deg, #fcddb9ff  10%, #ffffffff 40%, #e9efffff  100%)"
+      bg="brand.section.hero_impact"
       m="0"               // Remove any margin
       p="0"
       zIndex={10}
@@ -92,10 +91,10 @@ const Hero = ({ scrollYProgress }) => {
               For India's Emerging Middle Class
             </Heading>
             <Text fontSize="lg" color="textColor2">
-              We invest in bold ideas that shape India’s future economy.
+              We invest in bold ideas that shape India's future economy.
             </Text>
             <Stack direction={{ base: "column", sm: "row" }} spacing={6}>
-              <Button as={Link} to="/investments" variant="outline" size="lg" colorScheme="orange">
+              <Button as={Link} to="/investments" variant="outline" size="lg" colorScheme="grey">
                 View Portfolio
               </Button>
             </Stack>

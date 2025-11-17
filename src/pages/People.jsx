@@ -28,21 +28,20 @@ export default function People() {
   };
 
   return (
-    <Box>
+    <Box bg="#f4f4f4ff">
       <Section>
         <Container maxW="container.xl" centerContent>
+          <Heading
+            fontSize={{ base: "4xl", md: "6xl" }}
+            mb={10}
+            color="blue.700"
+            letterSpacing="wide"
+            textAlign="center"
+            textStyle="subHeading"
+          >
+            Meet Our People
+          </Heading>
           <VStack spacing={12} align="stretch">
-            <Heading
-              fontSize={{ base: "4xl", md: "6xl" }}
-              mb={0}
-              color="blue.700"
-              fontWeight="extrabold"
-              letterSpacing="wide"
-              textAlign="center"
-              fontFamily="'Playfair Display', serif"
-            >
-              Meet Our People
-            </Heading>
 
             {/* ✅ Tabs for Founders / Team / Supporters */}
             <Tabs variant="soft-rounded" colorScheme="blue" align="center">
@@ -50,7 +49,7 @@ export default function People() {
                 justifyContent="center"
                 mb={7}
                 borderRadius="xl"
-                bg="gray.100"
+                bg="#e6e7e9ff"
                 p={2}
                 w={{ base: "95%", sm: "100%", md: "550px" }}
                 // minW={{ base: "100%", md: "70%" }}
@@ -96,10 +95,10 @@ export default function People() {
           bg="#e0e0e0ff"
           borderRadius="xl"
           p={{ base: 4, md: 6 }}
-          maxW="85vw"
-          maxH="85vh"
-          w="85vw"
-          h="85vh"
+          maxW="95vw"
+          maxH="90vh"
+          w="95vw"
+          h="90vh"
           overflowY="auto"
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
@@ -225,7 +224,7 @@ export default function People() {
               boxShadow="md"
               p={6}
               w="100%"
-              maxH="500px"
+              maxH="600px"
               overflowY="auto"
               overflowX="hidden"
               pr={4}                 // ✅ space for scrollbar

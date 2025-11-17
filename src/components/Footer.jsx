@@ -18,14 +18,17 @@ import {
 import { FaLinkedin, FaMapMarkerAlt } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { useState } from "react";
-import logo from '../assets/asha-ventures-logo.png';
+import logo from "../assets/asha-ventures-logo.png";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
   const toast = useToast();
 
-  const handleSubscribe = () => {
+  const handleSubscribe = async () => {
+    console.log('Newsletter subscription attempt:', { email });
+
     if (!email || !email.trim()) {
+      console.warn('Subscription failed: Empty email provided');
       toast({
         title: "Please enter your email",
         status: "error",
@@ -35,34 +38,47 @@ export default function Footer() {
       return;
     }
 
-    // Here you could call your subscription API.
-    toast({
-      title: "Newsletter Subscribed",
-      description: "Thank you for subscribing!",
-      status: "success",
-      duration: 4000,
-      isClosable: true,
-    });
+    try {
+      console.log('Sending subscription request to server...');
+      const response = await fetch("http://localhost:5000/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
 
-    setEmail("");
+      console.log('Server response:', { status: response.status, ok: response.ok });
+
+      if (!response.ok) {
+        throw new Error("Failed to send email");
+      }
+
+      console.log('Newsletter subscription successful for:', email);
+      toast({
+        title: "Newsletter Subscribed",
+        description: "Thank you for subscribing!",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+      });
+      setEmail("");
+    } catch (error) {
+      console.error('Newsletter subscription error:', error);
+      toast({
+        title: "Error",
+        description: "Unable to send subscription email",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      });
+    }
   };
 
   return (
-    <Box
-      as="footer"
-      bg="brand.100"
-      color="gray.800"
-      mt="auto"
-      w="100%"
-    >
-
-      <Container as={Stack} maxW="7xl" pt={10} pb={10} spacing={8}>
-
-
-        {/* Main Footer Grid */}
+    <Box bg="brand.section.footer" color="gray.800">
+      <Container as={Stack} maxW="7xl" py={10}>
         <SimpleGrid columns={{ base: 1, md: 4 }} spacing={10}>
           {/* Logo & Newsletter */}
-          <Stack spacing={10} align="flex-start" gridColumn={{ md: "span 2" }}>
+          <Stack spacing={6} align="flex-start" gridColumn={{ md: "span 2" }}>
             <Image
               src={logo}
               alt="Asha Ventures Logo"
@@ -75,10 +91,31 @@ export default function Footer() {
                 filter: "brightness(1.1)",
               }}
             />
-            <Text fontSize="2xl" fontFamily={"sans-serif"}>
+            <Text fontSize="2xl" textStyle="subHeading">
               Asha Ventures is an inclusion and sustainability focused fund
               investing in early to growth stage companies.
             </Text>
+
+            <Grid templateColumns="repeat(3, 1fr)" gap={8} maxW="4xl" mx="auto">
+              <Box textAlign="center">
+                <Image
+                  src="/assets/signatory/OPIM_Logo_RGB_Signatory_1_1_a19b434476.png"
+                  alt="Signatory 1"
+                  h="120px"
+                  objectFit="contain"
+                  mx="auto"
+                />
+              </Box>
+              <Box textAlign="center">
+                <Image
+                  src="/assets/signatory/Blue_Mark_Practive_verification_seal_05_22_756364e25f.png"
+                  alt="Signatory 2"
+                  h="120px"
+                  objectFit="contain"
+                  mx="auto"
+                />
+              </Box>
+            </Grid>
 
             <Stack spacing={4} w="full">
               <Text fontWeight="bold" fontSize="lg">
@@ -95,7 +132,8 @@ export default function Footer() {
                   _focus={{
                     bg: "white",
                     transform: "scale(1.02)",
-                    boxShadow: "0 0 0 2px var(--chakra-colors-brand-200)",
+                    boxShadow:
+                      "0 0 0 2px var(--chakra-colors-brand-200)",
                   }}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -119,41 +157,14 @@ export default function Footer() {
             </Stack>
           </Stack>
 
-          {/* Signatory Section (Moved Above) */}
+          {/* Get In Touch */}
           <Stack spacing={4}>
-            <Grid
-              templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
-              gap={8}
-              maxW="4xl"
-              mx="auto"
-              mb={10}
-            >
-              <Box textAlign="center">
-                <Image
-                  src="/assets/signatory/OPIM_Logo_RGB_Signatory_1_1_a19b434476.png"
-                  alt="Signatory 1"
-                  h="120px"
-                  objectFit="contain"
-                  mx="auto"
-                />
-              </Box>
-              <Box textAlign="center">
-                <Image
-                  src="/assets/signatory/Blue_Mark_Practive_verification_seal_05_22_756364e25f.png"
-                  alt="Signatory 2"
-                  h="120px"
-                  objectFit="contain"
-                  mx="auto"
-                />
-              </Box>
-            </Grid>
-            {/* Get In Touch */}
             <Text fontWeight="bold" fontSize="xl">
               Get In Touch
             </Text>
             <Text fontSize="md">
-              9th Floor, Peninsula Towers, Peninsula Corporate Park, Lower Parel
-              West, Lower Parel, Mumbai, Maharashtra 400013
+              9th Floor, Peninsula Towers, Peninsula Corporate Park, Lower
+              Parel West, Lower Parel, Mumbai, Maharashtra 400013
             </Text>
             <HStack spacing={1}>
               <IconButton
@@ -165,7 +176,6 @@ export default function Footer() {
                 color="green.500"
                 fontSize="xl"
                 target="_blank"
-                transition="all 0.2s ease"
                 _hover={{
                   transform: "scale(1.2) rotate(5deg)",
                   color: "green.600",
@@ -180,7 +190,6 @@ export default function Footer() {
                 variant="ghost"
                 color="red.500"
                 fontSize="xl"
-                transition="all 0.2s ease"
                 _hover={{
                   transform: "scale(1.2) rotate(-5deg)",
                   color: "red.600",
@@ -196,7 +205,6 @@ export default function Footer() {
                 color="blue.600"
                 fontSize="xl"
                 target="_blank"
-                transition="all 0.2s ease"
                 _hover={{
                   transform: "scale(1.2) rotate(5deg)",
                   color: "blue.700",
@@ -215,7 +223,6 @@ export default function Footer() {
               <CLink
                 href="/faqs"
                 fontSize="md"
-                transition="all 0.2s ease"
                 _hover={{
                   color: "brand.500",
                   transform: "translateX(5px)",
@@ -227,7 +234,6 @@ export default function Footer() {
               <CLink
                 href="/contact"
                 fontSize="md"
-                transition="all 0.2s ease"
                 _hover={{
                   color: "brand.500",
                   transform: "translateX(5px)",
@@ -242,18 +248,18 @@ export default function Footer() {
 
         <Divider my={6} />
 
-        {/* Bottom Bar */}
         <Stack
           direction={{ base: "column", md: "row" }}
           justify="space-between"
           align="center"
         >
-          <Text fontSize="md">© 2022 Asha Ventures. All Rights Reserved.</Text>
+          <Text fontSize="md">
+            © 2022 Asha Ventures. All Rights Reserved.
+          </Text>
           <HStack spacing={4}>
             <CLink
               href="/privacy"
               fontSize="md"
-              transition="all 0.2s ease"
               _hover={{
                 color: "brand.500",
                 textDecoration: "underline",
@@ -264,7 +270,6 @@ export default function Footer() {
             <CLink
               href="/terms"
               fontSize="md"
-              transition="all 0.2s ease"
               _hover={{
                 color: "brand.500",
                 textDecoration: "underline",

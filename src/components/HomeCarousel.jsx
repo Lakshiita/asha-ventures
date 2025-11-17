@@ -35,10 +35,14 @@ export default function HomeCarousel() {
     <Flex w="100%" direction="column" align="center" py={8}>
       {/* Heading Section */}
       <Box textAlign="center" mb={6} mt={4}>
-        <Heading fontSize="4xl" color="blue.700" fontWeight="bold" fontFamily="'Playfair Display', serif">
+        <Heading fontSize="4xl" color="brand.section.caraousel_heading" fontWeight="bold" textStyle="subHeading" mb={{ base: 2, md: 2 }}>
           Our Reach and Impact
         </Heading>
-        <Text textAlign="center" color="gray.500" mb={3}>
+        <Text textAlign="center" 
+        color="brand.section.caraousel_heading" 
+        mb={3} 
+        textStyle="subHeading"
+        fontSize={{ base: "lg", md: "lg" }}>
           Real stories of measurable progress.
         </Text>
       </Box>
@@ -82,22 +86,28 @@ export default function HomeCarousel() {
               left="0"
               w="100%"
               h="100%"
-              bgGradient="linear(to-t, blackAlpha.700 20%, transparent 80%)"
+              bgGradient="linear(to-t, rgba(0, 0, 0, 0.83) 0%, rgba(0, 0, 0, 0.28) 40%, rgba(0, 0, 0, 0.26) 100%)"
+              zIndex={1}
             />
+
 
             {/* Text Section - bottom left */}
             <Box
               position="absolute"
               bottom="10"
-              left="10"
+              left="50%"
+              transform="translateX(-50%)"
               color="white"
-              textAlign="left"
-              maxW={["90%", "60%", "50%"]}
+              textAlign="center"
+              maxW={["90%", "70%", "60%"]}
+              zIndex={2}
             >
-              <Heading fontSize={["2xl", "3xl", "4xl"]} fontWeight="bold" mb={2}>
+
+
+              <Heading fontSize={["2xl", "3xl", "4xl"]} fontWeight="bold" mb={2} fontFamily="Barlow Semi Condensed, sans-serif">
                 {slides[current].heading}
               </Heading>
-              <Heading fontSize={["md", "lg", "xl"]} fontWeight="medium">
+              <Heading fontFamily="Barlow Semi Condensed, sans-serif" fontSize={["md", "lg", "xl"]} fontWeight="medium">
                 {slides[current].text}
               </Heading>
             </Box>

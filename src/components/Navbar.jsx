@@ -13,6 +13,9 @@ const links = [
 ];
 
 const NavLinkItem = ({ to, children, dropdown }) => {
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   if (dropdown) {
     return (
       <Menu trigger="hover">
@@ -42,7 +45,7 @@ const NavLinkItem = ({ to, children, dropdown }) => {
       variant="nav"
       // fontFamily="Barlow, sans-serif"
       fontFamily="Barlow Semi Condensed, sans-serif"
-
+      onClick={handleClick}
       fontSize="1.25rem"
       fontWeight="500"
       letterSpacing="0.5px"
@@ -57,10 +60,12 @@ const NavLinkItem = ({ to, children, dropdown }) => {
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
     <Box
-      bg="brand.200"
+      bg="#fefbf4ff"
       borderColor="blackAlpha.200"
       position="sticky"
       top="0"
@@ -74,7 +79,7 @@ export default function Navbar() {
         px={{ base: 4, md: 8 }}
       >
         {/* Logo */}
-        <Link to="/">
+        <Link to="/" onClick={scrollToTop}>
           <Image
             src={logo}
             alt="Asha Ventures Logo" height="68px" rounded="md"

@@ -6,14 +6,18 @@ import mediaData from "../data/media.json";
 import newsletterData from "../data/newsletter.json";
 import annual_reports from "../data/annual_reports.json";
 import { CalendarIcon } from "@chakra-ui/icons";
+import commentariesData from "../data/commentaries.json";
+import { useNavigate } from "react-router-dom";
+
+
 export default function Knowledge() {
+  const navigate = useNavigate();
   const cardStyles = {
     bg: "gray.100",
     border: "1px solid",
     borderColor: "gray.200",
     rounded: "40px",
     overflow: "hidden",
-    transition: "all 0.3s ease",
     cursor: "pointer",
     display: "flex",
     flexDirection: "column",
@@ -21,22 +25,24 @@ export default function Knowledge() {
     minH: "320px",
     w: "380px",
     boxShadow: "base",
+    transition: "all 0.3s ease",
     _hover: {
       transform: "translateY(-8px)",
-      boxShadow: "-12px 12px 0px 0px rgba(72, 109, 255, 1)",
-      borderColor: "blue.400",
+      boxShadow: "-12px 12px 0px 0px rgba(111, 111, 111, 0.83)",
+      borderColor: "rgba(111, 111, 111, 0.83)",
     },
   };
 
   return (
-    <Box>
+    <Box bg="#f4f4f4ff" py={12}>
       <Heading
         fontSize={{ base: "4xl", md: "6xl" }}
         color="blue.700"
         letterSpacing="wide"
         textAlign="center"
-        fontFamily="'Playfair Display', serif"
-        mt={{ base: 6, md: 10 }}
+        textStyle="subHeading"
+        mb={10} 
+        // mt={{ base: 6, md: 10 }}
       >
         Knowledge Resources
       </Heading>
@@ -47,15 +53,16 @@ export default function Knowledge() {
             justifyContent="center"
             mb={7}
             borderRadius="xl"
-            bg="gray.100"
+            bg="#e6e7e9ff"
             p={2}
-            w={{ base: "95%", sm: "100%", md: "510px" }}
+            w={{ base: "98%", sm: "100%", md: "660px" }}
             mx="auto"
             gap={{ base: 1, sm: 2, md: 8 }}
           >
-            <Tab _selected={{ color: "white", bg: "blue.700" }}>Annual Reports</Tab>
-            <Tab _selected={{ color: "white", bg: "blue.700" }}>Newsletters</Tab>
-            <Tab _selected={{ color: "white", bg: "blue.700" }}>Media</Tab>
+            <Tab _selected={{ color: "white", bg: "blue.700" }} fontSize="xl" fontWeight="semibold">Reports</Tab>
+            <Tab _selected={{ color: "white", bg: "blue.700" }} fontSize="xl" fontWeight="semibold">Newsletters</Tab>
+            <Tab _selected={{ color: "white", bg: "blue.700" }} fontSize="xl" fontWeight="semibold">Media</Tab>
+            <Tab _selected={{ color: "white", bg: "blue.700" }} fontSize="xl" fontWeight="semibold">Commentaries</Tab>
           </TabList>
 
           <TabPanels>
@@ -101,7 +108,7 @@ export default function Knowledge() {
                   </Link>
                 ))}
               </Grid>
-              <Box mb="100px"/>
+              <Box mb="100px" />
             </TabPanel>
 
             {/* 📰 NEWSLETTERS */}
@@ -242,7 +249,60 @@ export default function Knowledge() {
               </Grid>
             </TabPanel>
 
+            {/* 💬 COMMENTARIES */}
+            <TabPanel>
+              <Grid
+                templateColumns={{
+                  base: "1fr",
+                  md: "repeat(2,1fr)",
+                  lg: "repeat(3,1fr)",
+                }}
+                gap={6}
+                px={4}
+              >
+                {[...commentariesData]
+                  .sort((a, b) => new Date(b.date) - new Date(a.date))
+                  .map((item, i) => (
+                    <Card
+                      key={i}
+                      {...cardStyles}
+                      onClick={() => navigate(`/commentary/${i}`)}
+                    >
+                      <Image
+                        src={item.image}
+                        alt={item.heading}
+                        w="100%"
+                        h="330px"
+                        objectFit="cover"
+                        borderTopRadius="md"
+                      />
+                      <Box h="3px" bg="blue.800" w="100%" />
+                      <CardBody py={4} textAlign="center">
+                        <Heading size="md" mb={4} color="blue.700" noOfLines={2}>
+                          {item.heading}
+                        </Heading>
 
+                        <Tag size="md" variant="unstyled" mb={3}>
+                          <Text
+                            as="span"
+                            color="blue.700"
+                            px={4}
+                            py={1}
+                            borderRadius="full"
+                            fontWeight="semibold"
+                            fontSize="sm"
+                          >
+                            <CalendarIcon mr={2} />
+                            {item.date}
+                          </Text>
+                        </Tag>
+
+                      </CardBody>
+                    </Card>
+                  ))}
+              </Grid>
+              <Box mb="100px" />
+            </TabPanel>
           </TabPanels>
         </Tabs>
       </Container>

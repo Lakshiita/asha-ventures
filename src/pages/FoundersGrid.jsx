@@ -7,8 +7,10 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function PeopleGrid({ data, onPersonClick }) {
+export default function FoundersGrid({ data }) {
+  const navigate = useNavigate();
   const [visibleCards, setVisibleCards] = useState(() => {
     const initialVisible = new Set();
     const cardsPerRow = window.innerWidth >= 1024 ? 4 : window.innerWidth >= 768 ? 3 : window.innerWidth >= 640 ? 2 : 1;
@@ -59,18 +61,20 @@ export default function PeopleGrid({ data, onPersonClick }) {
             borderRadius="xl"
             boxShadow="md"
             overflow="hidden"
-            transition="all 1.2s cubic-bezier(0.4, 0, 0.2, 1)"
             transform={visibleCards.has(index) ? "translateY(0)" : "translateY(-100px)"}
             opacity={visibleCards.has(index) ? 1 : 0}
             cursor="pointer"
-            onClick={() => onPersonClick(person)}
-            _hover={{
-              transform: visibleCards.has(index) ? "translateY(-6px)" : "translateY(-100px)",
-              boxShadow: "xl",
+            onClick={() => {
+              const slug = person.name.toLowerCase().replace(/\s+/g, '-');
+              navigate(`/founders/${slug}`);
             }}
-            w={{ base: "280px", sm: "240px", md: "260px", lg: "280px" }}
-            maxW={{ base: "90vw", sm: "none" }}
-            h="auto"
+            _hover={{
+                transform: "translateY(-4px)",
+                boxShadow: "-12px 12px 0px 0px rgba(171, 157, 153, 0.83)",
+                borderColor: "rgba(62, 50, 43, 0.45)",
+              }}
+            w={{ base: "290px", sm: "250px", md: "270px", lg: "330px" }}
+            h={{ base: "290px", md: "400px" }}
           >
             <Image
               src={person.img}
@@ -82,11 +86,11 @@ export default function PeopleGrid({ data, onPersonClick }) {
             />
             <VStack p={{ base: 4, md: 5 }} spacing={2} align="center">
               <Heading
-                as="h3"
                 size={{ base: "sm", md: "md" }}
                 textAlign="center"
                 color="gray.800"
-                fontFamily="'Playfair Display', serif"
+                fontSize={{ base: "xl", md: "3xl" }}
+                textStyle="subHeading"
               >
                 {person.name}
               </Heading>

@@ -45,18 +45,19 @@ export default function Testimonials() {
     >
       <Heading
         textAlign="center"
-        color="blue.700"
-        fontFamily="'Playfair Display', serif"
-        mb={{ base: 2, md: 4 }}
-        mt={4}
+        color="brand.section.sectors_heading"
+        textStyle="subHeading"
+        mb={{ base: 2, md: 2 }}
+        mt={10}
       >
         What Our Partners Say
       </Heading>
       <Text
         textAlign="center"
-        color="gray.500"
-        mb={{ base: 12, md: 16 }} // increase this
-        fontSize={{ base: "sm", md: "md" }}
+        color="brand.section.sectors_heading"
+        mb={{ base: 8, md: 8 }} // increase this
+        fontSize={{ base: "lg", md: "lg" }}
+        textStyle="subHeading"
       >
         Stories of collaboration and growth from our portfolio companies.
       </Text>
@@ -97,10 +98,10 @@ export default function Testimonials() {
               {testimonial.text}
             </Text>
             <Box>
-              <Heading size={{ base: "sm", md: "md" }} color="orange.600">
+              <Heading size={{ base: "sm", md: "lg" }} color="orange.500">
                 {testimonial.company}
               </Heading>
-              <Text fontSize={{ base: "xs", md: "sm" }} color="gray.500">
+              <Text fontSize={{ base: "xs", md: "md" }} color="gray.500" textStyle="subHeading">
                 {testimonial.year}
               </Text>
             </Box>

@@ -11,6 +11,7 @@ import PramodBhasin from "./pages/PramodBhasin.jsx";
 import FAQsPage from "./pages/FAQsPage.jsx";
 import { Box } from "@chakra-ui/react";
 import Contact from "./pages/Contact.jsx";
+import CommentaryDetail from "./pages/CommentaryDetail";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/investments" element={<Investments />} />
           <Route path="/impact" element={<Impact />} />
           <Route path="/knowledge" element={<Knowledge />} />
+          <Route path="/commentary/:id" element={<CommentaryDetail />} />
           <Route path="/faqs" element={<FAQsPage />} />
           <Route path="/founders/vikram-gandhi" element={<VikramGandhi />} />
           <Route path="/founders/pramod-bhasin" element={<PramodBhasin />} />

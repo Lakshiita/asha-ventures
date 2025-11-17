@@ -1,6 +1,7 @@
 // theme.js
 import { extendTheme } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
+import SustainableInvestmentsSection from "./components/SustainableInvestmentsSection";
 
 const colors = {
   brand: {
@@ -11,7 +12,7 @@ const colors = {
     53: "#ffb951ff",
     54: "#f8a048ff",
     55: "#fa8d1fff",
-    100: "#f1e8d9",
+    100: "#ef9700ff",
     200: "#fffcf6ff",
     300: "#d8c49a",
     400: "#c9af7a",
@@ -20,12 +21,32 @@ const colors = {
     700: "#8b7047",
     800: "#6f5838",
     900: "#391003ff",
+    950: "#383838ff",
     section: {
-      hero: "#ffffffff",
-      sectors: "#ebf5ffff",
-      carousel: "#ffeafeff",
-      testimonials: "#f0fff0ff",
+      // hero: "rgb(254 248 229)",
+      // // sectors: "#f7d4a3ff",
+      // sectors: "rgba(244, 218, 186, 1)",   
+      // carousel: "rgba(225, 192, 153, 1)",
+      // testimonials: "rgba(209, 171, 124, 1)",
+      // signatory: "#ffffffff",
+      // footer: "#ffeee0ff",
+      // sectors_cards: "rgba(255, 246, 233, 1)",
+      // sectors_heading: "rgba(97, 32, 0, 1)",
+      hero: "#f4f4f4ff",
+      sectors: "#beb4b2ff",
+      carousel: "#697184",
+      testimonials: "#d8d0d0",
       signatory: "#ffffffff",
+      footer: "#e9e7e7ff",
+      sectors_cards: "rgba(255, 249, 240, 1)",
+      sectors_heading: "#2a2a2a",
+      caraousel_heading: "#f1f2f5ff",
+      investments_cards: "#dce6ffa5",
+      hero_impact: "#e5dbdbff",
+      two_x: "#efefefff",
+      sustainable_Investment: "#e1d7ceff",
+      five_dimension: "#7f8695ff",
+      testimonials_impact: "#ffead8ff"
     },
   },
 
@@ -35,12 +56,66 @@ const colors = {
   },
 };
 
-const fonts = {
-  heading: `'Poppins', 'Supreme-Medium', 'Inter', sans-serif`,
-  body: `'Inter', 'Poppins', 'Supreme-Medium', sans-serif`,
-  supreme: `'Supreme-Medium', 'Poppins', sans-serif`,
-  barlow: `'Barlow', sans-serif`,
+const textStyles = {
+  h1: {
+    fontFamily: "heading", // uses fonts.heading
+    fontSize: { base: "3xl", md: "5xl" },
+    fontWeight: "700",
+  },
+  h2: {
+    fontFamily: "heading",
+    fontSize: { base: "2xl", md: "3xl" },
+    fontWeight: "600",
+  },
+  h3: {
+    fontFamily: "heading",
+    fontSize: { base: "xl", md: "2xl" },
+    fontWeight: "600",
+  },
+  subHeading: {
+    fontFamily: "heading",  // already “Source Sans 3”
+    fontSize: { base: "xl", md: "5xl" },
+    fontWeight: "600",
+    color: "brand.950",
+  },
 };
+
+
+const Button = {
+  baseStyle: {
+    rounded: "xl",
+    fontWeight: 600,
+    transition: "all 0.25s ease",
+  },
+  variants: {
+    solid: {
+      bg: "brand.500",
+      color: "white",
+      _hover: {
+        bg: "brand.700",
+      },
+    },
+    soft: {
+      bg: "brand.200",
+      color: "brand.800",
+      _hover: {
+        bg: "brand.300",
+      },
+    },
+    ghost: {
+      color: "brand.600",
+      _hover: { bg: "brand.200" },
+    },
+  },
+};
+
+
+const fonts = {
+  heading: `"Source Sans 3", sans-serif`,  // ⬅️ Default heading font everywhere
+  body: `'Inter', 'Poppins', sans-serif`,
+  sourceSans: `"Source Sans 3", sans-serif`,
+};
+
 
 const components = {
   Heading: {
@@ -123,14 +198,6 @@ const components = {
   },
 };
 
-const textStyles = {
-  defaultText: {
-    color: mode("textColor2.light", "textColor2.dark"),
-    fontFamily: "supreme",
-    lineHeight: "normal",
-    textAlign: "center",
-  },
-};
 
 const styles = {
   global: (props) => ({

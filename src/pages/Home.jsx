@@ -3,7 +3,6 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { useState, useEffect, useRef } from "react";
-import "../styles/VideoMask.css";
 import Home_Carousel from "../components/HomeCarousel";
 import Testimonials from "../components/Testimonials";
 import Sectors from "../components/Sectors";
@@ -79,7 +78,6 @@ export default function Home() {
       unsubscribeY();
     };
   }, [sectorsOpacityRaw, sectorsYRaw]);
-  const numberOfSections = 4;
   return (
 
     // Outer scroll container: full viewport, internal scroll. We drive all scroll progress from here.
@@ -102,6 +100,7 @@ export default function Home() {
         as="section"
         position="sticky"
         bg="brand.section.sectors"
+        // bgGradient="linear(to-b, #fcddb9ff  10%, #ffffffff 40%, #e9efffff  100%)"
         top="0"
         zIndex={30}
         height="100vh"
@@ -119,6 +118,7 @@ export default function Home() {
         as="section"
         position="sticky"
         bg="brand.section.carousel"
+        // bgGradient="linear(to-b, #fcddb9ff  10%, #ffffffff 40%, #e9efffff  100%)"
         top="0"
         zIndex={30}
         height="100vh"
@@ -131,25 +131,22 @@ export default function Home() {
       >
         <Home_Carousel />
       </MotionBox>
-
       {/* TESTIMONIALS */}
       <MotionBox
         as="section"
-        position="sticky"
+        // position="sticky"
+        position="relative"
+        minH="100vh"
         bg="brand.section.testimonials"
         top="0"
         zIndex={30}
-        height="100vh"
         style={{
           opacity: 1,
-          y: useSpring(useTransform(scrollYProgress, [0.6, 0.78, 1], ["100%", "0%", "0%"])),
         }}
+
       >
         <Testimonials />
       </MotionBox>
-      {/* <Box height="50vh" /> */}
-      {/* Spacer at bottom to push footer into view */}
-      {/* <Box height="50vh" bg="transparent" /> */}
     </Box>
   );
 }

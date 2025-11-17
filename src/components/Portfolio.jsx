@@ -8,11 +8,8 @@ import {
   MenuItem,
   Checkbox,
   Button,
-  Wrap,
-  WrapItem,
   Tag,
   TagLabel,
-  TagCloseButton,
   Text,
   Divider,
   VStack,
@@ -22,12 +19,15 @@ import { ChevronDownIcon, CalendarIcon } from "@chakra-ui/icons";
 import { useMemo, useState } from "react";
 import { Tooltip, IconButton } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons";
+import { motion } from "framer-motion";
+const MotionMenuList = motion(MenuList);
+
 
 export default function Portfolio({ investments, onCompanySelect }) {
   // Extract filter options
   const sectors = useMemo(() => [...new Set(investments.map((c) => c.sector))], [investments]);
   const statuses = ["Active", "Partially Exited", "Exited"];
-  const funds = ["Fund I", "Fund II"];
+  const funds = ["Asha Circle", "Fund I"];
   const years = useMemo(() => {
     const yearSet = new Set();
     investments.forEach((inv) => {
@@ -81,28 +81,32 @@ export default function Portfolio({ investments, onCompanySelect }) {
 
   // MultiSelect Menu Component
   function MultiSelectMenu({ label, options, selected, setSelected }) {
+    const [isOpen, setIsOpen] = useState(false);
     const activeCount = selected.length;
+
 
     return (
       <Menu
         closeOnSelect={false}
-        usePortal={true}
         isLazy
         autoSelect={false}
-        initialFocusRef={null}
+        onOpen={() => setIsOpen(true)}
+        onClose={() => setIsOpen(false)}
       >
         <MenuButton
           as={Button}
-          rightIcon={<ChevronDownIcon />}
+          rightIcon={
+            isOpen ? <CloseIcon boxSize={2.5} /> : <ChevronDownIcon boxSize={5} />
+          }
           mr={2}
           mb={2}
           w="full"
           minW="190px"
           justifyContent="space-between"
           variant={activeCount > 0 ? "solid" : "outline"}
-          colorScheme={activeCount > 0 ? "gray" : "gray"}
+          colorScheme="gray"
         >
-          <Flex align="center" justify="space-between" w="full">
+          <Flex justify="space-between" w="full">
             <Text>{label}</Text>
             {activeCount > 0 && (
               <Tag size="sm" borderRadius="full" colorScheme="blue" ml={2}>
@@ -112,11 +116,27 @@ export default function Portfolio({ investments, onCompanySelect }) {
           </Flex>
         </MenuButton>
 
-        <MenuList
+        <MotionMenuList
           maxH="250px"
           overflowY="auto"
-          scrollBehavior="smooth"
-          tabIndex={-1}  // 👈 prevents focus jump
+          bg="rgba(3, 78, 82, 0.31)"
+          border="1px solid rgba(255,255,255,0.12)"
+          backdropFilter="blur(6px)"
+          initial={{ opacity: 0, y: -6 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -6 }}
+          transition={{ duration: 0.18 }}
+          sx={{
+            "&::-webkit-scrollbar": { width: "6px" },
+            "&::-webkit-scrollbar-track": {
+              background: "rgba(255,255,255,0.1)",
+              borderRadius: "10px",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              background: "rgba(255,255,255,0.45)",
+              borderRadius: "10px",
+            },
+          }}
         >
           {options.map((option) => {
             const isSelected = selected.includes(option);
@@ -128,19 +148,28 @@ export default function Portfolio({ investments, onCompanySelect }) {
                     ? setSelected(selected.filter((s) => s !== option))
                     : setSelected([...selected, option])
                 }
-                _hover={{ bg: "gray.100" }}
+                bg={isSelected ? "rgba(255,255,255,0.15)" : "transparent"}
+                borderRadius="md"
+                _hover={{
+                  bg: "rgba(255,255,255,0.25)",
+                }}
+                transition="all 0.2s"
               >
-                <Checkbox isChecked={isSelected} pointerEvents="none" mr={2} />
+                <Checkbox 
+                  isChecked={isSelected} 
+                  pointerEvents="none" 
+                  mr={2}
+                  borderColor="rgba(226, 232, 255, 0.26)"
+                  _checked={{ borderColor: "rgba(27, 73, 255, 0.32)" }}
+                />
                 {option}
               </MenuItem>
             );
           })}
-        </MenuList>
+        </MotionMenuList>
       </Menu>
     );
   }
-
-
 
   // ✅ The main JSX return starts here
   return (
@@ -156,7 +185,7 @@ export default function Portfolio({ investments, onCompanySelect }) {
         maxH="calc(100vh - 180px)"
         overflowY="auto"
         overflowX="hidden"
-        bg="white"
+        bg="rgba(150, 183, 255, 0.26)"
         boxShadow="xl"
         border="1px solid"
         borderColor="gray.100"
@@ -172,21 +201,15 @@ export default function Portfolio({ investments, onCompanySelect }) {
         }}
       >
 
-
-        {/* <Heading
-          size="md"
-          mb={4}
-          textAlign="center"
-          color="brand.500"
-          fontWeight="bold"
-          letterSpacing="wide"
-        >
-          Filters
-        </Heading> */}
-
         {/* ✅ Active Filter Summary with Clear All */}
         <Flex align="center" justify="center" mb={4} gap={2}>
-          <Text fontSize="sm" color="gray.700" fontWeight="medium">
+          <Text
+            fontSize="sm"
+            fontWeight="semibold"
+            color="gray.700"
+            textShadow="0 1px 2px rgba(255,255,255,0.7)"
+          >
+
             {(
               selectedSectors.length +
               selectedStatuses.length +
@@ -220,6 +243,16 @@ export default function Portfolio({ investments, onCompanySelect }) {
                   variant="ghost"
                   color="gray.500"
                   _hover={{ color: "red.500", transform: "scale(1.1)" }}
+
+                  // 🔥 Remove orange background on click
+                  _active={{ bg: "transparent" }}
+
+                  // 🔥 Remove focus ring or bg
+                  _focus={{ boxShadow: "none", bg: "transparent" }}
+
+                  // Just in case
+                  bg="transparent"
+
                   onClick={() => {
                     setSelectedSectors([]);
                     setSelectedStatuses([]);
@@ -228,10 +261,16 @@ export default function Portfolio({ investments, onCompanySelect }) {
                   }}
                 />
               </Tooltip>
+
             )}
         </Flex>
 
-        <VStack align="stretch" spacing={4}>
+        <VStack
+          align="stretch"
+          spacing={4}
+          divider={<Box border="0.5px solid rgba(90, 121, 236, 0.32)" />}
+        >
+
           <MultiSelectMenu label="Sectors" options={sectors} selected={selectedSectors} setSelected={setSelectedSectors} />
           <MultiSelectMenu label="Statuses" options={statuses} selected={selectedStatuses} setSelected={setSelectedStatuses} />
           <MultiSelectMenu label="Funds" options={funds} selected={selectedFunds} setSelected={setSelectedFunds} />
@@ -243,8 +282,7 @@ export default function Portfolio({ investments, onCompanySelect }) {
       {/* === Main Portfolio Content === */}
       <Box
         flex="1"
-        ml={{ base: 0, md: "200px" }}
-        pt="10px" // 👈 space below navbar
+        ml={{ base: 0, md: "100px" }}
         px={{ base: 4, md: 10 }}
         pb={{ base: 8, md: 16 }}
         minH="100vh"
@@ -252,11 +290,11 @@ export default function Portfolio({ investments, onCompanySelect }) {
         <Heading
           fontSize={{ base: "4xl", md: "6xl" }}
           color="blue.700"
-          mb={10}
+          mb={6}
           textAlign="left"
           fontWeight="extrabold"
           letterSpacing="wide"
-          fontFamily="'Playfair Display', serif"
+          textStyle="subHeading"
         >
           Portfolio
         </Heading>
@@ -267,8 +305,8 @@ export default function Portfolio({ investments, onCompanySelect }) {
               <Text
                 fontSize={{ base: "lg", md: "3xl" }}
                 textTransform="uppercase"
-                fontFamily="monospace"
-                color="brand.600"
+                fontFamily="Barlow Semi Condensed, sans-serif"
+                color="blue.800"
                 align="centre"
                 mb={2}
               >
@@ -284,13 +322,14 @@ export default function Portfolio({ investments, onCompanySelect }) {
                     px={{ base: 10, md: 14 }}
                     w="100%"
                     borderRadius="2xl"
-                    bg="green.50"
+                    bg="brand.section.investments_cards"
                     boxShadow="md"
                     _hover={{
-                      bg: "brand.section.sectors",
+                      bg: "rgba(194, 207, 255, 0.45)",
                       color: "blue.800",
-                      boxShadow: "lg",
-                      transform: "scale(1.01)",
+                      transform: "translateY(-4px)",
+                      boxShadow: "-12px 12px 0px 0px rgba(5, 52, 86, 0.34)",
+                      borderColor: "rgba(5, 52, 86, 0.34)",
                     }}
                     transition="all 0.2s"
                     onClick={() => {
@@ -351,9 +390,6 @@ export default function Portfolio({ investments, onCompanySelect }) {
                   </Box>
                 ))}
               </VStack>
-              {/* {idx < grouped.length - 1 && (
-                <Divider mt={8} mb={2} borderColor="gray.300" />
-              )} */}
             </Box>
           ))
         ) : (

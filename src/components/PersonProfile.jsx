@@ -51,7 +51,7 @@ export default function PersonProfile({
             </Badge>
 
             <HStack spacing={4}>
-              <Heading fontSize="4xl" fontWeight="bold" color="gray.800">
+              <Heading variant="section" fontSize="5xl" fontWeight="bold" color="gray.800">
                 {name}
               </Heading>
               <HStack spacing={3}>
@@ -81,7 +81,7 @@ export default function PersonProfile({
             <Box w="70px" h="3px" bg="orange.400" borderRadius="full" />
 
             {intro && (
-              <Text fontSize="xl" fontWeight="semibold" color="gray.800">
+              <Text fontSize="2xl" fontWeight="semibold" color="gray.700">
                 {intro}
               </Text>
             )}

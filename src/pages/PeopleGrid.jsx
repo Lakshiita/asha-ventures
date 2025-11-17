@@ -52,17 +52,15 @@ export default function PeopleGrid({ data, onPersonClick }) {
             borderRadius="xl"
             boxShadow="md"
             overflow="hidden"
-            transition="all 1.2s cubic-bezier(0.4, 0, 0.2, 1)"
-            transform={visibleCards.has(index) ? "translateY(0)" : "translateY(-100px)"}
-            opacity={visibleCards.has(index) ? 1 : 0}
             cursor="pointer"
             onClick={() => onPersonClick(person)}
             _hover={{
-              transform: visibleCards.has(index) ? "translateY(-6px)" : "translateY(-100px)",
-              boxShadow: "xl",
-            }}
-            w={{ base: "280px", sm: "240px", md: "260px", lg: "280px" }}
-            maxW={{ base: "90vw", sm: "none" }}
+                transform: "translateY(-4px)",
+                boxShadow: "-12px 12px 0px 0px rgba(164, 157, 155, 0.83)",
+                borderColor: "rgba(62, 50, 43, 0.45)",
+              }}
+            w={{ base: "280px", sm: "240px", md: "260px", lg: "300px" }}
+            // maxW={{ base: "90vw", sm: "none" }}
             h="auto"
           >
             <Image
@@ -75,11 +73,10 @@ export default function PeopleGrid({ data, onPersonClick }) {
             />
             <VStack p={{ base: 4, md: 5 }} spacing={2} align="center">
               <Heading
-                as="h3"
-                size={{ base: "sm", md: "md" }}
+                fontSize={{ base: "xl", md: "2xl" }}
+                textStyle="subHeading"
                 textAlign="center"
                 color="gray.800"
-                fontFamily="'Playfair Display', serif"
               >
                 {person.name}
               </Heading>

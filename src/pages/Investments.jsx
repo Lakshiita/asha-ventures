@@ -14,16 +14,18 @@ export default function Investments() {
   };
 
   return (
-    <Box px={{ base: 4, md: 8 }} py={{ base: 8, md: 16 }} mx={{ base: 4, md: 16 }}>
-      <Portfolio
-        investments={investmentsData}
-        onCompanySelect={handleCompanySelect}
-      />
-      <CompanyModal
-        isOpen={isOpen}
-        onClose={onClose}
-        company={selectedCompany}
-      />
+    <Box bg="#f6f8feff">
+      <Box px={{ base: 4, md: 8 }} py={{ base: 8, md: 16 }} mx={{ base: 4, md: 16 }} >
+        <Portfolio
+          investments={investmentsData}
+          onCompanySelect={handleCompanySelect}
+        />
+        <CompanyModal
+          isOpen={isOpen}
+          onClose={onClose}
+          company={selectedCompany}
+        />
+      </Box>
     </Box>
   );
 }

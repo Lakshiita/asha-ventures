@@ -30,7 +30,8 @@ export default function CompanyModal({ isOpen, onClose, company }) {
     <Modal isOpen={isOpen} onClose={onClose} size="full" scrollBehavior="inside">
       <ModalOverlay bg="blackAlpha.700" backdropFilter="blur(4px)" />
       <ModalContent
-        bg="white"
+        // bg="white"
+        bg="linear-gradient(to right, #e7ebf1ff , #f4f1f1ff, #f4f4f4ff)"
         p={{ base: 4, md: 10 }}
         pl={{ base: 8, md: 20 }}
         overflow="hidden"
@@ -50,33 +51,36 @@ export default function CompanyModal({ isOpen, onClose, company }) {
           <Box flex="1" maxW={{ base: "100%", lg: "55%" }}>
             <VStack align="flex-start" spacing={6}>
               <Box w="100%" mb={4}>
-              {/* Company Name */}
-              <Heading
-                fontSize={{ base: "4xl", md: "6xl" }} // Increased size
-                color="blue.700"
-                fontFamily="'Playfair Display', serif"
-                mt={{ base: 6, md: 10 }} // Added top margin
-              >
-                {company.name}
-              </Heading>
-              {/* Year of Investment (Right Aligned) */}
-              {company["year-of-investment"] && (
-                <Text
-                  fontSize={{ base: "md", md: "lg" }}
-                  color="gray.600"
-                  textAlign="left" // right aligned
-                  mt={1}
+                {/* Company Name */}
+                <Heading
+                  fontSize={{ base: "4xl", md: "6xl" }} // Increased size
+                  color="blue.700"
+                  textStyle="subHeading"
+                  mt={{ base: 6, md: 10 }} // Added top margin
                 >
-                  <b>Year of Investment:</b> {company["year-of-investment"].join(", ")}
-                </Text>
-              )}</Box>
+                  {company.name}
+                </Heading>
+                {/* Year of Investment (Right Aligned) */}
+                {company["year-of-investment"] && (
+                  <Text
+                    fontSize={{ base: "md", md: "lg" }}
+                    color="gray.600"
+                    textStyle="subHeading"
+                    lineHeight="tall"
+                    textAlign="left" // right aligned
+                    mt={1}
+                  >
+                    <b>Year of Investment:</b> {company["year-of-investment"].join(", ")}
+                  </Text>
+                )}</Box>
               <Flex gap={3} wrap="wrap">
-                <Badge colorScheme="blue" px={3} py={1} rounded="full" fontSize="md">
+                <Badge colorScheme="blue" px={3} py={1} rounded="full" fontSize="md" textStyle="subHeading">
                   {company.sector}
                 </Badge>
                 <Badge
                   colorScheme={statusColor}
                   px={3}
+                  textStyle="subHeading"
                   py={1}
                   rounded="full"
                   fontSize="md"
@@ -87,11 +91,12 @@ export default function CompanyModal({ isOpen, onClose, company }) {
               </Flex>
               <Box>
                 <Text
-                  fontSize="lg"
+                  fontSize="xl"
                   color="gray.700"
                   lineHeight="tall"
                   w="680px"
                   textAlign="left"
+                  textStyle="subHeading"
                 >
                   {company.description}
                 </Text>

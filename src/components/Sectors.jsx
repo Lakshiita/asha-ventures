@@ -6,6 +6,7 @@ import {
   FaLeaf,
   FaShoppingCart,
   FaLaptopCode,
+  FaSeedling
 } from "react-icons/fa";
 
 const MotionBox = motion(Box);
@@ -15,31 +16,37 @@ const sectors = [
     icon: FaHeartbeat,
     title: "Healthcare",
     text: "Ensuring access to quality and low-cost healthcare for underserved populations through technology-led delivery models and innovative financing solutions.",
-    color: "red.400",
+    color: "red.500",
   },
   {
     icon: FaDollarSign,
     title: "Financial Services",
     text: "Driving financial inclusion by expanding access to credit, insurance, and savings for underserved individuals and MSMEs via digital and alternative models.",
-    color: "blue.500",
+    color: "blue.600",
   },
   {
     icon: FaLeaf,
     title: "Sustainability",
     text: "Building a resource-efficient future by enabling waste reduction, material recovery, and sustainable consumption through scalable circular innovations.",
-    color: "green.500",
+    color: "green.600",
+  },
+  {
+    icon: FaSeedling,
+    title: "Agri Tech",
+    text: "Enabling sustainable and inclusive growth across India's agricultural and allied sectors by supporting solutions that enhance farm productivity, supply chain efficiency, market access, and financial inclusion for farmers and agri-enterprises.",
+    color: "green.300",
   },
   {
     icon: FaShoppingCart,
     title: "Consumer",
-    text: "Enhancing everyday living for underserved populations by supporting access to affordable, high-quality, and trusted products and services.",
+    text: "Enabling access to affordable, high-quality products and services for underserved populations while building sustainable value chains that create jobs and promote inclusive growth.",
     color: "orange.400",
   },
   {
     icon: FaLaptopCode,
     title: "MSME Technology",
-    text: "Digitizing and formalizing India's small businesses by supporting tech platforms that enhance productivity, compliance, and access to markets and finance.",
-    color: "purple.500",
+    text: "Digitizing and formalizing India's small and manufacturing businesses by supporting tech platforms that enhance productivity, compliance, and access to markets and finance.",
+    color: "purple.600",
   },
 ];
 
@@ -55,20 +62,20 @@ export default function Sectors() {
       justifyContent="center"
     >
       <Heading
+        textStyle="subHeading"
         textAlign="center"
-        color="blue.700"
-        fontFamily="'Playfair Display', serif"
+        color="brand.section.sectors_heading"
         mb={{ base: 2, md: 2 }}
         mt={6}
-      // fontSize={{ base: "xl", md: "2xl" }}
       >
         Sectors We Cover
       </Heading>
       <Text
         textAlign="center"
-        color="gray.500"
-        mb={{ base: 2, md: 4 }}
-        fontSize={{ base: "sm", md: "md" }}
+        textStyle="subHeading"
+        color="brand.section.sectors_heading"
+        mb={{ base: 4, md: 6 }}
+        fontSize={{ base: "lg", md: "lg" }}
       >
         Areas where Asha Ventures drives inclusive growth and sustainable impact.
       </Text>
@@ -84,18 +91,25 @@ export default function Sectors() {
           return (
             <MotionBox
               key={index}
-              whileHover={{ y: -4, scale: 1.02 }}
               transition={{ duration: 0.2 }}
-              bg="brand.section.signatory"
+              bg="rgba(255, 255, 255, 0.74)"
+              backdropFilter="blur(10px)"
+              border="1px solid rgba(193, 193, 193, 0.35)"
               p={{ base: 3, md: 6 }}
               rounded="2xl"
-              shadow="md"
+              shadow="lg"
               w="100%"
-              maxW={{ base: "180px", sm: "220px", md: "340px", lg: "380px", xl: "420px" }}
+              maxW={{ base: "150px", sm: "200px", md: "320px", lg: "360px", xl: "400px" }}
               textAlign="center"
               minH={{ base: "150px", md: "240px" }}
               cursor="pointer"
+              _hover={{
+                transform: "translateY(-4px)",
+                boxShadow: "-12px 12px 0px 0px rgba(99, 92, 90, 0.83)",
+                borderColor: "rgba(62, 50, 43, 0.45)",
+              }}
             >
+
 
               <Box
                 as={Icon}
