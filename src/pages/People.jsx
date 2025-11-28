@@ -35,7 +35,7 @@ export default function People() {
             fontSize={{ base: "4xl", md: "6xl" }}
             mb={10}
             color="blue.700"
-            letterSpacing="wide"
+            // letterSpacing="wide"
             textAlign="center"
             textStyle="subHeading"
           >

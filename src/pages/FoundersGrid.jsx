@@ -69,18 +69,36 @@ export default function FoundersGrid({ data }) {
               navigate(`/founders/${slug}`);
             }}
             _hover={{
-                transform: "translateY(-4px)",
-                boxShadow: "-12px 12px 0px 0px rgba(171, 157, 153, 0.83)",
-                borderColor: "rgba(62, 50, 43, 0.45)",
-              }}
-            w={{ base: "290px", sm: "250px", md: "270px", lg: "330px" }}
-            h={{ base: "290px", md: "400px" }}
+              transform: "translateY(-4px)",
+              boxShadow: "-12px 12px 0px 0px rgba(171, 157, 153, 0.83)",
+              borderColor: "rgba(62, 50, 43, 0.45)",
+            }}
+            w={{
+              base: "290px",
+              sm: "250px",
+              md: "300px",   // mid screens (tablets)
+              lg: "360px",   // laptops
+              xl: "400px",   // big desktop screens
+            }}
+
+            h={{
+              base: "360px",
+              md: "420px",
+              lg: "450px",
+              xl: "500px",
+            }}
+
           >
             <Image
               src={person.img}
               alt={person.name}
               objectFit="cover"
-              h={{ base: "280px", md: "300px" }}
+              h={{
+                base: "280px",
+                md: "300px",
+                lg: "360px",
+                xl: "380px",
+              }} 
               w="full"
               objectPosition="top"
             />

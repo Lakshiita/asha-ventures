@@ -52,7 +52,7 @@ export default function Contact() {
     setSubmitting(true);
     try {
       // Update this URL if your backend runs elsewhere
-      const res = await fetch("http://localhost:5000/contact", {
+      const res = await fetch("https://asha-ventures-backend.vercel.app/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -92,7 +92,9 @@ export default function Contact() {
   };
 
   return (
-    <Box bgGradient="linear(to-b, white, blue.100)" py={{ base: 10, md: 16 }}>
+    <Box
+      bgGradient="linear(to-b, white, #d7d9dfff, #c0c7d3ff)"
+      py={{ base: 10, md: 16 }}>
       <Container maxW="800px" textAlign="center">
         {/* 🌟 Animated Heading */}
         <MotionBox
@@ -111,12 +113,12 @@ export default function Contact() {
             Get in Touch
           </Heading>
 
-          <Text color="gray.600" 
-          fontSize="lg" 
-          maxW="3xl" 
-          mx="auto" 
-          textStyle="subHeading"
-          mb={10}>
+          <Text color="gray.600"
+            fontSize="lg"
+            maxW="3xl"
+            mx="auto"
+            textStyle="subHeading"
+            mb={10}>
             We'd love to hear from you. Fill out the form below and our team will get back to you soon.
           </Text>
         </MotionBox>

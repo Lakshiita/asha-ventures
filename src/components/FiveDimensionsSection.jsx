@@ -24,7 +24,7 @@ export default function FiveDimensionsSection() {
       alignItems="center"
       py={16}
     >
-      <Heading textAlign="center" color="brand.section.caraousel_heading" mb={5}>
+      <Heading textStyle="subHeading"  textAlign="center" color="brand.section.caraousel_heading" mb={5}>
         The Five Dimensions of Impact
       </Heading>
 

@@ -21,10 +21,15 @@ import { Tooltip, IconButton } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons";
 import { motion } from "framer-motion";
 const MotionMenuList = motion(MenuList);
+import {
+  Drawer, DrawerOverlay, DrawerContent, DrawerHeader,
+  DrawerBody, DrawerCloseButton, useDisclosure
+} from "@chakra-ui/react";
 
 
 export default function Portfolio({ investments, onCompanySelect }) {
   // Extract filter options
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const sectors = useMemo(() => [...new Set(investments.map((c) => c.sector))], [investments]);
   const statuses = ["Active", "Partially Exited", "Exited"];
   const funds = ["Asha Circle", "Fund I"];
@@ -155,9 +160,9 @@ export default function Portfolio({ investments, onCompanySelect }) {
                 }}
                 transition="all 0.2s"
               >
-                <Checkbox 
-                  isChecked={isSelected} 
-                  pointerEvents="none" 
+                <Checkbox
+                  isChecked={isSelected}
+                  pointerEvents="none"
                   mr={2}
                   borderColor="rgba(226, 232, 255, 0.26)"
                   _checked={{ borderColor: "rgba(27, 73, 255, 0.32)" }}
@@ -287,6 +292,19 @@ export default function Portfolio({ investments, onCompanySelect }) {
         pb={{ base: 8, md: 16 }}
         minH="100vh"
       >
+        {/* Mobile filter button */}
+        <Flex display={{ base: "flex", md: "none" }} mb={4} justify="flex-end">
+          <Button
+            onClick={onOpen}
+            colorScheme="blue"
+            variant="outline"
+            size="md"
+            rightIcon={<ChevronDownIcon />}
+          >
+            Filters
+          </Button>
+        </Flex>
+
         <Heading
           fontSize={{ base: "4xl", md: "6xl" }}
           color="blue.700"
@@ -318,39 +336,47 @@ export default function Portfolio({ investments, onCompanySelect }) {
                   <Box
                     key={c.id}
                     cursor="pointer"
-                    py={{ base: 6, md: 8 }}
-                    px={{ base: 10, md: 14 }}
+                    py={{ base: 4, md: 8 }}
+                    px={{ base: 4, sm: 6, md: 14 }}
                     w="100%"
                     borderRadius="2xl"
                     bg="brand.section.investments_cards"
                     boxShadow="md"
+                    transition="all 0.2s"
                     _hover={{
                       bg: "rgba(194, 207, 255, 0.45)",
                       color: "blue.800",
                       transform: "translateY(-4px)",
                       boxShadow: "-12px 12px 0px 0px rgba(5, 52, 86, 0.34)",
-                      borderColor: "rgba(5, 52, 86, 0.34)",
-                    }}
-                    transition="all 0.2s"
-                    onClick={() => {
-                      setSelectedCompany(c);
-                      if (onCompanySelect) onCompanySelect(c);
                     }}
                   >
                     <Flex align="flex-start">
                       <Image
                         src={c.logo}
                         alt={`${c.name} logo`}
-                        w={{ base: "120px", md: "180px" }}
-                        h={{ base: "120px", md: "180px" }}
+                        w={{ base: "80px", sm: "100px", md: "160px" }}
+                        h={{ base: "80px", sm: "100px", md: "160px" }}
                         objectFit="cover"
-                        mr={{ base: 8, md: 14 }}
+                        mr={{ base: 4, md: 10 }}
                       />
+
                       <Box flex="1">
-                        <Heading variant="section" color="blue.700" mb={4}>
+                        <Heading
+                          color="blue.700"
+                          mb={2}
+                          fontSize={{ base: "lg", md: "2xl" }}
+                          lineHeight={{ base: "1.2", md: "1.3" }}
+                          noOfLines={2}
+                        >
                           {c.name}
                         </Heading>
-                        <Text fontSize="sm" color="gray.600" mb={2} noOfLines={4}>
+
+                        <Text
+                          fontSize={{ base: "xs", sm: "sm" }}
+                          color="gray.600"
+                          mb={2}
+                          noOfLines={4}
+                        >
                           {c.shortDescription
                             ? c.shortDescription
                             : c.description?.split(" ").slice(0, 50).join(" ") +
@@ -396,7 +422,71 @@ export default function Portfolio({ investments, onCompanySelect }) {
           <Text align="center" fontSize="xl" mb={10} color="GrayText"> No companies available.</Text>
         )}
       </Box>
+      {/* MOBILE FILTER DRAWER */}
+      <Drawer isOpen={isOpen} placement="bottom" onClose={onClose}>
+        <DrawerOverlay />
+        <DrawerContent
+          borderTopRadius="2xl"
+          bg="rgba(255,255,255,0.85)"
+          backdropFilter="blur(10px)"
+        >
+          <DrawerCloseButton mt={2} />
+          <DrawerHeader fontWeight="bold" textAlign="center">
+            Filters
+          </DrawerHeader>
+
+          <DrawerBody>
+            <VStack align="stretch" spacing={4}>
+              <MultiSelectMenu
+                label="Sectors"
+                options={sectors}
+                selected={selectedSectors}
+                setSelected={setSelectedSectors}
+              />
+              <MultiSelectMenu
+                label="Statuses"
+                options={statuses}
+                selected={selectedStatuses}
+                setSelected={setSelectedStatuses}
+              />
+              <MultiSelectMenu
+                label="Funds"
+                options={funds}
+                selected={selectedFunds}
+                setSelected={setSelectedFunds}
+              />
+              <MultiSelectMenu
+                label="Years"
+                options={years}
+                selected={selectedYears}
+                setSelected={setSelectedYears}
+              />
+
+              {/* Clear all */}
+              <Button
+                colorScheme="red"
+                variant="ghost"
+                onClick={() => {
+                  setSelectedSectors([]);
+                  setSelectedStatuses([]);
+                  setSelectedFunds([]);
+                  setSelectedYears([]);
+                }}
+              >
+                Clear all
+              </Button>
+
+              {/* Apply & Close */}
+              <Button colorScheme="blue" onClick={onClose}>
+                Apply Filters
+              </Button>
+            </VStack>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+
     </Flex>
+
   );
 }
 

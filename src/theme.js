@@ -1,7 +1,6 @@
 // theme.js
 import { extendTheme } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
-import SustainableInvestmentsSection from "./components/SustainableInvestmentsSection";
 
 const colors = {
   brand: {
@@ -46,7 +45,8 @@ const colors = {
       two_x: "#efefefff",
       sustainable_Investment: "#e1d7ceff",
       five_dimension: "#7f8695ff",
-      testimonials_impact: "#ffead8ff"
+      testimonials_impact: "#ffead8ff",
+      testimonials_heading: "#5b5b5bff"
     },
   },
 
@@ -80,7 +80,6 @@ const textStyles = {
   },
 };
 
-
 const Button = {
   baseStyle: {
     rounded: "xl",
@@ -109,13 +108,11 @@ const Button = {
   },
 };
 
-
 const fonts = {
   heading: `"Source Sans 3", sans-serif`,  // ⬅️ Default heading font everywhere
   body: `'Inter', 'Poppins', sans-serif`,
   sourceSans: `"Source Sans 3", sans-serif`,
 };
-
 
 const components = {
   Heading: {
@@ -197,7 +194,6 @@ const components = {
     },
   },
 };
-
 
 const styles = {
   global: (props) => ({

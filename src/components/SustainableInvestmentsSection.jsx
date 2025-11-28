@@ -25,18 +25,18 @@ export default function SustainableInvestmentsSection() {
 
   return (
 
-    <Container maxW="100%" py={20} minH="100vh"  bg="brand.section.sustainable_Investment" >
+    <Container maxW="100%" py={20} minH="100vh" bg="brand.section.sustainable_Investment" >
       <Heading
+        textStyle="subHeading"
         textAlign="center"
-        color="blue.700"
-        fontFamily="'Barlow', sans-serif"
+        color="brand.section.sectors_heading"
         mb={4}
         mt={8}
       >
         Sustainable Investments
       </Heading>
-      <Text textAlign="center" color="gray.500" mb={2} maxW="900px"
-        textStyle="subHeading" mx="auto"   
+      <Text textStyle="subHeading" textAlign="center" color="brand.section.sectors_heading" mb={2} maxW="900px"
+        mx="auto"
         fontSize={{ base: "lg", md: "lg" }} >
         Investing to Advance the UN Sustainable Development Goals
       </Text>
@@ -91,6 +91,7 @@ export default function SustainableInvestmentsSection() {
             >
               <Text
                 fontSize={{ base: "lg", md: "3xl" }}
+                fontFamily="Barlow Semi Condensed, sans-serif"
                 color="gray.800"
                 variant="section"
                 lineHeight="tall"

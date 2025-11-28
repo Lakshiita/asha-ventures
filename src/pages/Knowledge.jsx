@@ -7,11 +7,14 @@ import newsletterData from "../data/newsletter.json";
 import annual_reports from "../data/annual_reports.json";
 import { CalendarIcon } from "@chakra-ui/icons";
 import commentariesData from "../data/commentaries.json";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 
 export default function Knowledge() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const tabParam = searchParams.get('tab');
+  const defaultTabIndex = tabParam === 'commentaries' ? 3 : 0;
   const cardStyles = {
     bg: "gray.100",
     border: "1px solid",
@@ -28,8 +31,8 @@ export default function Knowledge() {
     transition: "all 0.3s ease",
     _hover: {
       transform: "translateY(-8px)",
-      boxShadow: "-12px 12px 0px 0px rgba(111, 111, 111, 0.83)",
-      borderColor: "rgba(111, 111, 111, 0.83)",
+      boxShadow: "-12px 12px 0px 0px rgba(197, 195, 195, 0.93)",
+      borderColor: "rgba(195, 195, 195, 0.83)",
     },
   };
 
@@ -38,7 +41,6 @@ export default function Knowledge() {
       <Heading
         fontSize={{ base: "4xl", md: "6xl" }}
         color="blue.700"
-        letterSpacing="wide"
         textAlign="center"
         textStyle="subHeading"
         mb={10} 
@@ -48,7 +50,7 @@ export default function Knowledge() {
       </Heading>
 
       <Container mt={{ base: 8, md: 10 }} maxW="7xl" px={4}>
-        <Tabs variant="soft-rounded" colorScheme="blue" align="center">
+        <Tabs variant="soft-rounded" colorScheme="blue" align="center" defaultIndex={defaultTabIndex}>
           <TabList
             justifyContent="center"
             mb={7}
@@ -281,22 +283,6 @@ export default function Knowledge() {
                         <Heading size="md" mb={4} color="blue.700" noOfLines={2}>
                           {item.heading}
                         </Heading>
-
-                        <Tag size="md" variant="unstyled" mb={3}>
-                          <Text
-                            as="span"
-                            color="blue.700"
-                            px={4}
-                            py={1}
-                            borderRadius="full"
-                            fontWeight="semibold"
-                            fontSize="sm"
-                          >
-                            <CalendarIcon mr={2} />
-                            {item.date}
-                          </Text>
-                        </Tag>
-
                       </CardBody>
                     </Card>
                   ))}

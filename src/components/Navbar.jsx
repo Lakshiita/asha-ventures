@@ -15,6 +15,7 @@ const links = [
 const NavLinkItem = ({ to, children, dropdown }) => {
   const handleClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+    if (onClose) onClose();
   };
   if (dropdown) {
     return (
@@ -126,6 +127,7 @@ export default function Navbar() {
               to="/contact"
               bg="orange.400"
               color="white"
+              onClose={onClose}
               _hover={{ bg: "orange.500" }}
               rounded="full"
               w="full"

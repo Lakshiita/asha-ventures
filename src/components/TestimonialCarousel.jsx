@@ -20,10 +20,10 @@ export default function TestimonialCarousel() {
 
   return (
     <Container maxW="100%" py={20} bg="brand.section.testimonials_impact" minH="100vh">
-      <Heading textAlign="center" color="blue.700" mb={2}>
+      <Heading textAlign="center" color="brand.section.testimonials_heading" mb={2}>
         Experiences That Inspire Us
       </Heading>
-      <Text textAlign="center" color="gray.500" mb={10} textStyle="subHeading" fontSize={{ base: "lg", md: "lg" }}>
+      <Text textAlign="center" color="brand.section.testimonials_heading" mb={10} textStyle="subHeading" fontSize={{ base: "lg", md: "lg" }}>
         Real stories of transformation and impact from the communities we serve.
       </Text>
       <Box position="relative" minH="400px">
@@ -38,21 +38,19 @@ export default function TestimonialCarousel() {
           <Stack flex="1" spacing={6} pr={{ md: 4 }}>
             <FaQuoteLeft size="40px" color="#ED8936" />
             <Text
-              fontSize="lg"
+              fontSize="xl"
               color="gray.700"
               textAlign="justify"
+              fontFamily="Barlow Semi Condensed, sans-serif"
               key={index}
               sx={{ animation: "fadeIn 0.6s ease-in-out" }}
             >
               {testimonial.text}
             </Text>
             <Box>
-              <Heading size="md" color="orange.600">
+              <Heading size="lg" color="orange.600" fontFamily="Barlow Semi Condensed, sans-serif">
                 {testimonial.company}
               </Heading>
-              <Text fontSize="sm" color="gray.500">
-                {testimonial.year}
-              </Text>
             </Box>
           </Stack>
           <Box flex="1" textAlign="center" mt={{ base: 8, md: 0 }}>
