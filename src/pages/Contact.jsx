@@ -58,12 +58,12 @@ export default function Contact() {
         body: JSON.stringify({
           name: form.name,
           email: form.email,
-          message: form.message + (form.organization ? ` (Org: ${form.organization})` : ""),
+          organization: form.organization,
+          message: form.message,
         }),
       });
 
       const data = await res.json();
-
       if (!res.ok) {
         throw new Error(data?.error || "Failed to send message");
       }
