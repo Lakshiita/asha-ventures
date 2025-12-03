@@ -99,7 +99,7 @@ export default function Sectors() {
               rounded="2xl"
               shadow="lg"
               w="100%"
-              maxW={{ base: "150px", sm: "200px", md: "320px", lg: "360px", xl: "400px" }}
+              maxW={{ base: "200px", sm: "220px", md: "320px", lg: "360px", xl: "400px" }}
               textAlign="center"
               minH={{ base: "150px", md: "240px" }}
               cursor="pointer"

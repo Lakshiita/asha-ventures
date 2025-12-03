@@ -8,8 +8,8 @@ export default function SquareCard({ title, bgColor = "white", content = "Conten
     <Box
       position="relative"
       aspectRatio={1}
-      w={{ base: "89%", sm: "85%", md: "95%" }}
-      maxW="280px"
+      w={{ base: "90%", sm: "100%" }}
+      maxW={{ base: "150px", sm: "200px", md: "280px" }}
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
       style={{ perspective: "1000px" }}
@@ -39,7 +39,10 @@ export default function SquareCard({ title, bgColor = "white", content = "Conten
           w="100%"
           style={{ backfaceVisibility: "hidden" }}
         >
-          <Heading textStyle="subHeading" size="lg" textAlign="center" color={bgColor === "white" ? "black" : "white"}>
+          <Heading textStyle="subHeading"
+            fontSize={{ base: "md", sm: "lg", md: "3xl" }}   // 👈 smaller on mobile
+            textAlign="center"
+            color={bgColor === "white" ? "black" : "white"}>
             {title}
           </Heading>
         </Card>
@@ -60,7 +63,7 @@ export default function SquareCard({ title, bgColor = "white", content = "Conten
             transform: "rotateY(180deg)"
           }}
         >
-          <Text textStyle="subHeading"textAlign="center" color="gray.700" fontSize="xl" variant="section">
+          <Text textStyle="subHeading" textAlign="center" color="gray.700" fontSize={{ base: "xs", sm: "lg", md: "xl" }} variant="section">
             {content}
           </Text>
         </Card>

@@ -24,12 +24,12 @@ export default function FiveDimensionsSection() {
       alignItems="center"
       py={16}
     >
-      <Heading textStyle="subHeading"  textAlign="center" color="brand.section.caraousel_heading" mb={5}>
+      <Heading textStyle="subHeading" textAlign="center" color="brand.section.caraousel_heading" mb={5}>
         The Five Dimensions of Impact
       </Heading>
 
-      <Text textAlign="center" color="brand.section.caraousel_heading" mb={24} maxW="900px"
-      textStyle="subHeading"
+      <Text textAlign="center" color="brand.section.caraousel_heading" mb={12} maxW="900px"
+        textStyle="subHeading"
         fontSize={{ base: "lg", md: "lg" }} >
         We explore each outcome through five guiding questions that help us understand the depth, reach,
         and reliability of our impact.
@@ -38,7 +38,7 @@ export default function FiveDimensionsSection() {
       <Container maxW="1200px" px={{ base: 4, md: 8 }}>
         <Grid
           templateColumns={{
-            base: "repeat(1, 1fr)",
+            base: "repeat(2, 1fr)",   // ✅ 2 cards per row on mobile
             sm: "repeat(2, 1fr)",
             md: "repeat(3, 1fr)",
             lg: "repeat(5, 1fr)",
@@ -47,6 +47,7 @@ export default function FiveDimensionsSection() {
           justifyItems="center"
           alignItems="center"
         >
+
           {impact_dimensions.map((item, index) => {
             const colorPairs = [
               ["#e1f5ffff", "#cbd8e0ff"],

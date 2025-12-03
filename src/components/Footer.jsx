@@ -64,13 +64,13 @@ export default function Footer() {
         body: JSON.stringify({ email, source: "popup-form" })
       });
 
-       console.log('Server response:', { status: response.status, ok: response.ok });
+      console.log('Server response:', { status: response.status, ok: response.ok });
 
       if (!response.ok) {
         throw new Error("Failed to send email");
       }
 
-      console.log('Newsletter subscription successful for:', email);      
+      console.log('Newsletter subscription successful for:', email);
       toast({
         title: "Newsletter Subscribed",
         description: "Thank you for subscribing!",
@@ -93,20 +93,19 @@ export default function Footer() {
 
   return (
     <Box bg="brand.section.footer" color="gray.800">
-      <Container as={Stack} maxW="7xl" py={10}>
+      <Container as={Stack} maxW="7xl" py={{ base: 12, md: 16 }} spacing={10}>
 
-        {/* UPDATED: 3-COLUMN LAYOUT */}
+        {/* === NEW: 2-COLUMN LAYOUT === */}
         <SimpleGrid
-          columns={{ base: 1, md: 3 }}
-          spacing={6}
-          templateColumns={{ md: "1.5fr 1fr 0.8fr" }}
+          columns={{ base: 1, md: 2 }}
+          spacing={{ base: 10, md: 36 }}
         >
-          {/* COLUMN 1 — Logo + Newsletter */}
-          <Stack spacing={6} align="flex-start">
+          {/* COLUMN 1 — Logo + About + Newsletter */}
+          <Stack spacing={8} align="flex-start">
             <Image
               src={logo}
               alt="Asha Ventures Logo"
-              height="80px"
+              height="120px"
               rounded="md"
               transition="all 0.3s ease"
               _hover={{
@@ -116,18 +115,18 @@ export default function Footer() {
               }}
             />
 
-            <Text fontSize="2xl" textStyle="subHeading" color="#464646ff">
-              Asha Ventures is an inclusion and sustainability focused fund
+            <Text fontSize={{ base: "lg", md: "2xl" }} color="#464646ff" textStyle="subHeading">
+              Asha Ventures is an inclusion and sustainability-focused fund
               investing in early to growth stage companies.
             </Text>
-
+            <Divider my={1} />
             {/* Newsletter */}
             <Stack spacing={4} w="full">
-              <Text fontWeight="bold" fontSize="lg" color="#333232ff" textStyle="subHeading">
+              <Text fontWeight="bold" fontSize={{ base: "lg", md: "2xl" }} color="#333232ff" textStyle="subHeading">
                 Subscribe to our Newsletter
               </Text>
 
-              <HStack>
+              <HStack spacing={3} flexDir={{ base: "column", sm: "row" }} w="full">
                 <Input
                   placeholder="Enter your email"
                   variant="filled"
@@ -136,62 +135,38 @@ export default function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <Button colorScheme="brand" onClick={handleSubscribe}>
+                <Button
+                  colorScheme="brand"
+                  w={{ base: "full", sm: "auto" }}
+                  onClick={handleSubscribe}
+                >
                   Subscribe
                 </Button>
               </HStack>
             </Stack>
           </Stack>
 
-          {/* COLUMN 2 — Signatories */}
-          <Stack spacing={4} textAlign="left">
-            <Text fontWeight="bold" fontSize="xl" color="#333232ff" textStyle="subHeading" >
-              Global Standards We Follow
-            </Text>
-            <Grid templateColumns="repeat(2, 1fr)" gap={8} maxW="350px" mx="auto">
-              <Box textAlign="center">
-                <Image
-                  src="/assets/signatory/OPIM_Logo_RGB_Signatory_1_1_a19b434476.png"
-                  alt="Signatory 1"
-                  h="120px"
-                  objectFit="contain"
-                  mx="auto"
-                />
-              </Box>
-              <Box textAlign="center">
-                <Image
-                  src="/assets/signatory/Blue_Mark_Practive_verification_seal_05_22_756364e25f.png"
-                  alt="Signatory 2"
-                  h="120px"
-                  objectFit="contain"
-                  mx="auto"
-                />
-              </Box>
-            </Grid>
-          </Stack>
-
-          {/* COLUMN 3 — Get In Touch + Contact Links */}
-          <Stack spacing={8}>
-
+          {/* COLUMN 2 — Get In Touch + Quick Links */}
+          <Stack spacing={10}>
             {/* Get In Touch */}
-            <Stack spacing={4} position="relative" zIndex={20}>
-              <Text fontWeight="bold" fontSize="xl" color="#333232ff" textStyle="subHeading">
+            <Stack spacing={5} position="relative">
+              <Text fontWeight="bold" fontSize={{ base: "lg", md: "2xl" }} color="#333232ff">
                 Get In Touch
               </Text>
 
-              {/* Popups */}
+              {/* Hover Popups */}
               {showAddress && (
                 <Box
                   position="absolute"
-                  top="50px"
-                  left="-20px"
-                  bg="rgba(255, 255, 255, 0.33)"
-                  backdropFilter="blur(6px)"
+                  top="-45px"
+                  left="5%"
+                  transform="translateX(-50%)"
+                  bg="white"
                   boxShadow="lg"
                   p={4}
                   rounded="md"
                   w="260px"
-                  zIndex={10}
+                  zIndex={20}
                   animation="slideUp 0.25s ease forwards"
                 >
                   <Text fontSize="sm" color="gray.700">
@@ -201,46 +176,45 @@ export default function Footer() {
                 </Box>
               )}
 
+
               {showEmail && (
                 <Box
                   position="absolute"
-                  top="50px"
-                  left="70px"
-                  bg="rgba(255, 255, 255, 0.33)"
-                  backdropFilter="blur(6px)"
+                  top="-10px"
+                  left="15%"
+                  transform="translateX(-50%)"
+                  bg="white"
                   boxShadow="lg"
                   p={4}
                   rounded="md"
-                  w="220px"
-                  zIndex={10}
+                  w="200px"
+                  zIndex={20}
                   animation="slideUp 0.25s ease forwards"
                 >
-                  <Text fontSize="sm" color="gray.700">info@ashaventures.in</Text>
+                  <Text fontSize="sm">info@ashaventures.in</Text>
                 </Box>
               )}
 
               {showLinkedIn && (
                 <Box
                   position="absolute"
-                  top="50px"
-                  left="150px"
-                  bg="rgba(255, 255, 255, 0.33)"
-                  backdropFilter="blur(6px)"
+                  top="-10px"
+                  left="25%"
+                  transform="translateX(-50%)"
+                  bg="white"
                   boxShadow="lg"
                   p={4}
                   rounded="md"
-                  w="240px"
-                  zIndex={10}
+                  w="220px"
+                  zIndex={20}
                   animation="slideUp 0.25s ease forwards"
                 >
-                  <Text fontSize="sm" color="gray.700">
-                    Visit our LinkedIn Page
-                  </Text>
+                  <Text fontSize="sm">Visit our LinkedIn Page</Text>
                 </Box>
               )}
 
-              {/* Icon Row */}
-              <HStack spacing={3}>
+
+              <HStack spacing={4}>
                 <IconButton
                   as="a"
                   href="https://share.google/0b5clrNimWTN8w832"
@@ -253,10 +227,10 @@ export default function Footer() {
                   onMouseEnter={() => setShowAddress(true)}
                   onMouseLeave={() => setShowAddress(false)}
                   _hover={{
-                  transform: "scale(1.2) rotate(5deg)",
-                  color: "green.600",
-                  bg: "green.50",
-                }}
+                    transform: "scale(1.2) rotate(5deg)",
+                    color: "green.600",
+                    bg: "green.50",
+                  }}
                 />
                 <IconButton
                   as="a"
@@ -269,10 +243,10 @@ export default function Footer() {
                   onMouseEnter={() => setShowEmail(true)}
                   onMouseLeave={() => setShowEmail(false)}
                   _hover={{
-                  transform: "scale(1.2) rotate(-5deg)",
-                  color: "red.600",
-                  bg: "red.50",
-                }}
+                    transform: "scale(1.2) rotate(-5deg)",
+                    color: "red.600",
+                    bg: "red.50",
+                  }}
                 />
                 <IconButton
                   as="a"
@@ -286,49 +260,53 @@ export default function Footer() {
                   onMouseEnter={() => setShowLinkedIn(true)}
                   onMouseLeave={() => setShowLinkedIn(false)}
                   _hover={{
-                  transform: "scale(1.2) rotate(5deg)",
-                  color: "blue.700",
-                  bg: "blue.50",
-                }}
+                    transform: "scale(1.2) rotate(5deg)",
+                    color: "blue.700",
+                    bg: "blue.50",
+                  }}
                 />
               </HStack>
             </Stack>
 
             {/* Quick Links */}
             <Stack spacing={4}>
-              <Text fontWeight="bold" fontSize="xl" color="#333232ff" textStyle="subHeading">Quick Links</Text>
+              <Text fontWeight="bold" fontSize={{ base: "lg", md: "2xl" }} color="#333232ff" textStyle="subHeading">
+                Quick Links
+              </Text>
 
               <VStack align="start" spacing={2}>
-                <CLink href="/faqs" fontSize="md" _hover={{ color: "blue.800", fontSize:"lg"}} color="#333232ff" textStyle="subHeading">
+                <CLink href="/investments" fontSize="lg" _hover={{ color: "blue.600" }} textStyle="subHeading">
+                  Investments
+                </CLink>
+                <CLink href="/people" fontSize="lg" _hover={{ color: "blue.600" }} textStyle="subHeading">
+                  Our Team
+                </CLink>
+                <CLink href="/impact" fontSize="lg" _hover={{ color: "blue.600" }} textStyle="subHeading">
+                  Impact
+                </CLink>
+                <CLink href="/faqs" fontSize="lg" _hover={{ color: "blue.600" }} textStyle="subHeading">
                   FAQs
                 </CLink>
-                <CLink href="/contact" fontSize="md" _hover={{ color: "blue.800", fontSize:"lg"}} color="#333232ff" textStyle="subHeading">
+                <CLink href="/contact" fontSize="lg" _hover={{ color: "blue.600" }} textStyle="subHeading">
                   Contact
                 </CLink>
               </VStack>
             </Stack>
-
           </Stack>
         </SimpleGrid>
 
-        <Divider my={6} />
+        <Divider my={8} />
 
         <Stack
           direction={{ base: "column", md: "row" }}
           justify="space-between"
           align="center"
         >
-          <Text fontSize="md">
-            © 2025 Asha Ventures. All Rights Reserved.
-          </Text>
+          <Text fontSize="md">© 2025 Asha Ventures. All Rights Reserved.</Text>
 
           <HStack spacing={4}>
-            <CLink href="/privacy" fontSize="md">
-              Privacy Policy
-            </CLink>
-            <CLink href="/terms" fontSize="md">
-              Terms & Services
-            </CLink>
+            <CLink href="/" fontSize="md" _hover={{ color: "blue.600" }} textStyle="subHeading">Privacy Policy</CLink>
+            <CLink href="/" fontSize="md" _hover={{ color: "blue.600" }} textStyle="subHeading">Terms & Services</CLink>
           </HStack>
         </Stack>
 

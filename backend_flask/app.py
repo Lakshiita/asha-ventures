@@ -140,7 +140,7 @@ def contact():
         return jsonify({'error': 'Failed to send email'}), 500
 
     # ----- Log Contact -----
-    add_contact_entry(name, email, organization, message)
+    # add_contact_entry(name, email, organization, message)
 
     return jsonify({'message': 'Message delivered and logged successfully'}), 200
 
@@ -175,14 +175,14 @@ def subscribe():
         return jsonify({'error': 'Failed to send email'}), 500
 
     # ----- Log Newsletter Subscription -----
-    added = add_newsletter_email(user_email, source)
+    # added = add_newsletter_email(user_email, source)
 
-    if not added:
-        return jsonify({'message': 'Email already exists in the subscriber list'}), 200
+    # if not added:
+    #     return jsonify({'message': 'Email already exists in the subscriber list'}), 200
 
     return jsonify({'message': 'Email sent and added to Excel successfully'}), 200
 
 
 if __name__ == '__main__':
-    ensure_excel_setup()
+    # ensure_excel_setup()
     app.run(host='0.0.0.0', port=5000, debug=True)

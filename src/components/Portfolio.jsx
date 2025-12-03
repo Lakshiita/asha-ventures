@@ -349,6 +349,7 @@ export default function Portfolio({ investments, onCompanySelect }) {
                       transform: "translateY(-4px)",
                       boxShadow: "-12px 12px 0px 0px rgba(5, 52, 86, 0.34)",
                     }}
+                    onClick={() => onCompanySelect(c)}
                   >
                     <Flex align="flex-start">
                       <Image

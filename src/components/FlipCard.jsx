@@ -9,8 +9,8 @@ export default function FlipCard({ title, description, bgFront, bgBack, icon: Ic
       onMouseEnter={() => setFlipped(true)}
       onMouseLeave={() => setFlipped(false)}
       w="100%"
-      maxW="220px"
-      h="230px"
+      maxW={{ base: "150px", sm: "170px", md: "200px", lg: "220px" }}  // ✅ responsive
+      h={{ base: "160px", sm: "180px", md: "210px", lg: "230px" }}     // ✅ responsive
       style={{ perspective: "1000px" }}
       cursor="pointer"
     >
@@ -23,9 +23,10 @@ export default function FlipCard({ title, description, bgFront, bgBack, icon: Ic
           transformStyle: "preserve-3d",
           WebkitTransformStyle: "preserve-3d",
           transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
-          WebkitTransform: flipped ? "rotateY(180deg)" : "rotateY(0deg)"
+          WebkitTransform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
         }}
       >
+        {/* FRONT */}
         <Box
           position="absolute"
           top="0"
@@ -42,14 +43,30 @@ export default function FlipCard({ title, description, bgFront, bgBack, icon: Ic
           zIndex={2}
           sx={{
             backfaceVisibility: "hidden",
-            WebkitBackfaceVisibility: "hidden"
+            WebkitBackfaceVisibility: "hidden",
           }}
+          p={{ base: 2, md: 3 }}
         >
-          {Icon && <Icon size="32px" color="blue.800" style={{ marginBottom: "20px" }} />}
-          <Heading size="xl" textAlign="center" variant="section" color="blue.800" px={3}>
+          {Icon && (
+            <Icon
+              size={window.innerWidth < 480 ? "22px" : "32px"} // ✅ smaller icon mobile
+              color="#1a284fff"
+              style={{ marginBottom: "12px" }}
+            />
+          )}
+
+          <Heading
+            size={{ base: "lg", sm: "lg", md: "xl" }}    // ✅ text shrinks only on mobile
+            textAlign="center"
+            variant="section"
+            color="blue.800"
+            px={3}
+          >
             {title}?
           </Heading>
         </Box>
+
+        {/* BACK */}
         <Box
           position="absolute"
           top="0"
@@ -62,15 +79,22 @@ export default function FlipCard({ title, description, bgFront, bgBack, icon: Ic
           display="flex"
           alignItems="center"
           justifyContent="center"
-          p={4}
+          p={{ base: 2, sm: 3, md: 4 }}
           sx={{
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
-            WebkitTransform: "rotateY(180deg)"
+            WebkitTransform: "rotateY(180deg)",
           }}
         >
-          <Text fontSize="lg" textAlign="center" variant="section" fontWeight="bold" color="gray.700" px={2}>
+          <Text
+            fontSize={{ base: "sm", sm: "md", md: "lg" }}  // ✅ smaller text on mobile
+            textAlign="center"
+            variant="section"
+            fontWeight="bold"
+            color="gray.700"
+            px={2}
+          >
             {description}
           </Text>
         </Box>

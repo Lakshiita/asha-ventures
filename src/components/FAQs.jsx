@@ -11,14 +11,14 @@ import {
 
 export default function FAQs({ faqs }) {
   return (
-    <Box maxW="800px" mx="auto" px={4} py={8}>
+    <Box maxW="800px" mx="auto">
       <Heading
-        mb={10}
-        fontWeight="600"
-        textAlign="center"
+        fontSize={{ base: "4xl", md: "6xl" }}
         color="blue.700"
+        textAlign="center"
         textStyle="subHeading"
-        fontSize={{ base: "3xl", md: "5xl" }}
+        mb={10}
+      // mt={{ base: 6, md: 10 }}
       >
         FAQs
       </Heading>

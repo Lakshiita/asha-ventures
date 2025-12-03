@@ -94,17 +94,17 @@ export default function Impact() {
       </MotionBox>
 
       {/* TESTIMONIALS (can be sticky or normal — your choice) */}
-      <MotionBox
+      <Box
         as="section"
-        position="sticky"
-        top="0"
+        position="relative"
+        // top="0"
+        bg="brand.section.testimonials_impact"
         height="100vh"
         zIndex={30}
-        bg="white"
         style={{ y: testimonialsY }}
       >
         <TestimonialCarousel />
-      </MotionBox>
+      </Box>
     </Box>
   );
 }

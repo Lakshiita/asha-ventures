@@ -20,7 +20,7 @@ const Hero = ({ scrollYProgress }) => {
       m="0"               // Remove any margin
       p="0"
       zIndex={10}
-      height="100vh"
+      height={{ base: "100dvh", md: "100vh" }}
       style={{
         opacity: heroOpacity,
         y: heroY,
@@ -48,7 +48,7 @@ const Hero = ({ scrollYProgress }) => {
             backdropFilter="blur(10px)"
             boxShadow="0 8px 40px rgba(0,0,0,0.3)"
             w={{ base: "90%", md: "85%" }}
-            h={{ base: "55vh", md: "65vh" }}
+            h={{ base: "45vh", md: "65vh" }}
             whileHover={{ scale: 1.03 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
@@ -77,7 +77,7 @@ const Hero = ({ scrollYProgress }) => {
               fontWeight="600"
               fontFamily="Barlow Semi Condensed, sans-serif"
               // fontFamily="Avenir, sans-serif"
-              fontSize={{ base: "3rem", md: "3.1rem" }}
+              fontSize={{ base: "2rem", sm: "2.4rem", md: "3.1rem" }}
               letterSpacing="0.8px"
             >
               Partnering With Ambitious{" "}

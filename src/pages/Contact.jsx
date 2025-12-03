@@ -63,10 +63,12 @@ export default function Contact() {
         }),
       });
 
+      console.log('Server response:', { status: res.status, ok: res.ok });
       const data = await res.json();
       if (!res.ok) {
         throw new Error(data?.error || "Failed to send message");
       }
+      console.log('Contact sent successfully');
 
       toast({
         title: "Message sent!",
@@ -79,6 +81,7 @@ export default function Contact() {
       // Clear form after success
       setForm({ name: "", email: "", organization: "", message: "" });
     } catch (err) {
+      console.error('Contact submission error:', err);
       toast({
         title: "Could not send your message",
         description: err.message,

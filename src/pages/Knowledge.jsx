@@ -26,7 +26,8 @@ export default function Knowledge() {
     flexDirection: "column",
     justifyContent: "space-between",
     minH: "320px",
-    w: "380px",
+    w: { base: "100%", sm: "100%", md: "360px" },  // ❤️ Responsive
+    maxW: "100%",  // stops overflow
     boxShadow: "base",
     transition: "all 0.3s ease",
     _hover: {
@@ -36,6 +37,7 @@ export default function Knowledge() {
     },
   };
 
+
   return (
     <Box bg="#f4f4f4ff" py={12}>
       <Heading
@@ -43,8 +45,8 @@ export default function Knowledge() {
         color="blue.700"
         textAlign="center"
         textStyle="subHeading"
-        mb={10} 
-        // mt={{ base: 6, md: 10 }}
+        mb={10}
+      // mt={{ base: 6, md: 10 }}
       >
         Knowledge Resources
       </Heading>
@@ -52,21 +54,45 @@ export default function Knowledge() {
       <Container mt={{ base: 8, md: 10 }} maxW="7xl" px={4}>
         <Tabs variant="soft-rounded" colorScheme="blue" align="center" defaultIndex={defaultTabIndex}>
           <TabList
-            justifyContent="center"
+            bg="#e6e7e9ff"
+            p={3}
             mb={7}
             borderRadius="xl"
-            bg="#e6e7e9ff"
-            p={2}
             w={{ base: "98%", sm: "100%", md: "660px" }}
-            mx="auto"
-            gap={{ base: 1, sm: 2, md: 8 }}
+            display="grid"
+            gridTemplateColumns={{ base: "repeat(2, 1fr)", md: "repeat(4, auto)" }}
+            gap={3}
+            justifyContent="center"
           >
-            <Tab _selected={{ color: "white", bg: "blue.700" }} fontSize="xl" fontWeight="semibold">Reports</Tab>
-            <Tab _selected={{ color: "white", bg: "blue.700" }} fontSize="xl" fontWeight="semibold">Newsletters</Tab>
-            <Tab _selected={{ color: "white", bg: "blue.700" }} fontSize="xl" fontWeight="semibold">Media</Tab>
-            <Tab _selected={{ color: "white", bg: "blue.700" }} fontSize="xl" fontWeight="semibold">Commentaries</Tab>
+            <Tab
+              _selected={{ color: "white", bg: "blue.700" }}
+              fontSize={{ base: "sm", md: "xl" }}
+              px={{ base: 3, md: 6 }}
+            >
+              Reports
+            </Tab>
+            <Tab
+              _selected={{ color: "white", bg: "blue.700" }}
+              fontSize={{ base: "sm", md: "xl" }}
+              px={{ base: 3, md: 6 }}
+            >
+              Newsletters
+            </Tab>
+            <Tab
+              _selected={{ color: "white", bg: "blue.700" }}
+              fontSize={{ base: "sm", md: "xl" }}
+              px={{ base: 3, md: 6 }}
+            >
+              Media
+            </Tab>
+            <Tab
+              _selected={{ color: "white", bg: "blue.700" }}
+              fontSize={{ base: "sm", md: "xl" }}
+              px={{ base: 3, md: 6 }}
+            >
+              Commentaries
+            </Tab>
           </TabList>
-
           <TabPanels>
             {/* 📘 ANNUAL REPORTS */}
             <TabPanel>

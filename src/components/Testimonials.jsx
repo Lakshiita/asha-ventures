@@ -71,13 +71,14 @@ export default function Testimonials() {
         minH={{ base: "400px", md: "320px" }}
       >
         <Flex
-          key={index} // re-render on index change
+          key={index}
           px={{ base: 4, md: 6 }}
           mt={10}
           direction={{ base: "column-reverse", md: "row" }}
           align="center"
           textAlign={{ base: "center", md: "left" }}
           gap={{ base: 8, md: 12 }}
+          pointerEvents="none"   // ⬅ IMPORTANT
           sx={{
             animation:
               direction === "next"
@@ -85,6 +86,7 @@ export default function Testimonials() {
                 : "slideInFromLeft 0.6s ease-in-out",
           }}
         >
+
           {/* Text Section */}
           <Stack flex="1" spacing={{ base: 4, md: 6 }} pr={{ md: 10 }}>
             <Box textAlign={{ base: "center", md: "left" }}>
@@ -132,27 +134,34 @@ export default function Testimonials() {
           icon={<FaChevronLeft />}
           onClick={prev}
           position="absolute"
-          top="50%"
-          left="-40px"
+          top={{ base: "25%", md: "50%" }}       // 👈 FIXED: lower on mobile
+          left={{ base: "20px", md: "-40px" }}
           transform="translateY(-50%)"
-          bg="whiteAlpha.700"
+          bg="transparent"
           color="gray.600"
           borderRadius="full"
-          _hover={{ bg: "orange.100", color: "orange.500" }}
+          boxSize={{ base: "36px", md: "44px" }}
+          _hover={{ bg: "transparent", color: "orange.500" }}
+          zIndex={50}
         />
+
         <IconButton
           aria-label="Next"
           icon={<FaChevronRight />}
           onClick={next}
           position="absolute"
-          top="50%"
-          right="-40px"
+          top={{ base: "25%", md: "50%" }}        // 👈 FIXED: lower on mobile
+          right={{ base: "20px", md: "-40px" }}
           transform="translateY(-50%)"
-          bg="whiteAlpha.700"
+          bg="transparent"
           color="gray.600"
           borderRadius="full"
-          _hover={{ bg: "orange.100", color: "orange.500" }}
+          boxSize={{ base: "36px", md: "44px" }}
+          _hover={{ bg: "transparent", color: "orange.500" }}
+          zIndex={50}
         />
+
+
       </Box>
 
       {/* Slide animations */}
